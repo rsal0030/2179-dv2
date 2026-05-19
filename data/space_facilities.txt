@@ -1,0 +1,43 @@
+name,complex,suburb, state
+Island Lagoon Tracking Station, Island Lagoon Tracking Station, Woomera, SA
+Joint Defense Facility Nurrungar, Island Lagoon Tracking Station, Arcoona, SA
+Muchea Tracking Station, Muchea Tracking Station, Muchea, WA
+Canberra Deep Space Communication Complex, Canberra Deep Space Communication Complex, Tidbinbilla, ACT
+Carnarvon Tracking Station, Carnarvon Tracking Stations, Carnarvon, WA
+OTC Satellite Earth Station Carnarvon, Carnarvon Tracking Stations, Carnarvon, WA
+Honeysuckle Creek Tracking Station, Honeysuckle Creek Tracking Station, Honeysuckle Creek, ACT
+Cooby Creek Tracking Station, Cooby Creek Tracking Station, Toowoomba, QLD
+Parkes CSIRO Earth Station, Parkes CSIRO Earth Station, Parkes, NSW
+Orroral Valley Tracking Station, Orroral Valley Tracking Station, Orroral Valley, ACT
+Yatharagga, Yatharagga West Australian Space Centre, Yarragadee, WA
+Pine Gap, Pine Gap, Alice Springs, NT
+Crib Point Satellite Earth Station at HMAS Cerberus Naval Base, Crib Point Satellite Earth Station at HMAS Cerberus Naval Base, Crib Point, VIC
+New Norcia Station, New Norcia Station, New Norcia, WA
+Australian Defence Satellite Communications Station, Australian Defence Satellite Communications Station, Geraldton, WA
+Dongara Satellite Station, Yatharagga West Australian Space Centre, Yarragadee, WA
+Perth Station, Perth International Telecommunications Centre, Gnangara, WA
+Regency Park Optus Earth Station, Regency Park Optus Earth Station, Regency Park, SA
+Belrose Optus Earth Station, Belrose Optus Earth Station, Belrose, NSW
+Lockridge Optus Earth Station, Lockridge Optus Earth Station, Lockridge, WA
+Oxford Falls Optus Earth Station, Oxford Falls Optus Earth Station, Oxford Falls, NSW
+Tasmanian Earth Resources Satellite Station, Tasmanian Earth Resources Satellite Station, Hobart, TAS
+Uralla Lockheed Martin Earth Station, Uralla Lockheed Martin Earth Station, Uralla, NSW
+Mawson Lakes NewSat Earth Station, Mawson Lakes NewSat Earth Station, Mawson Lakes, SA
+Bassendean NewSat Earth Station, Bassendean NewSat Earth Station, Bassendean, WA
+Sydney BoM Earth Station, Sydney BoM Earth Station, Sydney, NSW
+Melbourne BoM Earth Station, Melbourne BoM Earth Station, Melbourne, VIC
+Perth WASTAC Earth Station, Perth WASTAC Earth Station, Murdoch, WA
+Shoal Bay Receiving Station, Shoal Bay Receiving Station, Shoal Bay, NT
+Darwin Weather Data Earth Station, Shoal Bay Receiving Station,, Shoal Bay, NT
+Casey Station, Casey Station, Casey Station (Antarctica), AAD
+Davis Station, Davis Station, Davis Station (Antarctica), AAD
+Mawson Station, Mawson Station, Mawson Station (Antarctica), AAD
+Macquarie Island Station, Macquarie Island Station, Macquarie Island Station (Antarctica), AAD
+Mount Stromlo Observatory, Mount Stromlo Observatory, Mount Stromlo, ACT
+Oxford Falls Telstra Earth Station (Sydney Earth Station), Oxford Falls Telecommunication Centre, Oxford Falls, NSW
+Gnangara Telstra Earth Station (Perth Earth Station), Perth Telstra International Telecommunication Centre, Landsdale, WA
+HMAS Harman, Defence Communications Station (DEFCOMMSTA) Canberra, Harman, ACT
+Optus, , Hume, ACT
+Telstra - Bendigo, Telstra, Bendigo, VIC
+Telstra - Hawthorn, Telstra, Hawthorn, VIC
+
