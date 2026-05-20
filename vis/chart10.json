@@ -1,0 +1,102 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 850,
+  "height": 420,
+  "background": "#0B1020",
+
+  "title": {
+    "text": "Australia’s Satellites Rely on Global Launch Vehicles",
+    "subtitle": "Each rocket icon represents one satellite launch grouped by launch provider",
+    "color": "#FFFFFF",
+    "subtitleColor": "#9AA5B1",
+    "font": "Orbitron",
+    "fontSize": 22,
+    "subtitleFont": "Inter",
+    "subtitleFontSize": 14,
+    "anchor": "start",
+    "offset": 20
+  },
+
+  "data": {
+    "url": "../data/aosd.csv"
+  },
+
+  "transform": [
+    {
+      "window": [
+        {
+          "op": "row_number",
+          "as": "index"
+        }
+      ],
+      "groupby": ["launch_vehicle"],
+      "sort": [
+        {
+          "field": "satellite",
+          "order": "ascending"
+        }
+      ]
+    }
+  ],
+
+  "mark": {
+    "type": "text",
+    "fontSize": 18
+  },
+
+  "encoding": {
+    "x": {
+      "field": "index",
+      "type": "quantitative",
+      "axis": {
+        "title": "Satellite Count (per launcher)",
+        "titleColor": "#EAEAEA",
+        "labelColor": "#EAEAEA",
+        "grid": false,
+        "domainColor": "#2A324A",
+        "tickColor": "#2A324A"
+      }
+    },
+
+    "y": {
+      "field": "launch_vehicle",
+      "type": "nominal",
+      "axis": {
+        "title": "Launch Vehicle",
+        "titleColor": "#EAEAEA",
+        "labelColor": "#EAEAEA",
+        "domainColor": "#2A324A",
+        "tickColor": "#2A324A"
+      }
+    },
+
+    "text": {
+      "value": "🚀"
+    },
+
+    "color": {
+      "field": "launch_vehicle",
+      "type": "nominal",
+      "legend": {
+        "title": "Launch Provider",
+        "titleColor": "#EAEAEA",
+        "labelColor": "#EAEAEA"
+      },
+      "scale": {
+        "scheme": "tableau10"
+      }
+    },
+
+    "tooltip": [
+      { "field": "launch_vehicle", "title": "Launch Vehicle" },
+      { "field": "satellite", "title": "Satellite" }
+    ]
+  },
+
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

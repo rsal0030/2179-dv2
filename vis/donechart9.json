@@ -1,0 +1,193 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 850,
+  "height": 420,
+
+  "background": "#0B1020",
+
+  "title": {
+    "text": "Australia’s Space Future: Missions, Markets and National Ambitions",
+    "subtitle": "A roadmap of missions, commercial growth, policy direction and national targets",
+    "color": "#FFFFFF",
+    "subtitleColor": "#9AA5B1",
+    "font": "Orbitron",
+    "fontSize": 22,
+    "subtitleFont": "Inter",
+    "subtitleFontSize": 14,
+    "anchor": "start",
+    "offset": 20
+  },
+
+  "data": {
+    "url": "../data/future_missions.json"
+  },
+
+  "transform": [
+    {
+      "calculate": "datum.category == 'target' ? 1 : 0",
+      "as": "isTarget"
+    }
+  ],
+
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "stroke": "#2A324A",
+        "strokeWidth": 1
+      },
+
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        }
+      }
+    },
+
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 250,
+        "stroke": "#FFFFFF",
+        "strokeWidth": 1.2
+      },
+
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "axis": {
+            "title": "Year",
+            "titleColor": "#EAEAEA",
+            "labelColor": "#EAEAEA",
+            "domainColor": "#2A324A",
+            "tickColor": "#2A324A",
+            "labelAngle": 0
+          }
+        },
+
+        "y": {
+          "field": "category",
+          "type": "nominal",
+          "axis": {
+            "title": "Category",
+            "titleColor": "#EAEAEA",
+            "labelColor": "#EAEAEA",
+            "domainColor": "#2A324A",
+            "tickColor": "#2A324A"
+          }
+        },
+
+        "shape": {
+          "field": "category",
+          "type": "nominal",
+          "scale": {
+            "domain": ["mission", "commercial", "policy", "target"],
+            "range": ["circle", "square", "triangle", "diamond"]
+          }
+        },
+
+        "color": {
+          "field": "category",
+          "type": "nominal",
+          "scale": {
+            "domain": ["mission", "commercial", "policy", "target"],
+            "range": ["#5DA9FF", "#90BE6D", "#B5179E", "#FFB703"]
+          },
+          "legend": {
+            "title": "Future Category",
+            "titleColor": "#EAEAEA",
+            "labelColor": "#EAEAEA"
+          }
+        },
+
+        "opacity": {
+          "condition": {
+            "test": "datum.year >= 2027",
+            "value": 0.9
+          },
+          "value": 0.6
+        },
+
+        "strokeDash": {
+          "condition": {
+            "test": "datum.category == 'target'",
+            "value": [6, 4]
+          },
+          "value": []
+        },
+
+        "tooltip": [
+          {
+            "field": "label",
+            "title": "Mission / Item"
+          },
+          {
+            "field": "year",
+            "title": "Year"
+          },
+          {
+            "field": "category",
+            "title": "Category"
+          },
+          {
+            "field": "description",
+            "title": "Details"
+          }
+        ]
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "filter": "datum.label === 'Roo-ver lands on the Moon'"
+        }
+      ],
+
+      "mark": {
+        "type": "text",
+        "dy": -18,
+        "font": "Inter",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#FFFFFF"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+
+        "y": {
+          "field": "category",
+          "type": "nominal"
+        },
+
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ],
+
+  "config": {
+    "view": {
+      "stroke": null
+    },
+
+    "axis": {
+      "grid": false
+    },
+
+    "legend": {
+      "orient": "top-right",
+      "labelFont": "Inter",
+      "titleFont": "Inter"
+    }
+  }
+}
