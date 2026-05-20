@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
-  "width": 900,
+  "width": "container",
   "height": 560,
   "background": "#0B1020",
 
@@ -10,6 +10,7 @@
     "subtitle": "Launch sites, research centres, universities and industry hubs mapped by location",
     "anchor": "start",
     "fontSize": 24,
+    "font": "Orbitron",
     "color": "#FFFFFF",
     "subtitleColor": "#9AA5B1"
   },

@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Australia's Giant Leap — Space Nation</title>
+    <title>The Rise of Australia's Space Nation</title>
 
     <link rel="stylesheet" href="style.css">
 
+    <!-- Vega -->
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
@@ -16,128 +17,273 @@
 
 <body>
 
-<!-- HERO -->
+    <nav class="sidebar">
+    <a href="#section1">1</a>
+    <a href="#section2">2</a>
+    <a href="#section3">3</a>
+    <a href="#section4">4</a>
+    </nav>
+
+<!-- =========================
+    HERO
+========================= -->
+
 <header class="hero">
     <div class="container">
-        <h1>Australia's Giant Leap</h1>
-        <p class="subtitle">From no space agency to the Moon in under a decade</p>
+
+        <h1>The Rise of Australia's Space Nation</h1>
+
+        <p class="subtitle">
+            From no space agency to the Moon in under a decade
+        </p>
+
+        <p class="intro">
+            In 1969, two radio telescopes in rural Australia helped beam the first Moon landing
+            to 600 million people around the world. Yet for decades after, Australia had no space
+            agency, no national strategy, and no real industry to speak of. That changed in 2018 —
+            and what followed is one of the quiet success stories of the Australian economy.
+        </p>
+
     </div>
 </header>
 
-<!-- INTRO -->
-<section class="intro">
+
+<!-- =========================
+    SECTION 1
+========================= -->
+
+<section class="section" id="section1">
+
     <div class="container">
-        <p>
-            Australia was once a pioneer in space — hosting NASA tracking stations
-            that helped transmit Apollo 11 data in 1969. But for decades, the nation
-            lacked a coordinated space strategy. That changed in 2018.
-        </p>
-    </div>
-</section>
 
-<!-- SECTION 1 -->
-<section class="section">
-
-    <div class="section-header">
         <h2>A Nation Wakes Up to Space</h2>
-        <p class="section-subtitle">The starting point of Australia’s modern space era</p>
+
         <p class="section-text">
-            Australia moves from inactivity to re-entering the global space ecosystem.
+            Australia was a space pioneer long before it had a space agency. Its vast skies and
+            southern hemisphere location made it essential to NASA during the Space Race. But by 1996,
+            Australia had dismantled its space office and stepped back from the global stage.
         </p>
-    </div>
 
-    <div class="chart-block">
-        <div id="donechart1" class="chart"></div>
-    </div>
+        <p class="transition">
+            Australia wasn't alone in coming late to space — but its return in 2018 marked a sharp turning point.
+        </p>
 
-    <div class="chart-block">
-        <div id="donechart2" class="chart"></div>
+        <div class="chart-block">
+            <div id="donechart1" class="chart"></div>
+            <p class="caption">
+                Australia’s return to space accelerates sharply after 2018, marking a structural shift from inactivity to sustained national investment.
+            </p>
+        </div>
+
+        <p class="transition">
+            Compared to global peers, Australia is a recent entrant — but it has moved quickly to build capability.
+        </p>
+
+        <div class="chart-block">
+            <div id="donechart2" class="chart"></div>
+            <p class="caption">
+                Australia is one of the newest space nations globally, yet is among the fastest to develop commercial and civil capability after entry.
+            </p>
+        </div>
+
     </div>
 
 </section>
 
 
-<!-- SECTION 2 -->
-<section class="section alt">
+<!-- =========================
+    SECTION 2
+========================= -->
 
-    <div class="section-header">
-        <h2>From Zero to Launch</h2>
-        <p class="section-subtitle">Rapid expansion of industry, jobs, and regulation</p>
-        <p class="section-text">
-            In under a decade, Australia builds a commercial space ecosystem.
-        </p>
-    </div>
+<section class="section" id="section2">
 
-    <div class="chart-block">
-        <div id="donechart3" class="chart"></div>
-    </div>
-
-    <div class="chart-block">
-        <div id="donechart4" class="chart"></div>
-    </div>
-
-</section>
-
-
-<!-- SECTION 3 -->
-<section class="section">
-
-    <div class="section-header">
-        <h2>Eyes in the Sky — Satellites</h2>
-        <p class="section-subtitle">Australia transitions from importer to builder</p>
-        <p class="section-text">
-            Satellites become smaller, more frequent, and more diverse in purpose.
-        </p>
-    </div>
-
-    <div class="chart-block">
-        <div id="donechart5" class="chart"></div>
-    </div>
-
-    <div class="chart-block">
-        <div id="donechart6" class="chart"></div>
-    </div>
-
-    <div class="chart-block">
-        <div id="donechart7" class="chart"></div>
-    </div>
-
-    <div class="chart-block">
-        <div id="donechart8" class="chart"></div>
-    </div>
-
-</section>
-
-
-<!-- SECTION 4 -->
-<section class="section alt">
-
-    <div class="section-header">
-        <h2>Australia's Secret Superpower</h2>
-        <p class="section-subtitle">Geography as strategic advantage</p>
-        <p class="section-text">
-            Australia's location enables global tracking and launch infrastructure.
-        </p>
-    </div>
-
-    <div class="chart-block">
-        <div id="donechart9" class="chart"></div>
-    </div>
-
-</section>
-
-
-<!-- FOOTER -->
-<footer class="footer">
     <div class="container">
-        <p><strong>Data Visualisation DV2</strong></p>
-        <p>Data sources: Australian Space Agency, UNSW Satellite Database</p>
-        <p>Created for educational purposes</p>
+
+        <h2>From Zero to Launch</h2>
+
+        <p class="section-text">
+            When the Australian Space Agency opened in 2018, the sector was small and fragmented.
+            Today, it is a rapidly growing industry generating billions in revenue and employing
+            thousands of Australians.
+        </p>
+
+        <div class="chart-block">
+            <div id="donechart3" class="chart"></div>
+            <p class="caption">
+                Employment grows steadily while revenue accelerates unevenly, suggesting a shift toward high-skill, knowledge-intensive roles rather than industrial scaling.
+            </p>
+        </div>
+
+        <p class="transition">
+            Beyond headline growth, the number of organisations reveals deeper industry expansion.
+        </p>
+
+        <div class="chart-block">
+            <div id="donechart4" class="chart"></div>
+            <p class="caption">
+                The sector expands rapidly post-2018, with COVID-19 causing only a temporary slowdown before record-high participation in FY23.
+            </p>
+        </div>
+
     </div>
+
+</section>
+
+
+<!-- =========================
+    SECTION 3
+========================= -->
+
+<section class="section" id="section3">
+
+    <div class="container">
+
+        <h2>Eyes in the Sky — Australia's Satellite Story</h2>
+
+        <p class="section-text">
+            Australia has shifted from relying entirely on foreign satellites to building and launching
+            its own. This transition reflects both technological change and commercial growth.
+        </p>
+
+        <div class="chart-block">
+            <div id="donechart5" class="chart"></div>
+            <p class="caption">
+                Satellite launches cluster heavily after 2018, with more satellites launched in five years than in the previous several decades combined.
+            </p>
+        </div>
+
+        <p class="transition">
+            Satellite design has changed dramatically — becoming smaller and more accessible.
+        </p>
+
+        <div class="chart-block">
+            <div id="donechart6" class="chart"></div>
+            <p class="caption">
+                Satellite miniaturisation reshapes access to space, reducing cost barriers and enabling universities and startups to participate
+            </p>
+        </div>
+
+        <p class="transition">
+            These satellites rely on a global network of launch providers.
+        </p>
+
+        <div class="chart-block">
+            <div id="donechart7" class="chart"></div>
+            <p class="caption">
+                Australia’s reliance on international launch providers highlights both global integration and the absence of domestic launch capability.
+            </p>
+        </div>
+
+        <p class="transition">
+            Orbit selection reveals the shift toward modern low-cost satellite systems.
+        </p>
+
+        <div class="chart-block">
+            <div id="donechart8" class="chart"></div>
+            <p class="caption">
+                Low Earth Orbit becomes the dominant destination, reflecting global trends toward cheaper, faster, and more agile satellite systems.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+    SECTION 4
+========================= -->
+
+<section class="section" id="section4">
+
+    <div class="container">
+
+        <h2>Australia's Secret Superpower</h2>
+
+        <p class="section-text">
+            Geography gives Australia a unique advantage in global space infrastructure,
+            making it a critical hub for tracking, communication, and launches.
+        </p>
+
+        <div class="chart-block">
+            <div id="donechart9" class="chart"></div>
+            <p class="caption">
+                Heavier satellites cluster in higher, stable orbits while modern lightweight satellites concentrate in low Earth orbit, reflecting a structural shift in design philosophy.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+    FOOTER
+========================= -->
+
+<footer>
+
+    <div class="container">
+
+        <p><strong>Australia's Giant Leap — DV2 Project</strong></p>
+
+        <p>
+            Data sources: UNSW Canberra Satellite Database, Australian Space Agency,
+            Austrade Space Reports.
+        </p>
+
+        <p>
+            Created for FIT2179 Data Visualisation — Monash University
+        </p>
+
+    </div>
+
 </footer>
 
 
+<!-- JS -->
 <script src="js/charts.js"></script>
+
+<script>
+const elements = document.querySelectorAll('.section, .chart-block');
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, {
+    threshold: 0.15
+});
+
+elements.forEach(el => observer.observe(el));
+</script>
+
+<script>
+const sections = document.querySelectorAll(".section");
+const navLinks = document.querySelectorAll(".sidebar a");
+
+window.addEventListener("scroll", () => {
+    let current = "";
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+
+        if (pageYOffset >= sectionTop - sectionHeight / 3) {
+            current = section.getAttribute("id");
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+            link.classList.add("active");
+        }
+    });
+});
+</script>
 
 </body>
 </html>

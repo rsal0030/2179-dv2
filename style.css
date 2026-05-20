@@ -1,19 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Orbitron:wght@500;700&display=swap');
 /* =========================
-   GLOBAL
+   BASE
 ========================= */
 
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Inter", sans-serif;
     background: #0b0f19;
     color: #e5e7eb;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
+/* headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Orbitron", sans-serif;
+    letter-spacing: 1px;
+}
+
+/* container */
 .container {
     width: 90%;
     max-width: 1000px;
-    margin: 0 auto;
+    margin: auto;
 }
 
 /* =========================
@@ -21,7 +29,7 @@ body {
 ========================= */
 
 .hero {
-    padding: 120px 0;
+    padding: 120px 0 80px;
     text-align: center;
     background: radial-gradient(circle at top, #1f2937, #0b0f19);
 }
@@ -29,11 +37,21 @@ body {
 .hero h1 {
     font-size: 3rem;
     margin-bottom: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 .subtitle {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     color: #9ca3af;
+    margin-bottom: 20px;
+}
+
+.intro {
+    font-size: 1.1rem;
+    color: #d1d5db;
+    max-width: 800px;
+    margin: auto;
 }
 
 /* =========================
@@ -41,35 +59,38 @@ body {
 ========================= */
 
 .section {
-    padding: 80px 0;
+    padding: 90px 0;
 }
 
-.section.alt {
+.section:nth-child(even) {
     background: #111827;
 }
 
-.section-header {
-    margin-bottom: 40px;
-}
-
-.section-header h2 {
+.section h2 {
     font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-.section-subtitle {
-    color: #9ca3af;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .section-text {
+    font-size: 1.05rem;
     color: #d1d5db;
-    max-width: 800px;
+    margin-bottom: 20px;
 }
 
 /* =========================
-   CHARTS
+   TRANSITIONS (VERY IMPORTANT)
+========================= */
+
+.transition {
+    margin: 25px 0;
+    font-style: italic;
+    color: #9ca3af;
+    border-left: 3px solid #3b82f6;
+    padding-left: 15px;
+}
+
+/* =========================
+   CHART BLOCKS
 ========================= */
 
 .chart-block {
@@ -77,29 +98,109 @@ body {
     padding: 20px;
     background: #0f172a;
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
 }
 
+/* chart container */
 .chart {
     width: 100%;
+}
+
+/* caption under charts */
+.caption {
+    font-size: 0.9rem;
+    color: #9ca3af;
+    margin-top: 10px;
+    line-height: 1.4;
 }
 
 /* =========================
    FOOTER
 ========================= */
 
-.footer {
-    padding: 60px 0;
+footer {
     text-align: center;
-    background: #0b0f19;
+    padding: 60px 0;
     color: #9ca3af;
     font-size: 0.9rem;
+    background: #0b0f19;
 }
 
 /* =========================
-   SMALL IMPROVEMENTS
+   ANIMATION BASE STATE
 ========================= */
 
-p {
-    margin: 0 0 12px 0;
+.section,
+.chart-block {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+/* visible state */
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================
+   SIDEBAR PROGRESS NAV
+========================= */
+
+.sidebar {
+    position: fixed;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 999;
+}
+
+.sidebar a {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #1f2937;
+    color: #9ca3af;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background: #3b82f6;
+    color: white;
+}
+
+/* active state */
+.sidebar a.active {
+    background: #3b82f6;
+    color: white;
+}
+
+/* =========================
+   ANNOTATION BOX
+========================= */
+
+.annotation {
+    margin-top: 12px;
+    padding: 12px 14px;
+    border-left: 3px solid #3b82f6;
+    background: rgba(59,130,246,0.08);
+    color: #d1d5db;
+
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s ease;
+}
+
+/* visible state */
+.annotation.visible {
+    opacity: 1;
+    transform: translateY(0);
 }

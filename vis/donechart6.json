@@ -10,6 +10,7 @@
     "text": "What Australia’s Satellites Are Used For",
     "subtitle": "Treemap of satellite mission purposes",
     "anchor": "start",
+    "font": "Orbitron",
     "fontSize": 24,
     "color": "white",
     "subtitleColor": "#9AA5B1"
@@ -152,6 +153,9 @@
 
           "fontWeight": {
             "value": "bold"
+          },
+          "font": {
+            "value": "Inter"
           }
         }
       }

@@ -1,16 +1,23 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
 
+  "width": 950,
+  "height": 500,
+
+  "background": "#0B1020",
+
   "title": {
     "text": "Global Space Agencies",
     "subtitle": "Year of National Space Agency Foundation",
+    "color": "#FFFFFF",
+    "subtitleColor": "#9AA5B1",
+    "font": "Orbitron",
     "fontSize": 22,
+    "subtitleFont": "Inter",
     "subtitleFontSize": 14,
-    "anchor": "start"
+    "anchor": "start",
+    "offset": 15
   },
-
-  "width": 950,
-  "height": 500,
 
   "data": {
     "url": "https://vega.github.io/vega-datasets/data/world-110m.json",
@@ -40,8 +47,8 @@
 
   "mark": {
     "type": "geoshape",
-    "stroke": "#ffffff",
-    "strokeWidth": 0.6
+    "stroke": "#1E293B",
+    "strokeWidth": 0.7
   },
 
   "encoding": {
@@ -50,13 +57,23 @@
       "type": "quantitative",
 
       "scale": {
-        "scheme": "plasma",
+        "range": [
+          "#5DA9FF",
+          "#8ECAE6",
+          "#90BE6D",
+          "#FFB703",
+          "#F94144"
+        ],
         "reverse": true
       },
 
       "legend": {
         "title": "Founded",
-        "gradientLength": 250
+        "titleColor": "#EAEAEA",
+        "labelColor": "#EAEAEA",
+        "gradientLength": 250,
+        "orient": "bottom",
+        "direction": "horizontal"
       }
     },
 
@@ -73,10 +90,22 @@
   },
 
   "config": {
-    "background": "#f8f8f8",
+    "background": "#0B1020",
 
     "view": {
       "stroke": null
+    },
+
+    "style": {
+      "guide-label": {
+        "fill": "#EAEAEA",
+        "font": "Obitron"
+      },
+
+      "guide-title": {
+        "fill": "#EAEAEA",
+        "font": "Inter"
+      }
     }
   }
 }

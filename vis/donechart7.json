@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
-  "width": 900,
+  "width": "container",
   "height": 520,
 
   "background": "#071028",
@@ -10,7 +10,7 @@
     "text": "Satellite Miniaturisation and Orbital Clustering",
     "subtitle": "Launch mass distribution across orbital regions",
     "anchor": "start",
-    "font": "Inter",
+    "font": "Orbitron",
     "fontSize": 24,
     "color": "#FFFFFF",
     "subtitleColor": "#94A3B8"
