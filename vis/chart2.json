@@ -1,0 +1,33 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 500,
+  "height": 300,
+  "data": {
+    "url": "data/ne_110.json",
+    "format": {
+      "type": "topojson",
+      "feature": "countries"
+    }
+  },
+  "transform": [{
+    "lookup": "properties.name",
+    "from": {
+      "data": {
+        "url": "data/world_space_agencies.csv"
+      },
+      "key": "country",
+      "fields": ["founded"]
+    }
+  }],
+  "projection": {
+    "type": "equalEarth"
+  },
+  "mark": "geoshape",
+  "encoding": {
+    "color": {
+      "field": "founded",
+      "type": "quantitative"
+    }
+  }
+}
+

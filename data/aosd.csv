@@ -1,0 +1,53 @@
+﻿Satellite Name,NOARD ID,Mission purpose,Operational status,Operator,Launch year,Configuration(U),Launch Mass(kg),Contractors,Launch site,Launch Site Country,MissionType,OrbitType
+WRESAT,3054,Science Technology and Education,Decayed,WRE & University of Adelaide,1967,,45,,WOMRA,Australia,Non-profit,LEO
+Australis - OSCAR 5 (AO-5),4321,Communication,Decayed,University of Melbourne,1970,,17.7,,AFWTR,US,Non-profit,LEO
+OPTUS A1 (AUSSAT 1),15993,Communication,Inactive,OPTUS,1985,,1250,Hughes,AFETR,US,Commercial,GEO
+OPTUS A2 (AUSSAT 2),16275,Communication,Inactive,OPTUS,1985,,1250,Hughes,AFETR,US,Commercial,GEO
+OPTUS A3 (AUSSAT 3),18350,Communication,Inactive,OPTUS,1987,,1250,Hughes,FRGUI,French Guiana,Commercial,GEO
+OPTUS B2 (AUSSAT B2),22278,Communication,Decayed,OPTUS,1992,,2858,Hughes,XICLF,China,Commercial,GEO
+OPTUS B1 (AUSSAT B1),22087,Communication,Inactive,OPTUS,1992,,2858,Hughes,XICLF,China,Commercial,GEO
+OPTUS B3,23227,Communication,Inactive,OPTUS,1994,,2800,Hughes,XICLF,China,Commercial,GEO
+WESTPAC (Western Pacific Satellite),25398,Geodesy,Active,EOS,1998,,23.8,Russian Institute for Space Device Engineering (RISDE),TYMSC,RussiaBaikonur,Commercial,LEO
+FedSat,27598,Science Technology and Education,Decayed,CRCSS,2002,,58,Space Innovations Limited (bus),TANSC,Japan,Non-profit,LEO
+OPTUS C1 (Optus and Defence C1),27831,Communication,Active,OPTUS & DEFENCE,2003,,4800,"Mitsubishi Electric (prime), Space Systems/Loral (SS/L) (bus)",FRGUI,French Guiana,Commercial,GEO
+OPTUS D1,29495,Communication,Active,OPTUS,2006,,2300,Orbital Sciences Corporation (OSC),FRGUI,French Guiana,Commercial,GEO
+OPTUS D2,32252,Communication,Active,OPTUS,2007,,2460,Orbital Sciences Corporation (OSC),FRGUI,French Guiana,Commercial,GEO
+OPTUS D3,35756,Communication,Active,OPTUS,2009,,2500,Orbital Sciences Corporation (OSC),FRGUI,French Guiana,Commercial,GEO
+OPTUS 10,40146,Communication,Active,OPTUS,2014,,3270,Space Systems/Loral (SS/L),FRGUI,French Guiana,Commercial,GEO
+SKY MUSTER 1 (NBN 1A),40940,Communication,Active,NBN Co Limited,2015,,6440,Space Systems/Loral (SS/L),FRGUI,French Guiana,Commercial,GEO
+SKY MUSTER 2 (NBN 1B),41794,Communication,Active,NBN Co Limited,2016,,6440,Space Systems/Loral (SS/L),FRGUI,French Guiana,Commercial,GEO
+Buccaneer RMM,43014,Science Technology and Education,Active,University of New South Wales & DSTG,2017,3,4,UNSW & DSTG,VAFB,US,Non-profit,LEO
+I-INSPIRE II (AU03),42731,Science Technology and Education,Decayed,University of Sydney,2017,2,2,University of Sydney,TYMSC,RussiaBaikonur,Non-profit,LEO
+SUSAT(AU01),42730,Science Technology and Education,Decayed,University of Adelaide,2017,2,2,University of Adelaide,TYMSC,RussiaBaikonur,Non-profit,LEO
+UNSW-ECO (AU02),42732,Science Technology and Education,Decayed,University of New South Wales,2017,2,2,UNSW,TYMSC,RussiaBaikonur,Non-profit,LEO
+SIRION PATHFINDER-2,43759,Communication,Active,EchoStar,2018,6,10,Astro Digital,AFWTR,US,Commercial,LEO
+CENTAURI-2,43722,Science Technology and Education,Decayed,Fleet,2018,3,3.3,"Tyvak Nano-Satellite Systems, Inc.",Vandenberg Space Force Base,US,Commercial,LEO
+M1,43779,Science Technology and Education,Inactive,University of New South Wales,2018,3,4,UNSW,KVBG,US,Non-profit,LEO
+CENTAURI-1,43809,Communication,Active,Fleet,2018,3,3.3,"Tyvak Nano-Satellite Systems, Inc.",Satish Dhawan Space Centre,India,Commercial,LEO
+PROXIMA 2,43696,Communication,Active,Fleet,2018,1.5,1.5,"Tyvak Nano-Satellite Systems, Inc.",RLLB,New Zealand,Commercial,LEO
+PROXIMA 1,43694,Communication,Active,Fleet,2018,1.5,1.5,"Tyvak Nano-Satellite Systems, Inc.",RLLB,New Zealand,Commercial,LEO
+ACRUX1,44368,Science Technology and Education,Decayed,Melbourne Space Program,2019,1,1,,RLLB,New Zealand,Non-profit,LEO
+TYVAK-0171 (EG 2),46295,Communication,Active,EchoStar,2020,6,10,"Tyvak Nano-Satellite Systems, Inc.",FRGUI,French Guiana,Commercial,LEO
+TYVAK-0172 (EG 1),46267,Communication,Active,EchoStar,2020,6,10,"Tyvak Nano-Satellite Systems, Inc.",Cape Canaveral,US,Commercial,LEO
+M2 Pathfinder,45727,Science Technology and Education,Active,University of New South Wales/ RAAF,2020,3,24,UNSW,RLLB,New Zealand,Non-profit,LEO
+M2-A (previously M2),47967,Science Technology and Education,Active,University of New South Wales/ RAAF,2021,6,10,UNSW,Mahia Peninsula,New Zealand,Non-profit,LEO
+M2-B,47973,Communication,Active,University of New South Wales/ RAAF,2021,6,10,UNSW,Mahia Peninsula,New Zealand,Non-profit,LEO
+CENTAURI-3 (TYVAK-0210),47966,Communication,Active,Fleet,2021,6,10,"Tyvak Nano-Satellite Systems, Inc.",Mahia Peninsula,New Zealand,Commercial,LEO
+CENTAURI-4 (TYVAK-0211),48898,Communication,Active,Fleet,2021,6,10,"Tyvak Nano-Satellite Systems, Inc.",Cape Canaveral,US,Commercial,LEO
+MYRIOTA 7 (TYVAK-0152),47968,Communication,Active,Myriota,2021,3,3.3,"Tyvak Nano-Satellite Systems, Inc.",Mahia Peninsula,New Zealand,Commercial,LEO
+TYVAK-0173 (EG 3),48892,Communication,Active,EchoStar,2021,6,12,"Tyvak Nano-Satellite Systems, Inc.",Cape Canaveral,US,Commercial,LEO
+CUAVA-1,49275,Science Technology and Education,Decayed,University of Sydney,2021,3,3.3,University of Sydney,Kennedy Space Centre,US,Non-profit,LEO
+Binar 1,49272,Science Technology and Education,Decayed,Curtin Unversity,2021,1,1.5,Curtin University,Kennedy Space Centre,US,Non-profit,LEO
+CENTAURI 5,52742,Communication,Active,Fleet,2022,6,12,"Tyvak Nano-Satellite Systems, Inc.",Cape Canaveral,US,Commercial,LEO
+Skykraft-1,55041,Communication,Active,Skykraft,2023,,300,Skykraft,Cape Canaveral,US,Commercial,LEO
+Skykraft-1D,55052,Communication,Active,Skykraft,2023,,,Skykraft,Cape Canaveral,US,Commercial,LEO
+Skykraft-1A,55054,Communication,Active,Skykraft,2023,,,Skykraft,Cape Canaveral,US,Commercial,LEO
+Skykraft-1B,55058,Communication,Active,Skykraft,2023,,,Skykraft,Cape Canaveral,US,Commercial,LEO
+Skykraft-1C,55061,Communication,Active,Skykraft,2023,,,Skykraft,Cape Canaveral,US,Commercial,LEO
+Skykraft-3,56229,Communication,Active,Skykraft,2023,,300,Skykraft,Vandenberg Space Force Base,US,Commercial,LEO
+Skykraft-3A,56981,Communication,Active,Skykraft,2023,,,Skykraft,Vandenberg Space Force Base,US,Commercial,LEO
+Skykraft-3B,56227,Communication,Active,Skykraft,2023,,,Skykraft,Vandenberg Space Force Base,US,Commercial,LEO
+Skykraft-3C,56228,Communication,Active,Skykraft,2023,,,Skykraft,Vandenberg Space Force Base,US,Commercial,LEO
+Skycraft-3D,57956,Communication,Active,Skycraft,2023,,300,Skycraft,Vandenberg Space Force Base,US,Commercial,LEO
+SPIRIT,58468,Science Technology and Education,Active,University of Melbourne,2023,6,11.5,University of Melbourne,Vandenberg Space Force Base,US,Non-profit,LEO
+,,,,,,,,,,,,
