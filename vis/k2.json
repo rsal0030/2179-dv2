@@ -22,9 +22,16 @@
       },
 
       "data": {
-        "url": "../data/rev_emp.csv"
+        "url": "../data/rev_emp.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "financial_year": "number",
+            "revenue_billion": "number",
+            "employment": "number"
+          }
+        }
       },
-
 
       "encoding": {
         "x": {
@@ -43,10 +50,8 @@
         "y": {
           "field": "revenue_billion",
           "type": "quantitative",
-          "title": "Revenue (AUD Billions)",
-          "scale": {
-            "zero": false
-          },
+          "title": "Revenue (AUD $Billions)",
+          "scale": { "zero": false },
           "axis": {
             "titleColor": "#EAEAEA",
             "labelColor": "#EAEAEA",
@@ -57,7 +62,6 @@
           }
         },
 
-
         "tooltip": [
           {
             "field": "financial_year",
@@ -67,7 +71,7 @@
           {
             "field": "revenue_billion",
             "type": "quantitative",
-            "title": "Revenue (AUD Billions)"
+            "title": "Revenue (AUD $Billions)"
           }
         ]
       },
@@ -96,19 +100,10 @@
             "fontWeight": "bold",
             "fill": "#FFB703"
           },
-
           "encoding": {
-            "text": {
-              "field": "label",
-              "type": "nominal"
-            }
+            "text": { "field": "revenue_label" }
           },
-
           "transform": [
-            {
-              "calculate": "'$' + datum.revenue_billion + 'B'",
-              "as": "label"
-            },
             {
               "filter": "datum.financial_year == 2023"
             }
@@ -117,26 +112,18 @@
 
         {
           "data": {
-            "values": [
-              {
-                "financial_year": 2018,
-                "label": "Australian Space Agency Founded"
-              }
-            ]
+            "values": [{ "financial_year": 2018 }]
           },
-
           "mark": {
             "type": "rule",
             "stroke": "#FFB703",
             "strokeDash": [6, 4],
             "strokeWidth": 2
           },
-
           "encoding": {
-            "x": {
-              "field": "financial_year",
-              "type": "quantitative"
-            }
+            "x": { "field": "financial_year", "type": "quantitative" },
+            "y": { "value": 0 },
+            "y2": { "value": 220 }
           }
         }
       ]
@@ -147,10 +134,16 @@
       "height": 220,
 
       "data": {
-        "url": "../data/rev_emp.csv"
+        "url": "../data/rev_emp.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "financial_year": "number",
+            "revenue_billion": "number",
+            "employment": "number"
+          }
+        }
       },
-
-
 
       "encoding": {
         "x": {
@@ -162,7 +155,6 @@
             "labelColor": "#EAEAEA",
             "tickColor": "#2A324A",
             "domainColor": "#2A324A",
-            "titleFont": "Inter",
             "labelFont": "Inter"
           }
         },
@@ -171,9 +163,7 @@
           "field": "employment",
           "type": "quantitative",
           "title": "Employment",
-          "scale": {
-            "zero": false
-          },
+          "scale": { "zero": false },
           "axis": {
             "titleColor": "#EAEAEA",
             "labelColor": "#EAEAEA",
@@ -183,7 +173,6 @@
             "labelFont": "Inter"
           }
         },
-
 
         "tooltip": [
           {
@@ -223,15 +212,9 @@
             "fontWeight": "bold",
             "fill": "#FFB703"
           },
-
           "encoding": {
-            "text": {
-              "field": "employment",
-              "type": "quantitative",
-              "format": ","
-            }
+            "text": { "field": "employment_label" }
           },
-
           "transform": [
             {
               "filter": "datum.financial_year == 2023"
@@ -241,26 +224,18 @@
 
         {
           "data": {
-            "values": [
-              {
-                "financial_year": 2018,
-                "label": "ASA Founded"
-              }
-            ]
+            "values": [{ "financial_year": 2018 }]
           },
-
           "mark": {
             "type": "rule",
             "stroke": "#FFB703",
             "strokeDash": [6, 4],
             "strokeWidth": 2
           },
-
           "encoding": {
-            "x": {
-              "field": "financial_year",
-              "type": "quantitative"
-            }
+            "x": { "field": "financial_year", "type": "quantitative" },
+            "y": { "value": 0 },
+            "y2": { "value": 220 }
           }
         }
       ]
@@ -270,10 +245,7 @@
   "spacing": 40,
 
   "config": {
-    "view": {
-      "stroke": null
-    },
-
+    "view": { "stroke": null },
     "axis": {
       "labelFont": "Inter",
       "titleFont": "Inter"

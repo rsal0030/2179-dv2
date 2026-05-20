@@ -22,15 +22,23 @@
       },
 
       "data": {
-        "url": "../data/rev_emp.csv"
-      },
-
+  "url": "../data/rev_emp.csv",
+  "format": {
+    "type": "csv",
+    "parse": {
+      "financial_year": "number",
+      "revenue_billion": "number",
+      "employment": "number"
+    }
+  }
+},
 
       "encoding": {
         "x": {
           "field": "financial_year",
           "type": "quantitative",
           "axis": {
+            "format": "d",
             "title": null,
             "labelColor": "#EAEAEA",
             "tickColor": "#2A324A",
@@ -43,7 +51,7 @@
         "y": {
           "field": "revenue_billion",
           "type": "quantitative",
-          "title": "Revenue (AUD Billions)",
+          "title": "Revenue (AUD $Billions)",
           "scale": {
             "zero": false
           },
@@ -57,6 +65,9 @@
           }
         },
 
+        "color": {
+          "value": "#5DA9FF"
+        },
 
         "tooltip": [
           {
@@ -67,7 +78,7 @@
           {
             "field": "revenue_billion",
             "type": "quantitative",
-            "title": "Revenue (AUD Billions)"
+            "title": "Revenue (AUD $Billions)"
           }
         ]
       },
@@ -77,7 +88,6 @@
           "mark": {
             "type": "line",
             "strokeWidth": 4,
-            "color": "#5DA9FF",
             "point": {
               "filled": true,
               "size": 90
@@ -99,16 +109,11 @@
 
           "encoding": {
             "text": {
-              "field": "label",
-              "type": "nominal"
+              "field": "revenue_label"
             }
           },
 
           "transform": [
-            {
-              "calculate": "'$' + datum.revenue_billion + 'B'",
-              "as": "label"
-            },
             {
               "filter": "datum.financial_year == 2023"
             }
@@ -147,8 +152,16 @@
       "height": 220,
 
       "data": {
-        "url": "../data/rev_emp.csv"
-      },
+  "url": "../data/rev_emp.csv",
+  "format": {
+    "type": "csv",
+    "parse": {
+      "financial_year": "number",
+      "revenue_billion": "number",
+      "employment": "number"
+    }
+  }
+},
 
 
 
@@ -157,6 +170,7 @@
           "field": "financial_year",
           "type": "quantitative",
           "axis": {
+            "format": "d",
             "title": "Financial Year",
             "titleColor": "#EAEAEA",
             "labelColor": "#EAEAEA",
@@ -184,6 +198,9 @@
           }
         },
 
+        "color": {
+          "value": "#8ECAE6"
+        },
 
         "tooltip": [
           {
@@ -204,7 +221,6 @@
           "mark": {
             "type": "line",
             "strokeWidth": 4,
-            "color": "#8ECAE6",
             "point": {
               "filled": true,
               "size": 90
@@ -226,9 +242,7 @@
 
           "encoding": {
             "text": {
-              "field": "employment",
-              "type": "quantitative",
-              "format": ","
+              "field": "employment_label"
             }
           },
 

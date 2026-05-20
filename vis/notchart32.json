@@ -1,0 +1,100 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "background": "#0B1020",
+
+  "vconcat": [
+    {
+      "width": 850,
+      "height": 220,
+
+      "title": {
+        "text": "Australia's Space Industry Revenue Has Rapidly Expanded",
+        "subtitle": "Industry revenue growth since the formation of the Australian Space Agency",
+        "color": "#FFFFFF",
+        "subtitleColor": "#9AA5B1",
+        "font": "Orbitron",
+        "fontSize": 24,
+        "subtitleFont": "Inter",
+        "subtitleFontSize": 14,
+        "anchor": "start",
+        "offset": 20
+      },
+
+      "data": {
+        "values": [
+          {
+            "financial_year": "2017",
+            "revenue_billion": 4.3,
+            "employment": 10430,
+            "revenue_label": "$4.3B",
+            "employment_label": "10,430"
+          },
+          {
+            "financial_year": "2019",
+            "revenue_billion": 4.6,
+            "employment": 11560,
+            "revenue_label": "$4.6B",
+            "employment_label": "11,560"
+          },
+          {
+            "financial_year": "2020",
+            "revenue_billion": 5.7,
+            "employment": 15234,
+            "revenue_label": "$5.7B",
+            "employment_label": "15,234"
+          },
+          {
+            "financial_year": "2023",
+            "revenue_billion": 8.0,
+            "employment": 19595,
+            "revenue_label": "$8.0B",
+            "employment_label": "19,595"
+          }
+        ]
+      },
+
+      "encoding": {
+        "x": {
+          "field": "financial_year",
+          "type": "ordinal",
+          "axis": {
+            "title": null,
+            "labelColor": "#EAEAEA",
+            "tickColor": "#2A324A",
+            "domainColor": "#2A324A"
+          }
+        },
+
+        "y": {
+          "field": "revenue_billion",
+          "type": "quantitative",
+          "title": "Revenue (AUD $Billions)",
+          "scale": {
+            "zero": false
+          },
+          "axis": {
+            "titleColor": "#EAEAEA",
+            "labelColor": "#EAEAEA",
+            "gridColor": "#2A324A",
+            "domainColor": "#2A324A"
+          }
+        }
+      },
+
+      "layer": [
+        {
+          "mark": {
+            "type": "line",
+            "strokeWidth": 4,
+            "color": "#5DA9FF",
+            "point": {
+              "filled": true,
+              "size": 90
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

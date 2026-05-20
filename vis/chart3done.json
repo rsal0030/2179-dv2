@@ -22,14 +22,42 @@
       },
 
       "data": {
-        "url": "../data/rev_emp.csv"
+        "values": [
+          {
+            "financial_year": "2017",
+            "revenue_billion": 4.3,
+            "employment": 10430,
+            "revenue_label": "$4.3B",
+            "employment_label": "10,430"
+          },
+          {
+            "financial_year": "2019",
+            "revenue_billion": 4.6,
+            "employment": 11560,
+            "revenue_label": "$4.6B",
+            "employment_label": "11,560"
+          },
+          {
+            "financial_year": "2020",
+            "revenue_billion": 5.7,
+            "employment": 15234,
+            "revenue_label": "$5.7B",
+            "employment_label": "15,234"
+          },
+          {
+            "financial_year": "2023",
+            "revenue_billion": 8.0,
+            "employment": 19595,
+            "revenue_label": "$8.0B",
+            "employment_label": "19,595"
+          }
+        ]
       },
-
 
       "encoding": {
         "x": {
           "field": "financial_year",
-          "type": "quantitative",
+          "type": "ordinal",
           "axis": {
             "title": null,
             "labelColor": "#EAEAEA",
@@ -43,7 +71,7 @@
         "y": {
           "field": "revenue_billion",
           "type": "quantitative",
-          "title": "Revenue (AUD Billions)",
+          "title": "Revenue (AUD $Billions)",
           "scale": {
             "zero": false
           },
@@ -57,17 +85,16 @@
           }
         },
 
-
         "tooltip": [
           {
             "field": "financial_year",
-            "type": "quantitative",
+            "type": "ordinal",
             "title": "Financial Year"
           },
           {
             "field": "revenue_billion",
             "type": "quantitative",
-            "title": "Revenue (AUD Billions)"
+            "title": "Revenue (AUD $Billions)"
           }
         ]
       },
@@ -80,12 +107,19 @@
             "color": "#5DA9FF",
             "point": {
               "filled": true,
-              "size": 90
+              "size": 90,
+              "fill": "#5DA9FF"
             }
           }
         },
 
         {
+          "transform": [
+            {
+              "filter": "datum.financial_year == '2023'"
+            }
+          ],
+
           "mark": {
             "type": "text",
             "align": "left",
@@ -99,28 +133,16 @@
 
           "encoding": {
             "text": {
-              "field": "label",
-              "type": "nominal"
+              "field": "revenue_label"
             }
-          },
-
-          "transform": [
-            {
-              "calculate": "'$' + datum.revenue_billion + 'B'",
-              "as": "label"
-            },
-            {
-              "filter": "datum.financial_year == 2023"
-            }
-          ]
+          }
         },
 
         {
           "data": {
             "values": [
               {
-                "financial_year": 2018,
-                "label": "Australian Space Agency Founded"
+                "financial_year": "2018"
               }
             ]
           },
@@ -135,7 +157,43 @@
           "encoding": {
             "x": {
               "field": "financial_year",
-              "type": "quantitative"
+              "type": "ordinal"
+            }
+          }
+        },
+
+        {
+          "data": {
+            "values": [
+              {
+                "financial_year": "2018",
+                "label": "Australian Space Agency Founded"
+              }
+            ]
+          },
+
+          "mark": {
+            "type": "text",
+            "angle": -90,
+            "dx": -10,
+            "dy": -70,
+            "font": "Inter",
+            "fontSize": 11,
+            "fill": "#FFB703"
+          },
+
+          "encoding": {
+            "x": {
+              "field": "financial_year",
+              "type": "ordinal"
+            },
+
+            "text": {
+              "field": "label"
+            },
+
+            "y": {
+              "value": 20
             }
           }
         }
@@ -147,15 +205,42 @@
       "height": 220,
 
       "data": {
-        "url": "../data/rev_emp.csv"
+        "values": [
+          {
+            "financial_year": "2017",
+            "revenue_billion": 4.3,
+            "employment": 10430,
+            "revenue_label": "$4.3B",
+            "employment_label": "10,430"
+          },
+          {
+            "financial_year": "2019",
+            "revenue_billion": 4.6,
+            "employment": 11560,
+            "revenue_label": "$4.6B",
+            "employment_label": "11,560"
+          },
+          {
+            "financial_year": "2020",
+            "revenue_billion": 5.7,
+            "employment": 15234,
+            "revenue_label": "$5.7B",
+            "employment_label": "15,234"
+          },
+          {
+            "financial_year": "2023",
+            "revenue_billion": 8.0,
+            "employment": 19595,
+            "revenue_label": "$8.0B",
+            "employment_label": "19,595"
+          }
+        ]
       },
-
-
 
       "encoding": {
         "x": {
           "field": "financial_year",
-          "type": "quantitative",
+          "type": "ordinal",
           "axis": {
             "title": "Financial Year",
             "titleColor": "#EAEAEA",
@@ -184,11 +269,10 @@
           }
         },
 
-
         "tooltip": [
           {
             "field": "financial_year",
-            "type": "quantitative",
+            "type": "ordinal",
             "title": "Financial Year"
           },
           {
@@ -207,12 +291,19 @@
             "color": "#8ECAE6",
             "point": {
               "filled": true,
-              "size": 90
+              "size": 90,
+              "fill": "#8ECAE6"
             }
           }
         },
 
         {
+          "transform": [
+            {
+              "filter": "datum.financial_year == '2023'"
+            }
+          ],
+
           "mark": {
             "type": "text",
             "align": "left",
@@ -226,25 +317,16 @@
 
           "encoding": {
             "text": {
-              "field": "employment",
-              "type": "quantitative",
-              "format": ","
+              "field": "employment_label"
             }
-          },
-
-          "transform": [
-            {
-              "filter": "datum.financial_year == 2023"
-            }
-          ]
+          }
         },
 
         {
           "data": {
             "values": [
               {
-                "financial_year": 2018,
-                "label": "ASA Founded"
+                "financial_year": "2018"
               }
             ]
           },
@@ -259,7 +341,43 @@
           "encoding": {
             "x": {
               "field": "financial_year",
-              "type": "quantitative"
+              "type": "ordinal"
+            }
+          }
+        },
+
+        {
+          "data": {
+            "values": [
+              {
+                "financial_year": "2018",
+                "label": "ASA Founded"
+              }
+            ]
+          },
+
+          "mark": {
+            "type": "text",
+            "angle": -90,
+            "dx": -10,
+            "dy": -70,
+            "font": "Inter",
+            "fontSize": 11,
+            "fill": "#FFB703"
+          },
+
+          "encoding": {
+            "x": {
+              "field": "financial_year",
+              "type": "ordinal"
+            },
+
+            "text": {
+              "field": "label"
+            },
+
+            "y": {
+              "value": 20
             }
           }
         }

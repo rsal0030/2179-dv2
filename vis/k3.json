@@ -1,0 +1,67 @@
+{
+  "data": {
+    "url": "../data/rev_emp.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "financial_year": "number",
+        "revenue_billion": "number",
+        "employment": "number"
+      }
+    }
+  },
+
+  "encoding": {
+    "x": {
+      "field": "financial_year",
+      "type": "quantitative"
+    },
+    "y": {
+      "field": "revenue_billion",
+      "type": "quantitative"
+    }
+  },
+
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 4,
+        "color": "#5DA9FF",
+        "point": true
+      }
+    },
+
+    {
+      "transform": [
+        { "filter": "datum.financial_year == 2023" }
+      ],
+      "mark": {
+        "type": "text",
+        "dx": 10,
+        "dy": -10,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "fill": "#FFB703"
+      },
+      "encoding": {
+        "text": { "field": "revenue_label" }
+      }
+    },
+
+    {
+      "data": {
+        "values": [{ "financial_year": 2018 }]
+      },
+      "mark": {
+        "type": "rule",
+        "stroke": "#FFB703",
+        "strokeDash": [6, 4],
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": { "field": "financial_year" }
+      }
+    }
+  ]
+}

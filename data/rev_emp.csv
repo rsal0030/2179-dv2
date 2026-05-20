@@ -1,5 +1,5 @@
-﻿financial_year,revenue_billion,employment
-2017,4.3,10430
-2019,4.6,11560
-2020,5.7,15234
-2023,8,19595
+﻿financial_year,revenue_billion,employment,revenue_label,employment_label
+2017,4.3,10430,"$4.3B","10,430"
+2019,4.6,11560,"$4.6B","11,560"
+2020,5.7,15234,"$5.7B","15,234"
+2023,8,19595,"$8.0B","19,595"
