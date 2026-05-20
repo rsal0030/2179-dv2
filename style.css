@@ -1,0 +1,105 @@
+/* =========================
+   GLOBAL
+========================= */
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0b0f19;
+    color: #e5e7eb;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    padding: 120px 0;
+    text-align: center;
+    background: radial-gradient(circle at top, #1f2937, #0b0f19);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: #9ca3af;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section {
+    padding: 80px 0;
+}
+
+.section.alt {
+    background: #111827;
+}
+
+.section-header {
+    margin-bottom: 40px;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    color: #9ca3af;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.section-text {
+    color: #d1d5db;
+    max-width: 800px;
+}
+
+/* =========================
+   CHARTS
+========================= */
+
+.chart-block {
+    margin: 40px 0;
+    padding: 20px;
+    background: #0f172a;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.chart {
+    width: 100%;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    padding: 60px 0;
+    text-align: center;
+    background: #0b0f19;
+    color: #9ca3af;
+    font-size: 0.9rem;
+}
+
+/* =========================
+   SMALL IMPROVEMENTS
+========================= */
+
+p {
+    margin: 0 0 12px 0;
+}
