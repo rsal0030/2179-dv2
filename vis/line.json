@@ -1,0 +1,27 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  
+  "width": 500,
+  "height": 300,
+  "description": "A line chart showing the revenue of a company over financial years.",
+  
+  "data": {
+    "url": "../data/rev_emp.csv"
+  },
+
+  "mark": "line",
+
+  "encoding": {
+    "x": {
+      "field": "financial_year",
+      "type": "ordinal",
+      "title": "Financial Year"
+    },
+
+    "y": {
+      "field": "revenue_billion",
+      "type": "quantitative",
+      "title": "Revenue (Billion)"
+    }
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 900,
+  "height": 450,
+
+  "background": "#0B1020",
+
+  "title": {
+    "text": "Australia Joined the Space Race Late",
+    "subtitle": "National space agencies by founding year",
+    "color": "#FFFFFF",
+    "subtitleColor": "#9AA5B1",
+    "font": "Orbitron",
+    "fontSize": 24,
+    "subtitleFont": "Inter",
+    "subtitleFontSize": 14,
+    "anchor": "start",
+    "offset": 20
+  },
+
+  "projection": {
+    "type": "equalEarth"
+  },
+
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson",
+        "format": {
+          "type": "geojson"
+        }
+      },
+
+      "mark": {
+        "type": "geoshape",
+        "fill": "#1A2238",
+        "stroke": "#2A324A",
+        "strokeWidth": 0.5
+      }
+    },
+
+    {
+      "data": {
+        "url": "../data/world_space_agencies.csv"
+      },
+
+      "transform": [
+        {
+          "lookup": "country",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson",
+              "format": {
+                "type": "geojson"
+              }
+            },
+            "key": "properties.name",
+            "fields": ["type", "geometry", "properties"]
+          }
+        }
+      ],
+
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#0B1020",
+        "strokeWidth": 0.8
+      },
+
+      "encoding": {
+        "color": {
+          "field": "founded",
+          "type": "quantitative",
+          "scale": {
+            "scheme": "blues"
+          },
+          "legend": {
+            "title": "Founding Year",
+            "titleColor": "#EAEAEA",
+            "labelColor": "#EAEAEA",
+            "gradientLength": 200
+          }
+        },
+
+        "tooltip": [
+          {
+            "field": "country",
+            "type": "nominal",
+            "title": "Country"
+          },
+          {
+            "field": "agency",
+            "type": "nominal",
+            "title": "Space Agency"
+          },
+          {
+            "field": "founded",
+            "type": "quantitative",
+            "title": "Founded"
+          }
+        ]
+      }
+    },
+
+    {
+      "data": {
+        "url": "../data/world_space_agencies.csv"
+      },
+
+      "transform": [
+        {
+          "filter": "datum.country === 'Australia'"
+        },
+        {
+          "lookup": "country",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson",
+              "format": {
+                "type": "geojson"
+              }
+            },
+            "key": "properties.name",
+            "fields": ["type", "geometry", "properties"]
+          }
+        }
+      ],
+
+      "mark": {
+        "type": "geoshape",
+        "fill": null,
+        "stroke": "#FFB703",
+        "strokeWidth": 3
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 134,
+            "lat": -25,
+            "label": "Australia founded ASA in 2018"
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "text",
+        "font": "Inter",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "fill": "#FFB703",
+        "dx": 10,
+        "dy": -10
+      },
+
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ],
+
+  "config": {
+    "view": {
+      "stroke": null
+    },
+
+    "style": {
+      "guide-label": {
+        "font": "Inter"
+      },
+      "guide-title": {
+        "font": "Inter"
+      }
+    }
+  }
+}

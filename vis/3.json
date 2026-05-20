@@ -1,0 +1,286 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "background": "#0B1020",
+
+  "vconcat": [
+    {
+      "width": 850,
+      "height": 220,
+
+      "title": {
+        "text": "Australia's Space Industry Revenue Has Rapidly Expanded",
+        "subtitle": "Industry revenue growth since the formation of the Australian Space Agency",
+        "color": "#FFFFFF",
+        "subtitleColor": "#9AA5B1",
+        "font": "Orbitron",
+        "fontSize": 24,
+        "subtitleFont": "Inter",
+        "subtitleFontSize": 14,
+        "anchor": "start",
+        "offset": 20
+      },
+
+      "data": {
+        "url": "../data/rev_emp.csv"
+      },
+
+
+      "encoding": {
+        "x": {
+          "field": "financial_year",
+          "type": "quantitative",
+          "axis": {
+            "title": null,
+            "labelColor": "#EAEAEA",
+            "tickColor": "#2A324A",
+            "domainColor": "#2A324A",
+            "labelFont": "Inter",
+            "labelFontSize": 12
+          }
+        },
+
+        "y": {
+          "field": "revenue_billion",
+          "type": "quantitative",
+          "title": "Revenue (AUD Billions)",
+          "scale": {
+            "zero": false
+          },
+          "axis": {
+            "titleColor": "#EAEAEA",
+            "labelColor": "#EAEAEA",
+            "gridColor": "#2A324A",
+            "domainColor": "#2A324A",
+            "titleFont": "Inter",
+            "labelFont": "Inter"
+          }
+        },
+
+        "color": {
+          "value": "#5DA9FF"
+        },
+
+        "tooltip": [
+          {
+            "field": "financial_year",
+            "type": "quantitative",
+            "title": "Financial Year"
+          },
+          {
+            "field": "revenue_billion",
+            "type": "quantitative",
+            "title": "Revenue (AUD Billions)"
+          }
+        ]
+      },
+
+      "layer": [
+        {
+          "mark": {
+            "type": "line",
+            "strokeWidth": 4,
+            "point": {
+              "filled": true,
+              "size": 90
+            }
+          }
+        },
+
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 10,
+            "dy": -10,
+            "font": "Inter",
+            "fontSize": 12,
+            "fontWeight": "bold",
+            "fill": "#FFB703"
+          },
+
+          "encoding": {
+            "text": {
+              "field": "label",
+              "type": "nominal"
+            }
+          },
+
+          "transform": [
+            {
+              "calculate": "'$' + datum.revenue_billion + 'B'",
+              "as": "label"
+            },
+            {
+              "filter": "datum.financial_year == 2023"
+            }
+          ]
+        },
+
+        {
+          "data": {
+            "values": [
+              {
+                "financial_year": 2018,
+                "label": "Australian Space Agency Founded"
+              }
+            ]
+          },
+
+          "mark": {
+            "type": "rule",
+            "stroke": "#FFB703",
+            "strokeDash": [6, 4],
+            "strokeWidth": 2
+          },
+
+          "encoding": {
+            "x": {
+              "field": "financial_year",
+              "type": "quantitative"
+            }
+          }
+        }
+      ]
+    },
+
+    {
+      "width": 850,
+      "height": 220,
+
+      "data": {
+        "url": "../data/rev_emp.csv"
+      },
+
+
+
+      "encoding": {
+        "x": {
+          "field": "financial_year",
+          "type": "quantitative",
+          "axis": {
+            "title": "Financial Year",
+            "titleColor": "#EAEAEA",
+            "labelColor": "#EAEAEA",
+            "tickColor": "#2A324A",
+            "domainColor": "#2A324A",
+            "titleFont": "Inter",
+            "labelFont": "Inter"
+          }
+        },
+
+        "y": {
+          "field": "employment",
+          "type": "quantitative",
+          "title": "Employment",
+          "scale": {
+            "zero": false
+          },
+          "axis": {
+            "titleColor": "#EAEAEA",
+            "labelColor": "#EAEAEA",
+            "gridColor": "#2A324A",
+            "domainColor": "#2A324A",
+            "titleFont": "Inter",
+            "labelFont": "Inter"
+          }
+        },
+
+        "color": {
+          "value": "#8ECAE6"
+        },
+
+        "tooltip": [
+          {
+            "field": "financial_year",
+            "type": "quantitative",
+            "title": "Financial Year"
+          },
+          {
+            "field": "employment",
+            "type": "quantitative",
+            "title": "Employment"
+          }
+        ]
+      },
+
+      "layer": [
+        {
+          "mark": {
+            "type": "line",
+            "strokeWidth": 4,
+            "point": {
+              "filled": true,
+              "size": 90
+            }
+          }
+        },
+
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 10,
+            "dy": -10,
+            "font": "Inter",
+            "fontSize": 12,
+            "fontWeight": "bold",
+            "fill": "#FFB703"
+          },
+
+          "encoding": {
+            "text": {
+              "field": "employment",
+              "type": "quantitative",
+              "format": ","
+            }
+          },
+
+          "transform": [
+            {
+              "filter": "datum.financial_year == 2023"
+            }
+          ]
+        },
+
+        {
+          "data": {
+            "values": [
+              {
+                "financial_year": 2018,
+                "label": "ASA Founded"
+              }
+            ]
+          },
+
+          "mark": {
+            "type": "rule",
+            "stroke": "#FFB703",
+            "strokeDash": [6, 4],
+            "strokeWidth": 2
+          },
+
+          "encoding": {
+            "x": {
+              "field": "financial_year",
+              "type": "quantitative"
+            }
+          }
+        }
+      ]
+    }
+  ],
+
+  "spacing": 40,
+
+  "config": {
+    "view": {
+      "stroke": null
+    },
+
+    "axis": {
+      "labelFont": "Inter",
+      "titleFont": "Inter"
+    }
+  }
+}
