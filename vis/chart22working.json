@@ -1,0 +1,47 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+
+  "width": 800,
+  "height": 450,
+
+  "data": {
+    "url": "https://vega.github.io/vega-datasets/data/world-110m.json",
+    "format": {
+      "type": "topojson",
+      "feature": "countries"
+    }
+  },
+
+  "transform": [
+    {
+      "calculate":
+        "datum.id == 840 ? 1958 : datum.id == 156 ? 1993 : datum.id == 356 ? 1969 : datum.id == 643 ? 1992 : datum.id == 392 ? 2003 : datum.id == 36 ? 2018 : null",
+      "as": "founded"
+    }
+  ],
+
+  "projection": {
+    "type": "equalEarth"
+  },
+
+  "mark": {
+    "type": "geoshape",
+    "stroke": "white",
+    "strokeWidth": 0.5
+  },
+
+  "encoding": {
+    "color": {
+      "field": "founded",
+      "type": "quantitative",
+      "scale": {
+        "scheme": "viridis"
+      }
+    },
+
+    "tooltip": [
+      {"field":"id"},
+      {"field":"founded"}
+    ]
+  }
+}

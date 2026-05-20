@@ -1,0 +1,90 @@
+[
+  {
+    "year": 2018,
+    "month": 7,
+    "label": "Australian Space Agency established",
+    "description": "The Australian Space Agency is officially founded in July 2018, ending a 22-year gap since the Australian Space Office was disbanded in 1996.",
+    "category": "policy",
+    "source": "https://en.wikipedia.org/wiki/Australian_Space_Agency"
+  },
+  {
+    "year": 2019,
+    "month": 1,
+    "label": "Civil Space Strategy released",
+    "description": "The Australian Government releases its 10-year Civil Space Strategy 2019–2028, setting a target to triple the sector's contribution to $12 billion and create 20,000 jobs by 2030.",
+    "category": "policy",
+    "source": "https://www.space.gov.au/key-data"
+  },
+  {
+    "year": 2020,
+    "month": 2,
+    "label": "Space Agency HQ opens at Lot Fourteen",
+    "description": "The Australian Space Agency's headquarters opens at Lot Fourteen in Adelaide, South Australia, co-located with the Space Discovery Centre.",
+    "category": "infrastructure",
+    "source": "https://en.wikipedia.org/wiki/Australian_Space_Agency"
+  },
+  {
+    "year": 2020,
+    "month": 12,
+    "label": "Hayabusa2 samples return to Woomera",
+    "description": "Australia supports JAXA's Hayabusa2 mission as asteroid samples from Ryugu are successfully returned to Woomera, South Australia.",
+    "category": "science",
+    "source": "https://www.dlapiper.com/en-au/insights/publications/2026/02/australias-growing-space-industry-key-developments"
+  },
+  {
+    "year": 2021,
+    "month": 10,
+    "label": "Moon to Mars initiative announced",
+    "description": "Australia commits to contributing a rover to NASA's Artemis Moon to Mars program, targeting a lunar surface mission by 2026.",
+    "category": "policy",
+    "source": "https://www.space.gov.au/news-and-media/2024-year-in-review"
+  },
+  {
+    "year": 2022,
+    "month": 7,
+    "label": "First NASA launches from Australian soil since 1995",
+    "description": "Three NASA suborbital sounding rockets launch from the Arnhem Space Centre in the Northern Territory — the first NASA launches from a commercial facility outside the US.",
+    "category": "launch",
+    "source": "https://www.space.gov.au/australian-space-milestones"
+  },
+  {
+    "year": 2023,
+    "month": 12,
+    "label": "SpIRIT nanosatellite launches",
+    "description": "The Australian-made SpIRIT nanosatellite launches on a SpaceX mission — the first Australian satellite to carry a foreign space agency's payload as its primary scientific instrument.",
+    "category": "satellite",
+    "source": "https://www.space.gov.au/australian-space-milestones"
+  },
+  {
+    "year": 2024,
+    "month": 4,
+    "label": "Katherine Bennell-Pegg graduates as astronaut",
+    "description": "Katherine Bennell-Pegg becomes the first person to qualify as an astronaut under the Australian flag, completing training at the European Astronaut Centre in Germany.",
+    "category": "people",
+    "source": "https://www.space.gov.au/australian-space-milestones"
+  },
+  {
+    "year": 2024,
+    "month": 7,
+    "label": "Technology Safeguards Agreement enters into force",
+    "description": "The Technology Safeguards Agreement between Australia and the US enters into force, enabling US entities to conduct space launch activities on Australian soil.",
+    "category": "policy",
+    "source": "https://www.space.gov.au/news-and-media/2024-year-in-review"
+  },
+  {
+    "year": 2024,
+    "month": 11,
+    "label": "ELO2 chosen to build Roo-ver Moon rover",
+    "description": "ELO2 is selected to design and build Australia's Roo-ver, which will travel to the Moon as part of NASA's Artemis program.",
+    "category": "science",
+    "source": "https://www.space.gov.au/news-and-media/2024-year-in-review"
+  },
+  {
+    "year": 2025,
+    "month": 7,
+    "label": "First Australian orbital rocket launch attempt",
+    "description": "Gilmour Space Technologies attempts the first-ever launch of an Australian-made orbital rocket (Eris Test Flight 1) from Bowen Orbital Spaceport in North Queensland.",
+    "category": "launch",
+    "source": "https://www.dlapiper.com/en-au/insights/publications/2026/02/australias-growing-space-industry-key-developments"
+  }
+]

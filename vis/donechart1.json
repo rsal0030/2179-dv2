@@ -20,7 +20,7 @@
   },
 
   "data": {
-    "url": "data/space_milestones.json"
+    "url": "../data/milestones.json"
   },
 
   "layer": [
@@ -32,144 +32,8 @@
       },
 
       "encoding": {
-        "x": {
-          "field": "year",
-          "type": "ordinal",
-          "axis": {
-            "title": null,
-            "labelColor": "#EAEAEA",
-            "labelFont": "Inter",
-            "labelFontSize": 13,
-            "tickColor": "#2A324A",
-            "domainColor": "#2A324A",
-            "grid": false
-          }
-        },
-
         "y": {
           "value": 110
-        },
-
-        "x2": {
-          "field": "year"
-        }
-      }
-    },
-
-    {
-      "mark": {
-        "type": "point",
-        "filled": true,
-        "size": 300,
-        "stroke": "#FFFFFF",
-        "strokeWidth": 1.5
-      },
-
-      "encoding": {
-        "x": {
-          "field": "year",
-          "type": "ordinal"
-        },
-
-        "y": {
-          "value": 110
-        },
-
-        "color": {
-          "field": "category",
-          "type": "nominal",
-          "scale": {
-            "domain": [
-              "Government",
-              "Industry",
-              "Mission",
-              "Research"
-            ],
-            "range": [
-              "#5DA9FF",
-              "#FFB703",
-              "#8ECAE6",
-              "#90BE6D"
-            ]
-          },
-          "legend": {
-            "title": "Milestone Type",
-            "orient": "bottom",
-            "titleColor": "#EAEAEA",
-            "labelColor": "#EAEAEA",
-            "labelFont": "Inter",
-            "titleFont": "Inter"
-          }
-        },
-
-        "tooltip": [
-          {
-            "field": "year",
-            "type": "ordinal",
-            "title": "Year"
-          },
-          {
-            "field": "event",
-            "type": "nominal",
-            "title": "Milestone"
-          },
-          {
-            "field": "description",
-            "type": "nominal",
-            "title": "Description"
-          }
-        ]
-      }
-    },
-
-    {
-      "mark": {
-        "type": "text",
-        "font": "Inter",
-        "fontSize": 12,
-        "fontWeight": "bold",
-        "fill": "#EAEAEA",
-        "align": "center",
-        "baseline": "bottom",
-        "lineBreak": "\n"
-      },
-
-      "encoding": {
-        "x": {
-          "field": "year",
-          "type": "ordinal"
-        },
-
-        "y": {
-          "field": "label_y",
-          "type": "quantitative"
-        },
-
-        "text": {
-          "field": "event"
-        }
-      }
-    },
-
-    {
-      "mark": {
-        "type": "rule",
-        "stroke": "#9AA5B1",
-        "strokeWidth": 1.5
-      },
-
-      "encoding": {
-        "x": {
-          "field": "year",
-          "type": "ordinal"
-        },
-
-        "y": {
-          "value": 110
-        },
-
-        "y2": {
-          "field": "label_y"
         }
       }
     },
@@ -196,6 +60,142 @@
 
         "y": {
           "value": 110
+        }
+      }
+    },
+
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 300,
+        "stroke": "#FFFFFF",
+        "strokeWidth": 1.5
+      },
+
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "axis": {
+            "title": null,
+            "labelColor": "#EAEAEA",
+            "labelFont": "Inter",
+            "labelFontSize": 13,
+            "tickColor": "#2A324A",
+            "domainColor": "#2A324A",
+            "grid": false
+          }
+        },
+
+        "y": {
+          "value": 110
+        },
+
+        "color": {
+          "field": "category",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "policy",
+              "infrastructure",
+              "science",
+              "launch",
+              "satellite",
+              "people"
+            ],
+
+            "range": [
+              "#5DA9FF",
+              "#FFB703",
+              "#90BE6D",
+              "#F94144",
+              "#8ECAE6",
+              "#C77DFF"
+            ]
+          },
+
+          "legend": {
+            "title": "Milestone Type",
+            "orient": "bottom",
+            "titleColor": "#EAEAEA",
+            "labelColor": "#EAEAEA",
+            "labelFont": "Inter",
+            "titleFont": "Inter"
+          }
+        },
+
+        "tooltip": [
+          {
+            "field": "year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+
+          {
+            "field": "label",
+            "type": "nominal",
+            "title": "Milestone"
+          },
+
+          {
+            "field": "description",
+            "type": "nominal",
+            "title": "Description"
+          }
+        ]
+      }
+    },
+
+    {
+      "mark": {
+        "type": "rule",
+        "stroke": "#9AA5B1",
+        "strokeWidth": 1.5
+      },
+
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+
+        "y": {
+          "value": 110
+        },
+
+        "y2": {
+          "field": "label_y",
+          "type": "quantitative"
+        }
+      }
+    },
+
+    {
+      "mark": {
+        "type": "text",
+        "font": "Inter",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "fill": "#EAEAEA",
+        "align": "center",
+        "baseline": "middle",
+        "lineBreak": "\n"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+
+        "y": {
+          "field": "label_y",
+          "type": "quantitative"
+        },
+
+        "text": {
+          "field": "label"
         }
       }
     }

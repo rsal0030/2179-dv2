@@ -1,0 +1,110 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 850,
+  "height": 420,
+
+  "background": "#0B1020",
+
+  "title": {
+    "text": "Australia's Space Industry Ecosystem Is Expanding",
+    "subtitle": "Number of Australian space organisations over time",
+    "color": "#FFFFFF",
+    "subtitleColor": "#9AA5B1",
+    "font": "Orbitron",
+    "fontSize": 24,
+    "subtitleFont": "Inter",
+    "subtitleFontSize": 14,
+    "anchor": "start",
+    "offset": 20
+  },
+
+  "data": {
+    "url": "../data/organisations.csv"
+  },
+
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 3,
+        "stroke": "#5DA9FF"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "axis": {
+            "title": "Financial Year",
+            "titleColor": "#EAEAEA",
+            "labelColor": "#EAEAEA",
+            "domainColor": "#2A324A",
+            "tickColor": "#2A324A",
+            "grid": false,
+            "labelFont": "Inter",
+            "titleFont": "Inter",
+            "labelAngle": 0
+          }
+        },
+
+        "y": {
+          "field": "organisations",
+          "type": "quantitative",
+          "axis": {
+            "title": "Number of Organisations",
+            "titleColor": "#EAEAEA",
+            "labelColor": "#EAEAEA",
+            "gridColor": "#2A324A",
+            "domainColor": "#2A324A",
+            "tickColor": "#2A324A",
+            "labelFont": "Inter",
+            "titleFont": "Inter"
+          }
+        },
+
+        "y2": {
+          "value": 0
+        }
+      }
+    },
+
+    {
+      "mark": {
+        "type": "circle",
+        "size": 220,
+        "color": "#FFB703",
+        "stroke": "#FFFFFF",
+        "strokeWidth": 1.5
+      },
+
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+
+        "y": {
+          "field": "organisations",
+          "type": "quantitative"
+        },
+
+        "tooltip": [
+          {
+            "field": "year",
+            "title": "Financial Year"
+          },
+          {
+            "field": "organisations",
+            "title": "Organisations"
+          }
+        ]
+      }
+    }
+  ],
+
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

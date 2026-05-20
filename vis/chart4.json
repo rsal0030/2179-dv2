@@ -1,0 +1,211 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 850,
+  "height": 420,
+
+  "background": "#0B1020",
+
+  "title": {
+    "text": "Australia's Space Industry Ecosystem Is Expanding",
+    "subtitle": "Number of Australian space organisations over time",
+    "color": "#FFFFFF",
+    "subtitleColor": "#9AA5B1",
+    "font": "Orbitron",
+    "fontSize": 24,
+    "subtitleFont": "Inter",
+    "subtitleFontSize": 14,
+    "anchor": "start",
+    "offset": 20
+  },
+
+  "data": {
+    "url": "../data/organisations.csv"
+  },
+
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 5,
+        "interpolate": "monotone",
+        "point": {
+          "filled": true,
+          "size": 220,
+          "stroke": "#FFFFFF",
+          "strokeWidth": 1.5
+        }
+      },
+
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "axis": {
+            "title": "Financial Year",
+            "titleColor": "#EAEAEA",
+            "labelColor": "#EAEAEA",
+            "domainColor": "#2A324A",
+            "tickColor": "#2A324A",
+            "grid": false,
+            "labelFont": "Inter",
+            "titleFont": "Inter",
+            "labelAngle": 0
+          }
+        },
+
+        "y": {
+          "field": "organisations",
+          "type": "quantitative",
+          "title": "Number of Organisations",
+          "scale": {
+            "zero": false
+          },
+          "axis": {
+            "titleColor": "#EAEAEA",
+            "labelColor": "#EAEAEA",
+            "gridColor": "#2A324A",
+            "domainColor": "#2A324A",
+            "tickColor": "#2A324A",
+            "labelFont": "Inter",
+            "titleFont": "Inter"
+          }
+        },
+
+        "color": {
+          "value": "#5DA9FF"
+        },
+
+        "tooltip": [
+          {
+            "field": "year",
+            "type": "ordinal",
+            "title": "Financial Year"
+          },
+          {
+            "field": "organisations",
+            "type": "quantitative",
+            "title": "Organisations"
+          }
+        ]
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "window": [
+            {
+              "op": "rank",
+              "as": "rank"
+            }
+          ]
+        },
+        {
+          "filter": "datum.rank == 4"
+        }
+      ],
+
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 12,
+        "dy": -10,
+        "font": "Inter",
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "fill": "#FFB703"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+
+        "y": {
+          "field": "organisations",
+          "type": "quantitative"
+        },
+
+        "text": {
+          "field": "organisations",
+          "type": "quantitative"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "year": "fy18"
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "rule",
+        "stroke": "#FFB703",
+        "strokeDash": [6, 4],
+        "strokeWidth": 2
+      },
+
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "year": "fy18",
+            "label": "Australian Space Agency Founded"
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "text",
+        "angle": -90,
+        "dx": -10,
+        "dy": -5,
+        "font": "Inter",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "fill": "#FFB703",
+        "align": "right"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+
+        "y": {
+          "value": 350
+        },
+
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ],
+
+  "config": {
+    "view": {
+      "stroke": null
+    },
+
+    "axis": {
+      "labelFont": "Inter",
+      "titleFont": "Inter"
+    }
+  }
+}

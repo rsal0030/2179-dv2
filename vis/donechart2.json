@@ -1,0 +1,82 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+
+  "title": {
+    "text": "Global Space Agencies",
+    "subtitle": "Year of National Space Agency Foundation",
+    "fontSize": 22,
+    "subtitleFontSize": 14,
+    "anchor": "start"
+  },
+
+  "width": 950,
+  "height": 500,
+
+  "data": {
+    "url": "https://vega.github.io/vega-datasets/data/world-110m.json",
+    "format": {
+      "type": "topojson",
+      "feature": "countries"
+    }
+  },
+
+  "transform": [
+    {
+      "calculate":
+        "datum.id == 840 ? 1958 : datum.id == 156 ? 1993 : datum.id == 356 ? 1969 : datum.id == 643 ? 1992 : datum.id == 392 ? 2003 : datum.id == 36 ? 2018 : null",
+      "as": "founded"
+    },
+
+    {
+      "calculate":
+        "datum.id == 840 ? 'United States' : datum.id == 156 ? 'China' : datum.id == 356 ? 'India' : datum.id == 643 ? 'Russia' : datum.id == 392 ? 'Japan' : datum.id == 36 ? 'Australia' : 'No Agency Data'",
+      "as": "country"
+    }
+  ],
+
+  "projection": {
+    "type": "equalEarth"
+  },
+
+  "mark": {
+    "type": "geoshape",
+    "stroke": "#ffffff",
+    "strokeWidth": 0.6
+  },
+
+  "encoding": {
+    "color": {
+      "field": "founded",
+      "type": "quantitative",
+
+      "scale": {
+        "scheme": "plasma",
+        "reverse": true
+      },
+
+      "legend": {
+        "title": "Founded",
+        "gradientLength": 250
+      }
+    },
+
+    "tooltip": [
+      {
+        "field": "country",
+        "title": "Country"
+      },
+      {
+        "field": "founded",
+        "title": "Founded"
+      }
+    ]
+  },
+
+  "config": {
+    "background": "#f8f8f8",
+
+    "view": {
+      "stroke": null
+    }
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 850,
+  "height": 420,
+
+  "background": "#0B1020",
+
+  "title": {
+    "text": "Australia’s Satellite Activity Took Off After 2018",
+    "subtitle": "Each dot = one satellite launch, grouped by year and coloured by mission purpose",
+    "color": "#FFFFFF",
+    "subtitleColor": "#9AA5B1",
+    "font": "Orbitron",
+    "fontSize": 24,
+    "subtitleFont": "Inter",
+    "subtitleFontSize": 14,
+    "anchor": "start",
+    "offset": 20
+  },
+
+  "data": {
+    "url": "../data/aosd.csv"
+  },
+
+  "transform": [
+    {
+      "calculate": "toNumber(datum['Launch year'])",
+      "as": "launch_year"
+    },
+    {
+      "window": [
+        {
+          "op": "rank",
+          "as": "rank"
+        }
+      ],
+      "groupby": ["launch_year"]
+    }
+  ],
+
+  "layer": [
+    {
+      "mark": {
+        "type": "circle",
+        "size": 140,
+        "stroke": "#FFFFFF",
+        "strokeWidth": 1
+      },
+
+      "encoding": {
+        "x": {
+          "field": "launch_year",
+          "type": "ordinal",
+          "axis": {
+            "title": "Launch Year",
+            "titleColor": "#EAEAEA",
+            "labelColor": "#EAEAEA",
+            "domainColor": "#2A324A",
+            "tickColor": "#2A324A",
+            "grid": false,
+            "labelAngle": 0,
+            "labelFont": "Inter",
+            "titleFont": "Inter"
+          }
+        },
+
+        "y": {
+          "field": "rank",
+          "type": "quantitative",
+          "axis": {
+            "title": "Satellites (stacked)",
+            "titleColor": "#EAEAEA",
+            "labelColor": "#EAEAEA",
+            "gridColor": "#1C2236",
+            "domainColor": "#2A324A",
+            "tickColor": "#2A324A",
+            "labelFont": "Inter",
+            "titleFont": "Inter"
+          }
+        },
+
+        "color": {
+          "field": "Mission purpose",
+          "type": "nominal",
+          "scale": {
+            "range": [
+              "#5DA9FF",
+              "#FFB703",
+              "#FB8500",
+              "#90BE6D",
+              "#B5179E",
+              "#43AA8B"
+            ]
+          },
+          "legend": {
+            "title": "Mission Purpose",
+            "labelColor": "#EAEAEA",
+            "titleColor": "#EAEAEA",
+            "orient": "right"
+          }
+        },
+
+        "tooltip": [
+          {
+            "field": "Satellite Name",
+            "title": "Satellite"
+          },
+          {
+            "field": "Launch year",
+            "title": "Launch Year"
+          },
+          {
+            "field": "Mission purpose",
+            "title": "Purpose"
+          },
+          {
+            "field": "Operator",
+            "title": "Operator"
+          }
+        ]
+      }
+    },
+
+    {
+      "mark": {
+        "type": "text",
+        "dy": -12,
+        "font": "Inter",
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#9AA5B1"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "launch_year",
+          "type": "ordinal"
+        },
+
+        "y": {
+          "aggregate": "count",
+          "field": "Satellite Name"
+        },
+
+        "text": {
+          "aggregate": "count",
+          "field": "Satellite Name"
+        }
+      }
+    }
+  ],
+
+  "config": {
+    "view": {
+      "stroke": null
+    },
+
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 14
+    },
+
+    "legend": {
+      "labelFont": "Inter",
+      "titleFont": "Inter"
+    }
+  }
+}
