@@ -103,7 +103,7 @@
 
         "tooltip": [
           {
-            "field": "Satellite Name",
+            "field": "Satellite",
             "title": "Satellite"
           },
           {
@@ -140,12 +140,12 @@
 
         "y": {
           "aggregate": "count",
-          "field": "Satellite Name"
+          "field": "Satellite"
         },
 
         "text": {
           "aggregate": "count",
-          "field": "Satellite Name"
+          "field": "Satellite"
         }
       }
     }

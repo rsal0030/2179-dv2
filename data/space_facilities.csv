@@ -1,0 +1,13 @@
+name,type,operator,lat,long,state,description
+Canberra Deep Space Communication Complex,Deep Space Tracking,NASA / CSIRO,-35.40,148.98,ACT,One of only three NASA deep space tracking stations in the world. Supports missions to Mars and beyond.
+New Norcia Station,Deep Space Tracking,ESA / CSIRO,-31.05,116.19,WA,ESA's first deep space antenna. Tracks missions including Mars Express and BepiColombo.
+Yarragadee Geodetic Observatory,Satellite Tracking,Geoscience Australia / NASA,-29.05,115.35,WA,World's most productive satellite laser ranging station. Has tracked satellites since 1979.
+Australian Defence Satellite Communications Station,Defence,Australian Defence Force,-28.79,114.70,WA,Primary Australian defence satellite communications facility.
+Pine Gap,Intelligence / Tracking,ASD / CIA,-23.80,133.74,NT,Joint Australian-US facility for satellite signal intelligence and missile defence.
+Mount Stromlo Observatory,Space Surveillance,EOS Space Systems / ANU,-35.32,149.01,ACT,Hosts the Space Environment Research Centre and Australia's space debris laser tracking capability.
+Shoal Bay Receiving Station,Intelligence / Tracking,Australian Signals Directorate,-12.42,130.99,NT,Australian signals intelligence facility supporting satellite communications interception.
+Parkes Radio Observatory,Radio Astronomy,CSIRO,-32.99,148.26,NSW,Iconic 64m dish. Supported Apollo 11 Moon landing. Now used for pulsar and fast radio burst research.
+Tasmanian Earth Resources Satellite Station,Earth Observation,GA / CSIRO,-42.90,147.33,TAS,Receives Earth observation satellite data for land and environmental monitoring.
+Woomera Launch Complex,Launch Site,Southern Launch / RAAF,-31.10,136.80,SA,Australia's primary launch precinct. Active since 1947. First sub-orbital commercial launches in 2024.
+Arnhem Space Centre,Launch Site,Equatorial Launch Australia,-12.30,136.70,NT,First commercial launch facility in Australia's north. Hosted first NASA launches from Australian soil since 1995 in 2022.
+Bowen Orbital Spaceport,Launch Site,Gilmour Space Technologies,-20.00,148.24,QLD,Australia's first orbital launch facility. Site of Gilmour Space's Eris Test Flight 1 in July 2025.

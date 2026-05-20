@@ -1,0 +1,126 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 900,
+  "height": 520,
+
+  "background": "#071028",
+
+  "title": {
+    "text": "Satellite Miniaturisation and Orbital Clustering",
+    "subtitle": "Launch mass distribution across orbital regions",
+    "anchor": "start",
+    "font": "Inter",
+    "fontSize": 24,
+    "color": "#FFFFFF",
+    "subtitleColor": "#94A3B8"
+  },
+
+  "data": {
+    "url": "../data/aosd.csv"
+  },
+
+  "transform": [
+    {
+      "filter": "datum.OrbitType != null && datum['Launch Mass(kg)'] != null"
+    },
+
+    {
+      "calculate": "trim(datum.OrbitType)",
+      "as": "Orbit"
+    },
+
+    {
+  "calculate": "isValid(datum['Satellite']) ? datum['Satellite'] : isValid(datum[' Satellite']) ? datum[' Satellite'] : isValid(datum['\uFEFFSatellite']) ? datum['\uFEFFSatellite'] : 'Unnamed Satellite'",
+  "as": "Satellite_clean"
+},
+
+    {
+      "calculate": "datum['Mission purpose'] != null && datum['Mission purpose'] !== '' ? datum['Mission purpose'] : 'Unknown Purpose'",
+      "as": "Purpose"
+    },
+
+    {
+      "filter": "datum.Satellite_clean != 'undefined' && datum.Satellite_clean != 'null'"
+    }
+  ],
+
+  "mark": {
+    "type": "circle",
+    "opacity": 0.85,
+    "stroke": "#FFFFFF",
+    "strokeWidth": 1
+  },
+
+  "encoding": {
+    "x": {
+      "field": "Orbit",
+      "type": "nominal",
+      "sort": ["LEO", "MEO", "GEO"],
+      "axis": {
+        "title": "Orbit Region",
+        "titleColor": "#E5E7EB",
+        "labelColor": "#E5E7EB",
+        "labelFontSize": 14,
+        "titleFontSize": 15,
+        "grid": false,
+        "domainColor": "#334155",
+        "tickColor": "#334155"
+      }
+    },
+
+    "y": {
+      "field": "Launch Mass(kg)",
+      "type": "quantitative",
+      "scale": { "type": "log" },
+      "axis": {
+        "title": "Launch Mass (kg, log scale)",
+        "titleColor": "#E5E7EB",
+        "labelColor": "#E5E7EB",
+        "gridColor": "#1E293B",
+        "domainColor": "#334155",
+        "tickColor": "#334155"
+      }
+    },
+
+    "size": {
+      "field": "Launch Mass(kg)",
+      "type": "quantitative",
+      "scale": { "range": [80, 1200] },
+      "legend": null
+    },
+
+    "color": {
+      "field": "Purpose",
+      "type": "nominal",
+      "scale": { "scheme": "tableau10" },
+      "legend": {
+        "title": "Mission Purpose",
+        "titleColor": "#E5E7EB",
+        "labelColor": "#E5E7EB"
+      }
+    },
+
+    "tooltip": [
+      { "field": "Satellite_clean", "title": "Satellite" },
+      { "field": "Launch Mass(kg)", "title": "Mass (kg)" },
+      { "field": "Purpose", "title": "Purpose" },
+      { "field": "Orbit", "title": "Orbit" },
+      { "field": "Operator", "title": "Operator" },
+      { "field": "Launch year", "title": "Launch Year" },
+      { "field": "Operational status", "title": "Status" }
+    ]
+  },
+
+  "config": {
+    "view": { "stroke": null },
+    "axis": {
+      "labelFont": "Inter",
+      "titleFont": "Inter"
+    },
+    "legend": {
+      "labelFont": "Inter",
+      "titleFont": "Inter"
+    }
+  }
+}

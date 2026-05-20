@@ -1,0 +1,160 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+
+  "width": 900,
+  "height": 500,
+  "padding": 2,
+  "background": "#0B1020",
+
+  "title": {
+    "text": "What Australia’s Satellites Are Used For",
+    "subtitle": "Treemap of satellite mission purposes",
+    "anchor": "start",
+    "fontSize": 24,
+    "color": "white",
+    "subtitleColor": "#9AA5B1"
+  },
+
+  "data": [
+    {
+      "name": "tree",
+
+      "values": [
+        { "id": "root" },
+
+        { "id": "Communications", "parent": "root", "value": 20 },
+        { "id": "Earth Observation", "parent": "root", "value": 15 },
+        { "id": "Research", "parent": "root", "value": 10 },
+        { "id": "Navigation", "parent": "root", "value": 8 },
+        { "id": "Technology Demo", "parent": "root", "value": 12 }
+      ],
+
+      "transform": [
+        {
+          "type": "stratify",
+          "key": "id",
+          "parentKey": "parent"
+        },
+
+        {
+          "type": "treemap",
+          "field": "value",
+          "sort": {
+            "field": "value"
+          },
+          "round": true,
+          "paddingInner": 4,
+          "size": [
+            { "signal": "width" },
+            { "signal": "height" }
+          ]
+        },
+
+        {
+          "type": "filter",
+          "expr": "datum.depth > 0"
+        }
+      ]
+    }
+  ],
+
+  "scales": [
+    {
+      "name": "color",
+
+      "type": "ordinal",
+
+      "domain": [
+        "Communications",
+        "Earth Observation",
+        "Research",
+        "Navigation",
+        "Technology Demo"
+      ],
+
+      "range": [
+        "#5DA9FF",
+        "#FFB703",
+        "#FB8500",
+        "#90BE6D",
+        "#B5179E"
+      ]
+    }
+  ],
+
+  "marks": [
+    {
+      "type": "rect",
+
+      "from": {
+        "data": "tree"
+      },
+
+      "encode": {
+        "enter": {
+          "x": { "field": "x0" },
+          "y": { "field": "y0" },
+          "x2": { "field": "x1" },
+          "y2": { "field": "y1" },
+
+          "fill": {
+            "scale": "color",
+            "field": "id"
+          },
+
+          "stroke": {
+            "value": "#0B1020"
+          },
+
+          "strokeWidth": {
+            "value": 2
+          }
+        }
+      }
+    },
+
+    {
+      "type": "text",
+
+      "from": {
+        "data": "tree"
+      },
+
+      "encode": {
+        "enter": {
+          "x": {
+            "signal": "(datum.x0 + datum.x1)/2"
+          },
+
+          "y": {
+            "signal": "(datum.y0 + datum.y1)/2"
+          },
+
+          "text": {
+            "field": "id"
+          },
+
+          "align": {
+            "value": "center"
+          },
+
+          "baseline": {
+            "value": "middle"
+          },
+
+          "fill": {
+            "value": "white"
+          },
+
+          "fontSize": {
+            "value": 14
+          },
+
+          "fontWeight": {
+            "value": "bold"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-﻿Satellite Name,NOARD ID,Mission purpose,Operational status,Operator,Launch year,Configuration(U),Launch Mass(kg),Contractors,Launch site,Launch Site Country,MissionType,OrbitType
+﻿Satellite,NOARD ID,Mission purpose,Operational status,Operator,Launch year,Configuration(U),Launch Mass(kg),Contractors,Launch site,Launch Site Country,MissionType,OrbitType
 WRESAT,3054,Science Technology and Education,Decayed,WRE & University of Adelaide,1967,,45,,WOMRA,Australia,Non-profit,LEO
 Australis - OSCAR 5 (AO-5),4321,Communication,Decayed,University of Melbourne,1970,,17.7,,AFWTR,US,Non-profit,LEO
 OPTUS A1 (AUSSAT 1),15993,Communication,Inactive,OPTUS,1985,,1250,Hughes,AFETR,US,Commercial,GEO

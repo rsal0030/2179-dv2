@@ -1,0 +1,114 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 900,
+  "height": 560,
+  "background": "#0B1020",
+
+  "title": {
+    "text": "Australia’s Space Industry Is Spread Across the Country",
+    "subtitle": "Launch sites, research centres, universities and industry hubs mapped by location",
+    "anchor": "start",
+    "fontSize": 24,
+    "color": "#FFFFFF",
+    "subtitleColor": "#9AA5B1"
+  },
+
+  "projection": {
+    "type": "mercator",
+    "center": [133.7751, -25.2744],
+    "scale": 900
+  },
+
+  "layer": [
+
+    {
+      "data": {
+        "url": "https://vega.github.io/editor/data/world-110m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "countries"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#11182D",
+        "stroke": "#2A324A"
+      }
+    },
+
+    {
+      "data": {
+        "url": "../data/space_facilities.csv"
+      },
+
+      "mark": {
+        "type": "circle",
+        "size": 650,
+        "opacity": 0.12,
+        "color": "#5DA9FF"
+      },
+
+      "encoding": {
+        "longitude": { "field": "long", "type": "quantitative" },
+        "latitude": { "field": "lat", "type": "quantitative" }
+      }
+    },
+
+    {
+      "data": {
+        "url": "../data/space_facilities.csv"
+      },
+
+      "mark": {
+        "type": "circle",
+        "size": 180,
+        "stroke": "#FFFFFF",
+        "strokeWidth": 1.5
+      },
+
+      "encoding": {
+
+        "longitude": { "field": "long", "type": "quantitative" },
+        "latitude": { "field": "lat", "type": "quantitative" },
+
+        "color": {
+          "field": "type",
+          "type": "nominal",
+
+          "scale": {
+            "range": [
+              "#FFB703",
+              "#5DA9FF",
+              "#90BE6D",
+              "#B5179E",
+              "#43AA8B"
+            ]
+          },
+
+          "legend": {
+            "title": "Facility Type",
+            "orient": "right",
+            "titleColor": "#FFFFFF",
+            "labelColor": "#EAEAEA",
+            "symbolType": "circle",
+            "symbolSize": 160
+          }
+        },
+
+        "tooltip": [
+          { "field": "name", "title": "Facility" },
+          { "field": "type", "title": "Type" },
+          { "field": "operator", "title": "Operator" },
+          { "field": "state", "title": "State" },
+          { "field": "description", "title": "Description" }
+        ]
+      }
+    }
+
+  ],
+
+  "config": {
+    "view": { "stroke": null }
+  }
+}

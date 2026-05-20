@@ -28,9 +28,25 @@
       "calculate": "toNumber(datum['Launch year'])",
       "as": "launch_year"
     },
+
     {
       "filter": "isValid(datum.launch_year)"
     },
+
+    {
+      "calculate": "toString(datum.Satellite || datum['Satellite '] || datum[' Satellite'] || datum['\uFEFFSatellite'] || '')",
+      "as": "Satellite_clean"
+    },
+
+    {
+      "calculate": "datum['Mission purpose'] && datum['Mission purpose'] !== '' ? datum['Mission purpose'] : 'Unknown Purpose'",
+      "as": "Purpose"
+    },
+
+    {
+      "filter": "datum.Satellite_clean != ''"
+    },
+
     {
       "window": [
         {
@@ -59,10 +75,10 @@
             "title": "Launch Year",
             "titleColor": "#EAEAEA",
             "labelColor": "#EAEAEA",
-            "domainColor": "#2A324A",
-            "tickColor": "#2A324A",
             "grid": false,
             "labelAngle": 0,
+            "domainColor": "#2A324A",
+            "tickColor": "#2A324A",
             "labelFont": "Inter",
             "titleFont": "Inter"
           }
@@ -84,7 +100,7 @@
         },
 
         "color": {
-          "field": "Mission purpose",
+          "field": "Purpose",
           "type": "nominal",
           "scale": {
             "range": [
@@ -99,30 +115,25 @@
           "legend": {
             "title": "Mission Purpose",
             "labelColor": "#EAEAEA",
-            "titleColor": "#EAEAEA",
-            "orient": "right"
+            "titleColor": "#EAEAEA"
           }
         },
 
         "tooltip": [
           {
-            "field": "Satellite Name",
-            "type": "nominal",
+            "field": "Satellite_clean",
             "title": "Satellite"
           },
           {
             "field": "launch_year",
-            "type": "ordinal",
             "title": "Launch Year"
           },
           {
-            "field": "Mission purpose",
-            "type": "nominal",
+            "field": "Purpose",
             "title": "Purpose"
           },
           {
             "field": "Operator",
-            "type": "nominal",
             "title": "Operator"
           }
         ]
@@ -147,12 +158,12 @@
 
         "y": {
           "aggregate": "count",
-          "field": "Satellite Name"
+          "field": "Satellite_clean"
         },
 
         "text": {
           "aggregate": "count",
-          "field": "Satellite Name"
+          "field": "Satellite_clean"
         }
       }
     }
@@ -162,12 +173,10 @@
     "view": {
       "stroke": null
     },
-
     "axis": {
       "labelFontSize": 12,
       "titleFontSize": 14
     },
-
     "legend": {
       "labelFont": "Inter",
       "titleFont": "Inter"

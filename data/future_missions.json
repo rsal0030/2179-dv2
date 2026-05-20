@@ -1,0 +1,58 @@
+[
+  {
+    "year": 2026,
+    "label": "ALEPH-1 lunar payload launch",
+    "description": "Australian startup Lunaria One launches ALEPH-1 — a payload testing how plants survive the journey to the Moon and endure lunar surface conditions. Australia's first authorised lunar payload.",
+    "category": "mission",
+    "source": "https://www.lexology.com/library/detail.aspx?g=53acf2b2-3088-43e9-9300-1637fd1158ca"
+  },
+  {
+    "year": 2026,
+    "label": "Skykraft air traffic management constellation completes",
+    "description": "Skykraft plans to complete deployment of its space-enabled global air traffic management satellite network, with coverage of aircraft even in remote areas.",
+    "category": "commercial",
+    "source": "https://www.kwm.com/au/en/insights/latest-thinking/australia-in-space-2025-trendlines.html"
+  },
+  {
+    "year": 2026,
+    "label": "Fleet Space SPIDER payload to the Moon",
+    "description": "Fleet Space Technologies' SPIDER seismic payload launches to the Moon aboard Firefly Aerospace's Blue Ghost Mission 2, supporting future lunar habitation research.",
+    "category": "mission",
+    "source": "https://www.lexology.com/library/detail.aspx?g=53acf2b2-3088-43e9-9300-1637fd1158ca"
+  },
+  {
+    "year": 2028,
+    "label": "Optus-led Australian LEO satellite launches",
+    "description": "An Optus-led consortium plans to launch a new Australian-made low Earth orbit satellite, carrying payloads including HEO's Adler Imager space telescope.",
+    "category": "commercial",
+    "source": "https://www.kwm.com/au/en/insights/latest-thinking/australia-in-space-2025-trendlines.html"
+  },
+  {
+    "year": 2028,
+    "label": "Civil Space Strategy target year",
+    "description": "End year of Australia's Civil Space Strategy 2019–2028, which set the framework for growing the sector to $12 billion and 20,000 jobs by 2030.",
+    "category": "policy",
+    "source": "https://www.space.gov.au/Advancing%20Space%20Australian%20Civil%20Space%20Strategy%202019%20%E2%80%93%202028"
+  },
+  {
+    "year": 2030,
+    "label": "Roo-ver lands on the Moon",
+    "description": "Australia's Roo-ver lunar rover, built by ELO2, travels to the lunar south pole with NASA aboard an Intuitive Machines lander as part of the Artemis program.",
+    "category": "mission",
+    "source": "https://www.space.gov.au/Advancing%20Space%20Australian%20Civil%20Space%20Strategy%202019%20%E2%80%93%202028"
+  },
+  {
+    "year": 2030,
+    "label": "$12B revenue target",
+    "description": "Australia's Civil Space Strategy targets tripling the sector's revenue from $4.3B in FY17 to $12B by 2030.",
+    "category": "target",
+    "source": "https://www.space.gov.au/key-data"
+  },
+  {
+    "year": 2030,
+    "label": "20,000 new jobs target",
+    "description": "Australia's Civil Space Strategy targets creating 20,000 new direct and indirect space jobs by 2030.",
+    "category": "target",
+    "source": "https://www.space.gov.au/key-data"
+  }
+]
