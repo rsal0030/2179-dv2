@@ -33,7 +33,6 @@
 
   "layer": [
 
-    /* ===== MAIN TIMELINE ===== */
 
     {
       "mark": {
@@ -49,7 +48,6 @@
       }
     },
 
-    /* ===== GLOW FOR HIGHLIGHTS ===== */
 
     {
       "transform": [
@@ -77,7 +75,6 @@
       }
     },
 
-    /* ===== CONNECTOR LINES ===== */
 
     {
       "mark": {
@@ -102,7 +99,6 @@
       }
     },
 
-    /* ===== TIMELINE POINTS ===== */
 
     {
       "mark": {
@@ -193,7 +189,6 @@
       }
     },
 
-    /* ===== YEAR LABEL ===== */
 
     {
       "mark": {
@@ -220,7 +215,6 @@
       }
     },
 
-    /* ===== EVENT LABELS ===== */
 
     {
       "mark": {

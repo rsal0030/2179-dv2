@@ -1,18 +1,35 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
-  "width": "container",
-  "height": 420,
+  "width": 500,
+  "height": 500,
 
   "background": "#0B1020",
 
+  "params": [
+    {
+      "name": "purposeFilter",
+      "value": "All",
+      "bind": {
+        "input": "select",
+        "options": [
+          "All",
+          "Research",
+          "Commercial",
+          "Other"
+        ],
+        "name": "Filter by Purpose: "
+      }
+    }
+  ],
+
   "title": {
     "text": "Australia’s Satellite Activity Took Off After 2018",
-    "subtitle": "Each dot = one satellite launch, grouped by year and coloured by mission purpose",
+    "subtitle": "Australia’s orbital activity surged after 2018, driven by commercial and research missions",
     "color": "#FFFFFF",
     "subtitleColor": "#9AA5B1",
     "font": "Orbitron",
-    "fontSize": 24,
+    "fontSize": 28,
     "subtitleFont": "Inter",
     "subtitleFontSize": 14,
     "anchor": "start",
@@ -20,7 +37,7 @@
   },
 
   "data": {
-    "url": "https://raw.githubusercontent.com/rsal0030/2179-dv2/main/data/aosd.csv"
+    "url": "../data/aosd.csv"
   },
 
   "transform": [
@@ -34,13 +51,17 @@
     },
 
     {
-      "calculate": "toString(datum.Satellite || datum['Satellite '] || datum[' Satellite'] || datum['\uFEFFSatellite'] || '')",
+      "calculate": "toString(datum.Satellite || datum['Satellite '] || datum[' Satellite'] || datum['\\uFEFFSatellite'] || '')",
       "as": "Satellite_clean"
     },
 
     {
-      "calculate": "datum['Mission purpose'] && datum['Mission purpose'] !== '' ? datum['Mission purpose'] : 'Unknown Purpose'",
+      "calculate": "indexof(lower(datum['Mission purpose']), 'research') >= 0 || indexof(lower(datum['Mission purpose']), 'science') >= 0 ? 'Research' : indexof(lower(datum['Mission purpose']), 'commercial') >= 0 || indexof(lower(datum['Mission purpose']), 'communication') >= 0 ? 'Commercial' : indexof(lower(datum['Mission purpose']), 'defence') >= 0 || indexof(lower(datum['Mission purpose']), 'military') >= 0 ? 'Defence' : 'Other'",
       "as": "Purpose"
+    },
+
+    {
+      "filter": "purposeFilter == 'All' || datum.Purpose == purposeFilter"
     },
 
     {
@@ -60,17 +81,29 @@
 
   "layer": [
     {
+      "selection": {
+        "hover": {
+          "type": "single",
+          "fields": ["Satellite_clean"],
+          "nearest": true,
+          "on": "mouseover",
+          "empty": "none",
+          "clear": "mouseout"
+        }
+      },
+
       "mark": {
         "type": "circle",
-        "size": 140,
         "stroke": "#FFFFFF",
-        "strokeWidth": 1
+        "strokeWidth": 1,
+        "strokeOpacity": 0.5
       },
 
       "encoding": {
         "x": {
           "field": "launch_year",
           "type": "ordinal",
+          "sort": "ascending",
           "axis": {
             "title": "Launch Year",
             "titleColor": "#EAEAEA",
@@ -80,7 +113,9 @@
             "domainColor": "#2A324A",
             "tickColor": "#2A324A",
             "labelFont": "Inter",
-            "titleFont": "Inter"
+            "titleFont": "Inter",
+            "labelOverlap": "greedy",
+            "labelPadding": 8
           }
         },
 
@@ -88,7 +123,7 @@
           "field": "rank",
           "type": "quantitative",
           "axis": {
-            "title": "Satellites (stacked)",
+            "title": "Number of Satellite Launches",
             "titleColor": "#EAEAEA",
             "labelColor": "#EAEAEA",
             "gridColor": "#1C2236",
@@ -97,6 +132,22 @@
             "labelFont": "Inter",
             "titleFont": "Inter"
           }
+        },
+
+        "size": {
+          "condition": {
+            "selection": "hover",
+            "value": 260
+          },
+          "value": 110
+        },
+
+        "opacity": {
+          "condition": {
+            "selection": "hover",
+            "value": 1
+          },
+          "value": 0.55
         },
 
         "color": {
@@ -141,6 +192,69 @@
     },
 
     {
+      "data": {
+        "values": [
+          {
+            "launch_year": "2018"
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "rule",
+        "color": "#FFFFFF",
+        "strokeDash": [4, 4],
+        "opacity": 0.4
+      },
+
+      "encoding": {
+        "x": {
+          "field": "launch_year",
+          "type": "ordinal"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "launch_year": "2018",
+            "rank": 15,
+            "label": "Launch acceleration begins after 2018"
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "dy": -10,
+        "font": "Inter",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "color": "#FFFFFF"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "launch_year",
+          "type": "ordinal"
+        },
+
+        "y": {
+          "field": "rank",
+          "type": "quantitative"
+        },
+
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+
+    {
       "mark": {
         "type": "text",
         "dy": -10,
@@ -173,10 +287,12 @@
     "view": {
       "stroke": null
     },
+
     "axis": {
       "labelFontSize": 12,
       "titleFontSize": 14
     },
+
     "legend": {
       "labelFont": "Inter",
       "titleFont": "Inter"
