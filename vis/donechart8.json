@@ -40,7 +40,7 @@
 
     {
       "data": {
-        "url": "../data/space_facilities.csv"
+        "url": "https://raw.githubusercontent.com/rsal0030/2179-dv2/main/data/space_facilities.csv"
       },
 
       "mark": {
@@ -58,7 +58,7 @@
 
     {
       "data": {
-        "url": "../data/space_facilities.csv"
+        "url": "https://raw.githubusercontent.com/rsal0030/2179-dv2/main/data/space_facilities.csv"
       },
 
       "mark": {

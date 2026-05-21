@@ -20,7 +20,7 @@
   },
 
   "data": {
-    "url": "../data/future_missions.json"
+    "url": "https://raw.githubusercontent.com/rsal0030/2179-dv2/main/data/future_missions.json"
   },
 
   "transform": [
