@@ -1,0 +1,272 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": "container",
+  "height": 320,
+
+  "background": "#070B17",
+
+  "title": {
+    "text": "Australia's Return to Space",
+    "subtitle": "Major milestones in the rise of Australia's modern space industry",
+    "anchor": "start",
+    "font": "Orbitron",
+    "fontSize": 28,
+    "fontWeight": 700,
+    "color": "#FFFFFF",
+    "subtitleFont": "Inter",
+    "subtitleFontSize": 14,
+    "subtitleColor": "#94A3B8",
+    "offset": 24
+  },
+
+  "data": {
+    "url": "../data/milestones.json"
+  },
+
+  "transform": [
+    {
+      "calculate": "datum.row % 2 == 0 ? 70 : 250",
+      "as": "label_y"
+    }
+  ],
+
+  "layer": [
+
+    /* ===== MAIN TIMELINE ===== */
+
+    {
+      "mark": {
+        "type": "rule",
+        "stroke": "#334155",
+        "strokeWidth": 4
+      },
+
+      "encoding": {
+        "y": {
+          "value": 160
+        }
+      }
+    },
+
+    /* ===== GLOW FOR HIGHLIGHTS ===== */
+
+    {
+      "transform": [
+        {
+          "filter": "datum.highlight == true"
+        }
+      ],
+
+      "mark": {
+        "type": "circle",
+        "size": 2200,
+        "opacity": 0.08,
+        "color": "#60A5FA"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+
+        "y": {
+          "value": 160
+        }
+      }
+    },
+
+    /* ===== CONNECTOR LINES ===== */
+
+    {
+      "mark": {
+        "type": "rule",
+        "stroke": "#64748B",
+        "strokeWidth": 1.5
+      },
+
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+
+        "y": {
+          "value": 160
+        },
+
+        "y2": {
+          "field": "label_y"
+        }
+      }
+    },
+
+    /* ===== TIMELINE POINTS ===== */
+
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 260,
+        "stroke": "#FFFFFF",
+        "strokeWidth": 2
+      },
+
+      "encoding": {
+
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+
+          "axis": {
+            "title": null,
+            "labelAngle": 0,
+            "labelColor": "#CBD5E1",
+            "labelFont": "Inter",
+            "labelFontSize": 12,
+            "domain": false,
+            "ticks": false,
+            "grid": false
+          }
+        },
+
+        "y": {
+          "value": 160
+        },
+
+        "color": {
+          "field": "category",
+          "type": "nominal",
+
+          "scale": {
+            "domain": [
+              "policy",
+              "infrastructure",
+              "science",
+              "launch",
+              "satellite",
+              "people"
+            ],
+
+            "range": [
+              "#60A5FA",
+              "#FBBF24",
+              "#34D399",
+              "#F87171",
+              "#38BDF8",
+              "#C084FC"
+            ]
+          },
+
+          "legend": {
+            "title": "Milestone Type",
+            "orient": "bottom",
+            "direction": "horizontal",
+            "columns": 3,
+            "titleColor": "#E2E8F0",
+            "labelColor": "#CBD5E1",
+            "labelFont": "Inter",
+            "titleFont": "Inter",
+            "padding": 20
+          }
+        },
+
+        "tooltip": [
+          {
+            "field": "year",
+            "title": "Year"
+          },
+          {
+            "field": "label",
+            "title": "Milestone"
+          },
+          {
+            "field": "description",
+            "title": "Description"
+          },
+          {
+            "field": "category",
+            "title": "Category"
+          }
+        ]
+      }
+    },
+
+    /* ===== YEAR LABEL ===== */
+
+    {
+      "mark": {
+        "type": "text",
+        "dy": 28,
+        "font": "Inter",
+        "fontSize": 11,
+        "fill": "#94A3B8"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+
+        "y": {
+          "value": 160
+        },
+
+        "text": {
+          "field": "year"
+        }
+      }
+    },
+
+    /* ===== EVENT LABELS ===== */
+
+    {
+      "mark": {
+        "type": "text",
+        "font": "Inter",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "fill": "#F8FAFC",
+        "align": "center",
+        "baseline": "middle",
+        "lineBreak": "\n"
+      },
+
+      "encoding": {
+
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+
+        "y": {
+          "field": "label_y",
+          "type": "quantitative"
+        },
+
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ],
+
+  "config": {
+
+    "view": {
+      "stroke": null
+    },
+
+    "style": {
+      "guide-label": {
+        "font": "Inter"
+      },
+
+      "guide-title": {
+        "font": "Inter"
+      }
+    }
+  }
+}
