@@ -1,14 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
-  "width": "container",
-  "height": 220,
+  "width": 900,
+  "height": 350,
 
   "background": "#0B1020",
 
   "title": {
-    "text": "Australia's Return to Space",
-    "subtitle": "Major milestones in the rise of Australia's modern space industry",
+    "text": "After 2018, Australia's Space Industry Accelerates Rapidly",
+    "subtitle": "Timeline of policy, launches, and commercial investment surged after the Australian Space Agency was formed",
     "color": "#FFFFFF",
     "subtitleColor": "#9AA5B1",
     "font": "Orbitron",
@@ -23,7 +23,29 @@
     "url": "https://raw.githubusercontent.com/rsal0030/2179-dv2/main/data/milestones.json"
   },
 
+  "transform": [
+    {
+      "window": [
+        {
+          "op": "row_number",
+          "as": "index"
+        }
+      ]
+    },
+
+    {
+      "calculate": "datum.index % 2 == 0 ? 40 : 210",
+      "as": "label_y"
+    },
+
+    {
+      "calculate": "replace(replace(replace(datum.label, ' Agency ', ' Agency\\n'), ' Satellite ', ' Satellite\\n'), ' Mission ', ' Mission\\n')",
+      "as": "wrapped_label"
+    }
+  ],
+
   "layer": [
+
     {
       "mark": {
         "type": "rule",
@@ -33,7 +55,7 @@
 
       "encoding": {
         "y": {
-          "value": 110
+          "value": 125
         }
       }
     },
@@ -47,7 +69,7 @@
 
       "mark": {
         "type": "circle",
-        "size": 800,
+        "size": 900,
         "opacity": 0.15,
         "color": "#FFB703"
       },
@@ -59,7 +81,7 @@
         },
 
         "y": {
-          "value": 110
+          "value": 125
         }
       }
     },
@@ -68,7 +90,7 @@
       "mark": {
         "type": "point",
         "filled": true,
-        "size": 300,
+        "size": 320,
         "stroke": "#FFFFFF",
         "strokeWidth": 1.5
       },
@@ -77,11 +99,12 @@
         "x": {
           "field": "year",
           "type": "ordinal",
+
           "axis": {
             "title": null,
             "labelColor": "#EAEAEA",
             "labelFont": "Inter",
-            "labelFontSize": 13,
+            "labelFontSize": 15,
             "tickColor": "#2A324A",
             "domainColor": "#2A324A",
             "grid": false
@@ -89,12 +112,13 @@
         },
 
         "y": {
-          "value": 110
+          "value": 125
         },
 
         "color": {
           "field": "category",
           "type": "nominal",
+
           "scale": {
             "domain": [
               "policy",
@@ -161,7 +185,7 @@
         },
 
         "y": {
-          "value": 110
+          "value": 125
         },
 
         "y2": {
@@ -175,12 +199,13 @@
       "mark": {
         "type": "text",
         "font": "Inter",
-        "fontSize": 12,
+        "fontSize": 11,
         "fontWeight": "bold",
         "fill": "#EAEAEA",
         "align": "center",
         "baseline": "middle",
-        "lineBreak": "\n"
+        "lineHeight": 14,
+        "limit": 120
       },
 
       "encoding": {
@@ -195,7 +220,7 @@
         },
 
         "text": {
-          "field": "label"
+          "field": "wrapped_label"
         }
       }
     }
