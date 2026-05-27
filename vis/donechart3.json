@@ -36,19 +36,29 @@
 
   "layer": [
 
+
     {
+      "transform": [
+        {
+          "calculate": "'$' + format(datum.revenue_billion, '.1f') + 'B'",
+          "as": "revenue_label"
+        }
+      ],
+
       "mark": {
         "type": "line",
-        "strokeWidth": 4,
+        "interpolate": "monotone",
+        "strokeWidth": 3,
         "color": "#4DA3FF",
         "point": {
           "filled": true,
-          "size": 120,
+          "size": 90,
           "fill": "#4DA3FF",
           "stroke": "white",
-          "strokeWidth": 1.5
+          "strokeWidth": 1.2
         }
       },
+
       "encoding": {
         "x": {
           "field": "financial_year",
@@ -59,14 +69,10 @@
             "labelColor": "#EAEAEA",
             "domain": false,
             "ticks": false,
-
-            "labelAngle": 0,
-            "labelAlign": "center",
-            "labelBaseline": "top",
-
-            "labelFont": "Inter",
-            "titleFont": "Inter",
             "labelFontSize": 12,
+            "titleFontSize": 14,
+            "labelAngle": 0,
+            "labelFont": "Inter",
             "labelFontWeight": "bold"
           }
         },
@@ -76,7 +82,7 @@
           "type": "quantitative",
           "scale": { "domain": [4, 8.2] },
           "axis": {
-            "title": "Revenue (AUD $Billions)",
+            "title": "Revenue (AUD $B)",
             "titleColor": "#4DA3FF",
             "labelColor": "#4DA3FF",
             "gridColor": "#1A2238",
@@ -86,51 +92,51 @@
         },
 
         "tooltip": [
-          { "field": "financial_year", "type": "ordinal", "title": "Year" },
-          {
-            "field": "revenue_billion",
-            "type": "quantitative",
-            "title": "Revenue (Billion)",
-            "format": "$.1f",
-            "formatType": "number"
-          }
+          { "field": "financial_year", "title": "Year" },
+          { "field": "revenue_label", "title": "Revenue" }
         ]
       }
     },
 
+
     {
       "mark": {
         "type": "line",
-        "strokeWidth": 4,
+        "interpolate": "monotone",
+        "strokeWidth": 3,
         "color": "#72E3C0",
         "point": {
           "filled": true,
-          "size": 120,
+          "size": 90,
           "fill": "#72E3C0",
           "stroke": "white",
-          "strokeWidth": 1.5
+          "strokeWidth": 1.2
         }
       },
+
       "encoding": {
         "x": { "field": "financial_year", "type": "ordinal" },
+
         "y": {
           "field": "employment",
           "type": "quantitative",
           "scale": { "domain": [10000, 20000] },
           "axis": {
-            "orient": "right",
-            "title": "Employment",
-            "titleColor": "#72E3C0",
-            "labelColor": "#72E3C0",
-            "format": ",",
-            "domain": false,
-            "ticks": false
-          }
+          "orient": "right",
+          "title": "Employment",
+          "titleColor": "#72E3C0",
+          "labelColor": "#72E3C0",
+          "format": ".2s",
+          "domain": false,
+          "ticks": false,
+          "labelFont": "Inter",
+          "titleFont": "Inter"
+        }
         },
 
         "tooltip": [
-          { "field": "financial_year", "type": "ordinal", "title": "Year" },
-          { "field": "employment", "type": "quantitative", "title": "Employment" }
+          { "field": "financial_year", "title": "Year" },
+          { "field": "employment", "title": "Employment" }
         ]
       }
     }
