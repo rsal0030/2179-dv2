@@ -1,16 +1,17 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
 
-  "width": 950,
-  "height": 500,
+  "width": "container",
+  "height": 400,
 
   "background": "#0B1020",
 
   "title": {
-    "text": "Global Space Agencies",
-    "subtitle": "Year of National Space Agency Foundation",
+    "text": "A Newcomer Among Space Powers",
+    "subtitle": ["Compared with long-established agencies in the United States, Russia, India, and China, Australia’s national space agency was founded", "only recently in 2018"],
     "color": "#FFFFFF",
     "subtitleColor": "#9AA5B1",
+    "subtitlePadding": 8,
     "font": "Orbitron",
     "fontSize": 22,
     "subtitleFont": "Inter",
@@ -28,6 +29,7 @@
   },
 
   "transform": [
+
     {
       "calculate":
         "datum.id == 840 ? 1958 : datum.id == 156 ? 1993 : datum.id == 356 ? 1969 : datum.id == 643 ? 1992 : datum.id == 392 ? 2003 : datum.id == 36 ? 2018 : null",
@@ -35,45 +37,80 @@
     },
 
     {
+    "filter": "datum.id != 10"
+  },
+
+    {
       "calculate":
         "datum.id == 840 ? 'United States' : datum.id == 156 ? 'China' : datum.id == 356 ? 'India' : datum.id == 643 ? 'Russia' : datum.id == 392 ? 'Japan' : datum.id == 36 ? 'Australia' : 'No Agency Data'",
       "as": "country"
+    },
+
+    {
+      "calculate":
+        "datum.id == 36 ? 'Australia (2018)' : datum.founded < 1950 ? 'Before 1950' : datum.founded < 1990 ? '1950–1989' : datum.founded < 2010 ? '1990–2009' : datum.founded >= 2010 ? '2010 onwards' : 'No Data'",
+      "as": "agency_group"
     }
   ],
 
   "projection": {
-    "type": "equalEarth"
+    "type": "naturalEarth1"
   },
 
   "mark": {
-    "type": "geoshape",
-    "stroke": "#1E293B",
-    "strokeWidth": 0.7
+    "type": "geoshape"
   },
 
   "encoding": {
+    "stroke": {
+  "condition": {
+    "test": "datum.id == 36",
+    "value": "#FFFFFF"
+  },
+  "value": "#182033"
+},
+
+"strokeWidth": {
+  "condition": {
+    "test": "datum.id == 36",
+    "value": 2
+  },
+  "value": 0.6
+},
     "color": {
-      "field": "founded",
-      "type": "quantitative",
+      "field": "agency_group",
+      "type": "nominal",
 
       "scale": {
-        "range": [
-          "#5DA9FF",
-          "#8ECAE6",
-          "#90BE6D",
-          "#FFB703",
-          "#F94144"
+        "domain": [
+          "Before 1950",
+          "1950–1989",
+          "1990–2009",
+          "2010 onwards",
+          "Australia (2018)",
+          "No Data"
         ],
-        "reverse": true
+
+        "range": [
+          "#355C7D",
+          "#6C91BF",
+          "#90BE6D",
+          "#F9C74F",
+          "#F94144",
+          "#1B2438"
+        ]
       },
 
       "legend": {
-        "title": "Founded",
+        "title": "National Space Agency Founded",
         "titleColor": "#EAEAEA",
         "labelColor": "#EAEAEA",
-        "gradientLength": 250,
+        "labelFontSize": 11,
+        "titleFontSize": 11,
         "orient": "bottom",
-        "direction": "horizontal"
+        "direction": "horizontal",
+        "columns": 3,
+        "symbolType": "square"
       }
     },
 
@@ -85,21 +122,27 @@
       {
         "field": "founded",
         "title": "Founded"
+      },
+      {
+        "field": "agency_group",
+        "title": "Category"
       }
     ]
   },
 
   "config": {
-    "background": "#0B1020",
+
+    "background": "#0F172A",
 
     "view": {
       "stroke": null
     },
 
     "style": {
+
       "guide-label": {
         "fill": "#EAEAEA",
-        "font": "Obitron"
+        "font": "Inter"
       },
 
       "guide-title": {
