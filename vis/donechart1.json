@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
   "width": 900,
-  "height": 350,
+  "height": 250,
 
   "background": "#0B1020",
 
@@ -24,49 +24,50 @@
   },
 
   "transform": [
-  {
-    "window": [
-      {
-        "op": "row_number",
-        "as": "index"
-      }
-    ]
-  },
+    {
+      "window": [
+        {
+          "op": "row_number",
+          "as": "index"
+        }
+      ]
+    },
 
-  {
-    "window": [
-      {
-        "op": "row_number",
-        "as": "year_index"
-      }
-    ],
-    "groupby": ["year"]
-  },
+    {
+      "window": [
+        {
+          "op": "row_number",
+          "as": "year_index"
+        }
+      ],
+      "groupby": ["year"]
+    },
 
-  {
-    "joinaggregate": [
-      {
-        "op": "count",
-        "as": "year_count"
-      }
-    ],
-    "groupby": ["year"]
-  },
+    {
+      "joinaggregate": [
+        {
+          "op": "count",
+          "as": "year_count"
+        }
+      ],
+      "groupby": ["year"]
+    },
 
-  {
-    "calculate": "(datum.year_index - (datum.year_count + 1)/2) * 18",
-    "as": "x_offset"
-  },
+    {
+      "calculate": "(datum.year_index - (datum.year_count + 1)/2) * 45",
+      "as": "x_offset"
+    },
 
-  {
-    "calculate": "datum.index % 2 == 0 ? 40 : 210",
-    "as": "label_y"
-  },
+    {
+      "calculate": "datum.index % 2 == 0 ? 'bottom' : 'top'",
+      "as": "side"
+    },
 
-  {
-    "calculate": "replace(replace(replace(datum.label, ' Agency ', ' Agency\\n'), ' Satellite ', ' Satellite\\n'), ' Mission ', ' Mission\\n')",
-    "as": "wrapped_label"
-  }
+    {
+      "calculate":
+        "length(datum.label) > 20 ? substring(datum.label,0,22) + '…' : datum.label",
+      "as": "wrapped_label"
+    }
   ],
 
   "layer": [
@@ -74,13 +75,13 @@
     {
       "mark": {
         "type": "rule",
-        "stroke": "#5DA9FF",
-        "strokeWidth": 3
+        "stroke": "#3B82F6",
+        "strokeWidth": 2.3
       },
 
       "encoding": {
         "y": {
-          "value": 125
+          "value": 105
         }
       }
     },
@@ -111,7 +112,7 @@
         },
 
         "y": {
-          "value": 125
+          "value": 105
         }
       }
     },
@@ -147,7 +148,7 @@
         },
 
         "y": {
-          "value": 125
+          "value": 105
         },
 
         "color": {
@@ -207,9 +208,16 @@
     },
 
     {
+      "transform": [
+        {
+          "filter": "datum.side == 'top'"
+        }
+      ],
+
       "mark": {
         "type": "rule",
-        "stroke": "#9AA5B1",
+        "stroke": "#94A3B8",
+        "opacity": 0.6,
         "strokeWidth": 1.5
       },
 
@@ -225,27 +233,27 @@
         },
 
         "y": {
-          "value": 125
+          "value": 105
         },
 
         "y2": {
-          "field": "label_y",
-          "type": "quantitative"
+          "value": 48
         }
       }
     },
 
     {
+      "transform": [
+        {
+          "filter": "datum.side == 'bottom'"
+        }
+      ],
+
       "mark": {
-        "type": "text",
-        "font": "Inter",
-        "fontSize": 11,
-        "fontWeight": "bold",
-        "fill": "#EAEAEA",
-        "align": "center",
-        "baseline": "middle",
-        "lineHeight": 14,
-        "limit": 120
+        "type": "rule",
+        "stroke": "#94A3B8",
+        "opacity": 0.6,
+        "strokeWidth": 1.5
       },
 
       "encoding": {
@@ -260,8 +268,85 @@
         },
 
         "y": {
-          "field": "label_y"
-          ,"type": "quantitative"
+          "value": 105
+        },
+
+        "y2": {
+          "value": 172
+        }
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "filter": "datum.side == 'top'"
+        }
+      ],
+
+      "mark": {
+        "type": "text",
+        "font": "Inter",
+        "fontSize": 9,
+        "fontWeight": "bold",
+        "fill": "#EAEAEA",
+        "align": "center",
+        "baseline": "bottom",
+        "lineHeight": 14
+      },
+
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+
+        "xOffset": {
+          "field": "x_offset",
+          "type": "quantitative"
+        },
+
+        "y": {
+          "value": 28
+        },
+
+        "text": {
+          "field": "wrapped_label"
+        }
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "filter": "datum.side == 'bottom'"
+        }
+      ],
+
+      "mark": {
+        "type": "text",
+        "font": "Inter",
+        "fontSize": 9,
+        "fontWeight": "bold",
+        "fill": "#EAEAEA",
+        "align": "center",
+        "baseline": "top",
+        "lineHeight": 14
+      },
+
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+
+        "xOffset": {
+          "field": "x_offset",
+          "type": "quantitative"
+        },
+
+        "y": {
+          "value": 182
         },
 
         "text": {
@@ -282,6 +367,11 @@
       "grid": false
     },
 
+    "axisX": {
+      "labelPadding": 10,
+      "labelFontWeight": "bold"
+    },
+
     "axisY": {
       "grid": false,
       "domain": false,
@@ -293,6 +383,7 @@
     "legend": {
       "labelFont": "Inter",
       "titleFont": "Inter"
+      
     }
   }
 }
