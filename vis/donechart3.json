@@ -1,243 +1,45 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
   "width": "container",
+  "height": 420,
 
   "background": "#0B1020",
 
-  "vconcat": [
-    {
-      "width": 850,
-      "height": 220,
+  "title": {
+    "text": [
+      "Australia’s Space Industry Accelerated After the Australian Space Agency Was",
+      "Formed"
+    ],
+    "subtitle": "Revenue and employment growth strengthened after 2019",
+    "color": "#FFFFFF",
+    "subtitleColor": "#9AA5B1",
+    "font": "Orbitron",
+    "fontSize": 20,
+    "subtitleFont": "Inter",
+    "subtitleFontSize": 13,
+    "anchor": "start",
+    "offset": 18
+  },
 
-      "title": {
-        "text": "Australia's Space Industry Revenue Has Rapidly Expanded",
-        "subtitle": "Industry revenue growth since the formation of the Australian Space Agency",
-        "color": "#FFFFFF",
-        "subtitleColor": "#9AA5B1",
-        "font": "Orbitron",
-        "fontSize": 24,
-        "subtitleFont": "Inter",
-        "subtitleFontSize": 14,
-        "anchor": "start",
-        "offset": 20
-      },
+  "data": {
+    "values": [
+      { "financial_year": "2017", "revenue_billion": 4.3, "employment": 10430 },
+      { "financial_year": "2019", "revenue_billion": 4.6, "employment": 11560 },
+      { "financial_year": "2020", "revenue_billion": 5.7, "employment": 15234 },
+      { "financial_year": "2023", "revenue_billion": 8.0, "employment": 19595 }
+    ]
+  },
 
-      "data": {
-        "values": [
-          {
-            "financial_year": "2017",
-            "revenue_billion": 4.3,
-            "employment": 10430,
-            "revenue_label": "$4.3B",
-            "employment_label": "10,430"
-          },
-          {
-            "financial_year": "2019",
-            "revenue_billion": 4.6,
-            "employment": 11560,
-            "revenue_label": "$4.6B",
-            "employment_label": "11,560"
-          },
-          {
-            "financial_year": "2020",
-            "revenue_billion": 5.7,
-            "employment": 15234,
-            "revenue_label": "$5.7B",
-            "employment_label": "15,234"
-          },
-          {
-            "financial_year": "2023",
-            "revenue_billion": 8.0,
-            "employment": 19595,
-            "revenue_label": "$8.0B",
-            "employment_label": "19,595"
-          }
-        ]
-      },
+  "resolve": {
+    "scale": {
+      "y": "independent"
+    }
+  },
 
-      "encoding": {
-        "x": {
-          "field": "financial_year",
-          "type": "ordinal",
-          "axis": {
-            "title": null,
-            "labelColor": "#EAEAEA",
-            "tickColor": "#2A324A",
-            "domainColor": "#2A324A",
-            "labelFont": "Inter",
-            "labelFontSize": 12
-          }
-        },
-
-        "y": {
-          "field": "revenue_billion",
-          "type": "quantitative",
-          "title": "Revenue (AUD $Billions)",
-          "scale": {
-            "zero": false
-          },
-          "axis": {
-            "titleColor": "#EAEAEA",
-            "labelColor": "#EAEAEA",
-            "gridColor": "#2A324A",
-            "domainColor": "#2A324A",
-            "titleFont": "Inter",
-            "labelFont": "Inter"
-          }
-        },
-
-        "tooltip": [
-          {
-            "field": "financial_year",
-            "type": "ordinal",
-            "title": "Financial Year"
-          },
-          {
-            "field": "revenue_billion",
-            "type": "quantitative",
-            "title": "Revenue (AUD $Billions)"
-          }
-        ]
-      },
-
-      "layer": [
-        {
-          "mark": {
-            "type": "line",
-            "strokeWidth": 4,
-            "color": "#5DA9FF",
-            "point": {
-              "filled": true,
-              "size": 90,
-              "fill": "#5DA9FF"
-            }
-          }
-        },
-
-        {
-          "transform": [
-            {
-              "filter": "datum.financial_year == '2023'"
-            }
-          ],
-
-          "mark": {
-            "type": "text",
-            "align": "left",
-            "dx": 10,
-            "dy": -10,
-            "font": "Inter",
-            "fontSize": 12,
-            "fontWeight": "bold",
-            "fill": "#FFB703"
-          },
-
-          "encoding": {
-            "text": {
-              "field": "revenue_label"
-            }
-          }
-        },
-
-        {
-          "data": {
-            "values": [
-              {
-                "financial_year": "2018"
-              }
-            ]
-          },
-
-          "mark": {
-            "type": "rule",
-            "stroke": "#FFB703",
-            "strokeDash": [6, 4],
-            "strokeWidth": 2
-          },
-
-          "encoding": {
-            "x": {
-              "field": "financial_year",
-              "type": "ordinal"
-            }
-          }
-        },
-
-        {
-          "data": {
-            "values": [
-              {
-                "financial_year": "2018",
-                "label": "Australian Space Agency Founded"
-              }
-            ]
-          },
-
-          "mark": {
-            "type": "text",
-            "angle": -90,
-            "dx": -10,
-            "dy": -70,
-            "font": "Inter",
-            "fontSize": 11,
-            "fill": "#FFB703"
-          },
-
-          "encoding": {
-            "x": {
-              "field": "financial_year",
-              "type": "ordinal"
-            },
-
-            "text": {
-              "field": "label"
-            },
-
-            "y": {
-              "value": 20
-            }
-          }
-        }
-      ]
-    },
+  "layer": [
 
     {
-      "width": 850,
-      "height": 220,
-
-      "data": {
-        "values": [
-          {
-            "financial_year": "2017",
-            "revenue_billion": 4.3,
-            "employment": 10430,
-            "revenue_label": "$4.3B",
-            "employment_label": "10,430"
-          },
-          {
-            "financial_year": "2019",
-            "revenue_billion": 4.6,
-            "employment": 11560,
-            "revenue_label": "$4.6B",
-            "employment_label": "11,560"
-          },
-          {
-            "financial_year": "2020",
-            "revenue_billion": 5.7,
-            "employment": 15234,
-            "revenue_label": "$5.7B",
-            "employment_label": "15,234"
-          },
-          {
-            "financial_year": "2023",
-            "revenue_billion": 8.0,
-            "employment": 19595,
-            "revenue_label": "$8.0B",
-            "employment_label": "19,595"
-          }
-        ]
-      },
-
       "encoding": {
         "x": {
           "field": "financial_year",
@@ -246,156 +48,126 @@
             "title": "Financial Year",
             "titleColor": "#EAEAEA",
             "labelColor": "#EAEAEA",
-            "tickColor": "#2A324A",
-            "domainColor": "#2A324A",
+            "domain": false,
+            "ticks": false,
+            "labelFont": "Inter",
+            "titleFont": "Inter"
+          }
+        },
+        "y": {
+          "field": "revenue_billion",
+          "type": "quantitative",
+          "scale": { "domain": [4, 8.2] },
+          "axis": {
+            "title": "Revenue (AUD $Billions)",
+            "titleColor": "#4DA3FF",
+            "labelColor": "#4DA3FF",
+            "gridColor": "#1A2238",
+            "domain": false,
+            "ticks": false,
+            "labelPadding": 8,
             "titleFont": "Inter",
             "labelFont": "Inter"
           }
         },
+        "tooltip": [
+          { "field": "financial_year", "type": "ordinal", "title": "Year" },
+          { "field": "revenue_billion", "type": "quantitative", "title": "Revenue" }
+        ]
+      },
+      "mark": {
+        "type": "line",
+        "strokeWidth": 4,
+        "color": "#4DA3FF",
+        "point": {
+          "filled": true,
+          "size": 110,
+          "fill": "#4DA3FF"
+        }
+      }
+    },
 
+    {
+      "encoding": {
+        "x": { "field": "financial_year", "type": "ordinal" },
         "y": {
           "field": "employment",
           "type": "quantitative",
-          "title": "Employment",
-          "scale": {
-            "zero": false
-          },
+          "scale": { "domain": [10000, 20000] },
           "axis": {
-            "titleColor": "#EAEAEA",
-            "labelColor": "#EAEAEA",
-            "gridColor": "#2A324A",
-            "domainColor": "#2A324A",
+            "orient": "right",
+            "title": "Employment",
+            "titleColor": "#72E3C0",
+            "labelColor": "#72E3C0",
+            "format": ",",
+            "grid": false,
+            "domain": false,
+            "ticks": false,
+            "labelPadding": 8,
             "titleFont": "Inter",
             "labelFont": "Inter"
           }
         },
-
         "tooltip": [
+          { "field": "financial_year", "type": "ordinal", "title": "Year" },
+          { "field": "employment", "type": "quantitative", "title": "Employment" }
+        ]
+      },
+      "mark": {
+        "type": "line",
+        "strokeWidth": 4,
+        "color": "#72E3C0",
+        "point": {
+          "filled": true,
+          "size": 110,
+          "fill": "#72E3C0"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [{ "financial_year": "2019" }]
+      },
+      "mark": {
+        "type": "rule",
+        "stroke": "#FFB703",
+        "strokeDash": [6, 4],
+        "strokeWidth": 2,
+        "opacity": 0.6
+      },
+      "encoding": {
+        "x": { "field": "financial_year", "type": "ordinal" }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
           {
-            "field": "financial_year",
-            "type": "ordinal",
-            "title": "Financial Year"
-          },
-          {
-            "field": "employment",
-            "type": "quantitative",
-            "title": "Employment"
+            "financial_year": "2019",
+            "label": "Australian Space Agency Formed"
           }
         ]
       },
-
-      "layer": [
-        {
-          "mark": {
-            "type": "line",
-            "strokeWidth": 4,
-            "color": "#8ECAE6",
-            "point": {
-              "filled": true,
-              "size": 90,
-              "fill": "#8ECAE6"
-            }
-          }
-        },
-
-        {
-          "transform": [
-            {
-              "filter": "datum.financial_year == '2023'"
-            }
-          ],
-
-          "mark": {
-            "type": "text",
-            "align": "left",
-            "dx": 10,
-            "dy": -10,
-            "font": "Inter",
-            "fontSize": 12,
-            "fontWeight": "bold",
-            "fill": "#FFB703"
-          },
-
-          "encoding": {
-            "text": {
-              "field": "employment_label"
-            }
-          }
-        },
-
-        {
-          "data": {
-            "values": [
-              {
-                "financial_year": "2018"
-              }
-            ]
-          },
-
-          "mark": {
-            "type": "rule",
-            "stroke": "#FFB703",
-            "strokeDash": [6, 4],
-            "strokeWidth": 2
-          },
-
-          "encoding": {
-            "x": {
-              "field": "financial_year",
-              "type": "ordinal"
-            }
-          }
-        },
-
-        {
-          "data": {
-            "values": [
-              {
-                "financial_year": "2018",
-                "label": "ASA Founded"
-              }
-            ]
-          },
-
-          "mark": {
-            "type": "text",
-            "angle": -90,
-            "dx": -10,
-            "dy": -70,
-            "font": "Inter",
-            "fontSize": 11,
-            "fill": "#FFB703"
-          },
-
-          "encoding": {
-            "x": {
-              "field": "financial_year",
-              "type": "ordinal"
-            },
-
-            "text": {
-              "field": "label"
-            },
-
-            "y": {
-              "value": 20
-            }
-          }
-        }
-      ]
+      "mark": {
+        "type": "text",
+        "dx": 10,
+        "dy": -15,
+        "font": "Inter",
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "fill": "#FFB703"
+      },
+      "encoding": {
+        "x": { "field": "financial_year", "type": "ordinal" },
+        "y": { "value": 80 },
+        "text": { "field": "label" }
+      }
     }
   ],
 
-  "spacing": 40,
-
   "config": {
-    "view": {
-      "stroke": null
-    },
-
-    "axis": {
-      "labelFont": "Inter",
-      "titleFont": "Inter"
-    }
+    "view": { "stroke": null }
   }
 }
