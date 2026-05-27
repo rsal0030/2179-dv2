@@ -3,7 +3,6 @@
 
   "width": "container",
   "height": 420,
-
   "background": "#0B1020",
 
   "title": {
@@ -32,14 +31,24 @@
   },
 
   "resolve": {
-    "scale": {
-      "y": "independent"
-    }
+    "scale": { "y": "independent" }
   },
 
   "layer": [
 
     {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 4,
+        "color": "#4DA3FF",
+        "point": {
+          "filled": true,
+          "size": 120,
+          "fill": "#4DA3FF",
+          "stroke": "white",
+          "strokeWidth": 1.5
+        }
+      },
       "encoding": {
         "x": {
           "field": "financial_year",
@@ -50,10 +59,18 @@
             "labelColor": "#EAEAEA",
             "domain": false,
             "ticks": false,
+
+            "labelAngle": 0,
+            "labelAlign": "center",
+            "labelBaseline": "top",
+
             "labelFont": "Inter",
-            "titleFont": "Inter"
+            "titleFont": "Inter",
+            "labelFontSize": 12,
+            "labelFontWeight": "bold"
           }
         },
+
         "y": {
           "field": "revenue_billion",
           "type": "quantitative",
@@ -64,30 +81,36 @@
             "labelColor": "#4DA3FF",
             "gridColor": "#1A2238",
             "domain": false,
-            "ticks": false,
-            "labelPadding": 8,
-            "titleFont": "Inter",
-            "labelFont": "Inter"
+            "ticks": false
           }
         },
+
         "tooltip": [
           { "field": "financial_year", "type": "ordinal", "title": "Year" },
-          { "field": "revenue_billion", "type": "quantitative", "title": "Revenue" }
+          {
+            "field": "revenue_billion",
+            "type": "quantitative",
+            "title": "Revenue (Billion)",
+            "format": "$.1f",
+            "formatType": "number"
+          }
         ]
-      },
-      "mark": {
-        "type": "line",
-        "strokeWidth": 4,
-        "color": "#4DA3FF",
-        "point": {
-          "filled": true,
-          "size": 110,
-          "fill": "#4DA3FF"
-        }
       }
     },
 
     {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 4,
+        "color": "#72E3C0",
+        "point": {
+          "filled": true,
+          "size": 120,
+          "fill": "#72E3C0",
+          "stroke": "white",
+          "strokeWidth": 1.5
+        }
+      },
       "encoding": {
         "x": { "field": "financial_year", "type": "ordinal" },
         "y": {
@@ -100,74 +123,24 @@
             "titleColor": "#72E3C0",
             "labelColor": "#72E3C0",
             "format": ",",
-            "grid": false,
             "domain": false,
-            "ticks": false,
-            "labelPadding": 8,
-            "titleFont": "Inter",
-            "labelFont": "Inter"
+            "ticks": false
           }
         },
+
         "tooltip": [
           { "field": "financial_year", "type": "ordinal", "title": "Year" },
           { "field": "employment", "type": "quantitative", "title": "Employment" }
         ]
-      },
-      "mark": {
-        "type": "line",
-        "strokeWidth": 4,
-        "color": "#72E3C0",
-        "point": {
-          "filled": true,
-          "size": 110,
-          "fill": "#72E3C0"
-        }
-      }
-    },
-
-    {
-      "data": {
-        "values": [{ "financial_year": "2019" }]
-      },
-      "mark": {
-        "type": "rule",
-        "stroke": "#FFB703",
-        "strokeDash": [6, 4],
-        "strokeWidth": 2,
-        "opacity": 0.6
-      },
-      "encoding": {
-        "x": { "field": "financial_year", "type": "ordinal" }
-      }
-    },
-
-    {
-      "data": {
-        "values": [
-          {
-            "financial_year": "2019",
-            "label": "Australian Space Agency Formed"
-          }
-        ]
-      },
-      "mark": {
-        "type": "text",
-        "dx": 10,
-        "dy": -15,
-        "font": "Inter",
-        "fontSize": 11,
-        "fontWeight": "bold",
-        "fill": "#FFB703"
-      },
-      "encoding": {
-        "x": { "field": "financial_year", "type": "ordinal" },
-        "y": { "value": 80 },
-        "text": { "field": "label" }
       }
     }
   ],
 
   "config": {
-    "view": { "stroke": null }
+    "view": { "stroke": null },
+    "axis": {
+      "labelFont": "Inter",
+      "titleFont": "Inter"
+    }
   }
 }
