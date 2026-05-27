@@ -24,24 +24,49 @@
   },
 
   "transform": [
-    {
-      "window": [
-        {
-          "op": "row_number",
-          "as": "index"
-        }
-      ]
-    },
+  {
+    "window": [
+      {
+        "op": "row_number",
+        "as": "index"
+      }
+    ]
+  },
 
-    {
-      "calculate": "datum.index % 2 == 0 ? 40 : 210",
-      "as": "label_y"
-    },
+  {
+    "window": [
+      {
+        "op": "row_number",
+        "as": "year_index"
+      }
+    ],
+    "groupby": ["year"]
+  },
 
-    {
-      "calculate": "replace(replace(replace(datum.label, ' Agency ', ' Agency\\n'), ' Satellite ', ' Satellite\\n'), ' Mission ', ' Mission\\n')",
-      "as": "wrapped_label"
-    }
+  {
+    "joinaggregate": [
+      {
+        "op": "count",
+        "as": "year_count"
+      }
+    ],
+    "groupby": ["year"]
+  },
+
+  {
+    "calculate": "(datum.year_index - (datum.year_count + 1)/2) * 18",
+    "as": "x_offset"
+  },
+
+  {
+    "calculate": "datum.index % 2 == 0 ? 40 : 210",
+    "as": "label_y"
+  },
+
+  {
+    "calculate": "replace(replace(replace(datum.label, ' Agency ', ' Agency\\n'), ' Satellite ', ' Satellite\\n'), ' Mission ', ' Mission\\n')",
+    "as": "wrapped_label"
+  }
   ],
 
   "layer": [
@@ -80,6 +105,11 @@
           "type": "ordinal"
         },
 
+        "xOffset": {
+          "field": "x_offset",
+          "type": "quantitative"
+        },
+
         "y": {
           "value": 125
         }
@@ -109,6 +139,11 @@
             "domainColor": "#2A324A",
             "grid": false
           }
+        },
+
+        "xOffset": {
+          "field": "x_offset",
+          "type": "quantitative"
         },
 
         "y": {
@@ -184,6 +219,11 @@
           "type": "ordinal"
         },
 
+        "xOffset": {
+          "field": "x_offset",
+          "type": "quantitative"
+        },
+
         "y": {
           "value": 125
         },
@@ -214,9 +254,14 @@
           "type": "ordinal"
         },
 
-        "y": {
-          "field": "label_y",
+        "xOffset": {
+          "field": "x_offset",
           "type": "quantitative"
+        },
+
+        "y": {
+          "field": "label_y"
+          ,"type": "quantitative"
         },
 
         "text": {
@@ -233,7 +278,16 @@
 
     "axis": {
       "labelFont": "Inter",
-      "titleFont": "Inter"
+      "titleFont": "Inter",
+      "grid": false
+    },
+
+    "axisY": {
+      "grid": false,
+      "domain": false,
+      "ticks": false,
+      "labels": false,
+      "title": null
     },
 
     "legend": {
