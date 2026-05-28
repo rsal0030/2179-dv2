@@ -3,17 +3,30 @@
 
   "width": "container",
   "height": 560,
+
   "background": "#0B1020",
 
   "title": {
-    "text": "Australia’s Space Industry Is Spread Across the Country",
-    "subtitle": "Launch sites, research centres, universities and industry hubs mapped by location",
+    "text": "Australia’s Space Infrastructure Is Geographically Strategic",
+    "subtitle": "Concentrated hubs of tracking, launch, intelligence and research facilities",
     "anchor": "start",
     "fontSize": 24,
     "font": "Orbitron",
     "color": "#FFFFFF",
     "subtitleColor": "#9AA5B1"
   },
+
+  "params": [
+    {
+      "name": "facilityFilter",
+      "value": "All",
+      "bind": {
+        "input": "select",
+        "options": ["All", "Launch Site", "Tracking", "Defence", "Research"],
+        "name": "Facility Type: "
+      }
+    }
+  ],
 
   "projection": {
     "type": "mercator",
@@ -43,10 +56,20 @@
         "url": "https://raw.githubusercontent.com/rsal0030/2179-dv2/main/data/space_facilities.csv"
       },
 
+      "transform": [
+        {
+          "calculate": "indexof(datum.type, 'Launch') >= 0 ? 'Launch Site' : indexof(datum.type, 'Tracking') >= 0 ? 'Tracking' : indexof(datum.type, 'Deep Space') >= 0 ? 'Tracking' : indexof(datum.type, 'Defence') >= 0 ? 'Defence' : indexof(datum.type, 'Intelligence') >= 0 ? 'Defence' : indexof(datum.type, 'Space Surveillance') >= 0 ? 'Research' : indexof(datum.type, 'Radio') >= 0 ? 'Research' : indexof(datum.type, 'Earth') >= 0 ? 'Research' : 'Other'",
+          "as": "Category"
+        },
+        {
+          "filter": "facilityFilter == 'All' || datum.Category == facilityFilter"
+        }
+      ],
+
       "mark": {
         "type": "circle",
-        "size": 650,
-        "opacity": 0.12,
+        "size": 900,
+        "opacity": 0.10,
         "color": "#5DA9FF"
       },
 
@@ -61,9 +84,18 @@
         "url": "https://raw.githubusercontent.com/rsal0030/2179-dv2/main/data/space_facilities.csv"
       },
 
+      "transform": [
+        {
+          "calculate": "indexof(datum.type, 'Launch') >= 0 ? 'Launch Site' : indexof(datum.type, 'Tracking') >= 0 ? 'Tracking' : indexof(datum.type, 'Deep Space') >= 0 ? 'Tracking' : indexof(datum.type, 'Defence') >= 0 ? 'Defence' : indexof(datum.type, 'Intelligence') >= 0 ? 'Defence' : indexof(datum.type, 'Space Surveillance') >= 0 ? 'Research' : indexof(datum.type, 'Radio') >= 0 ? 'Research' : indexof(datum.type, 'Earth') >= 0 ? 'Research' : 'Other'",
+          "as": "Category"
+        },
+        {
+          "filter": "facilityFilter == 'All' || datum.Category == facilityFilter"
+        }
+      ],
+
       "mark": {
         "type": "circle",
-        "size": 180,
         "stroke": "#FFFFFF",
         "strokeWidth": 1.5
       },
@@ -73,43 +105,77 @@
         "longitude": { "field": "long", "type": "quantitative" },
         "latitude": { "field": "lat", "type": "quantitative" },
 
+        "size": {
+          "condition": [
+            {
+              "test": "datum.name == 'Canberra Deep Space Communication Complex' || datum.name == 'Pine Gap'",
+              "value": 320
+            }
+          ],
+          "value": 120
+        },
+
         "color": {
-          "field": "type",
+          "field": "Category",
           "type": "nominal",
 
           "scale": {
-            "range": [
-              "#FFB703",
-              "#5DA9FF",
-              "#90BE6D",
-              "#B5179E",
-              "#43AA8B"
-            ]
-          },
-
-          "legend": {
-            "title": "Facility Type",
-            "orient": "right",
-            "titleColor": "#FFFFFF",
-            "labelColor": "#EAEAEA",
-            "symbolType": "circle",
-            "symbolSize": 160
+            "domain": ["Launch Site", "Tracking", "Defence", "Research"],
+            "range": ["#FFB703", "#5DA9FF", "#B5179E", "#90BE6D"]
           }
         },
 
         "tooltip": [
           { "field": "name", "title": "Facility" },
-          { "field": "type", "title": "Type" },
+          { "field": "Category", "title": "Category" },
           { "field": "operator", "title": "Operator" },
           { "field": "state", "title": "State" },
           { "field": "description", "title": "Description" }
         ]
       }
-    }
+    },
 
+    {
+      "mark": {
+        "type": "rect",
+        "fill": "#0F172A",
+        "opacity": 0.92,
+        "cornerRadius": 6
+      },
+      "encoding": {
+        "x": { "value": 520 },
+        "x2": { "value": 860 },
+        "y": { "value": 60 },
+        "y2": { "value": 150 }
+      }
+    },
+
+    {
+      "mark": {
+        "type": "text",
+        "color": "#FFFFFF",
+        "fontSize": 13,
+        "lineBreak": "\n"
+      },
+      "encoding": {
+        "x": { "value": 530 },
+        "y": { "value": 85 },
+        "text": {
+          "value": "Canberra Deep Space Communication Complex\nOne of only three NASA deep-space tracking stations globally\nSupports Mars & interplanetary missions"
+        }
+      }
+    }
   ],
 
   "config": {
-    "view": { "stroke": null }
+    "view": { "stroke": null },
+    "axis": {
+      "labelFont": "Inter",
+      "titleFont": "Inter"
+    },
+    "legend": {
+      "labelFont": "Inter",
+      "titleFont": "Inter"
+    }
   }
 }

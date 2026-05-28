@@ -1,19 +1,21 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
 
-  "width": 900,
-  "height": 500,
-  "padding": 2,
+  "width": 940,
+  "height": 520,
+  "padding": 12,
   "background": "#0B1020",
 
   "title": {
-    "text": "What Australia’s Satellites Are Used For",
-    "subtitle": "Treemap of satellite mission purposes",
+    "text": "Distribution of Australian Satellite Missions",
+    "subtitle": "Treemap showing relative share of satellite mission purposes",
     "anchor": "start",
     "font": "Orbitron",
     "fontSize": 24,
+    "fontWeight": "bold",
     "color": "white",
-    "subtitleColor": "#9AA5B1"
+    "subtitleColor": "#AAB4C3",
+    "offset": 18
   },
 
   "data": [
@@ -25,9 +27,9 @@
 
         { "id": "Communications", "parent": "root", "value": 20 },
         { "id": "Earth Observation", "parent": "root", "value": 15 },
+        { "id": "Technology Demo", "parent": "root", "value": 12 },
         { "id": "Research", "parent": "root", "value": 10 },
-        { "id": "Navigation", "parent": "root", "value": 8 },
-        { "id": "Technology Demo", "parent": "root", "value": 12 }
+        { "id": "Navigation", "parent": "root", "value": 8 }
       ],
 
       "transform": [
@@ -41,10 +43,12 @@
           "type": "treemap",
           "field": "value",
           "sort": {
-            "field": "value"
+            "field": "value",
+            "order": "descending"
           },
           "round": true,
-          "paddingInner": 4,
+          "paddingInner": 6,
+          "paddingOuter": 2,
           "size": [
             { "signal": "width" },
             { "signal": "height" }
@@ -54,6 +58,12 @@
         {
           "type": "filter",
           "expr": "datum.depth > 0"
+        },
+
+        {
+          "type": "formula",
+          "as": "label",
+          "expr": "datum.id + '\\n' + datum.value + ' satellites'"
         }
       ]
     }
@@ -68,97 +78,135 @@
       "domain": [
         "Communications",
         "Earth Observation",
+        "Technology Demo",
         "Research",
-        "Navigation",
-        "Technology Demo"
+        "Navigation"
       ],
 
       "range": [
-        "#5DA9FF",
-        "#FFB703",
-        "#FB8500",
-        "#90BE6D",
-        "#B5179E"
+        "#4CC9F0",
+        "#4895EF",
+        "#4361EE",
+        "#7209B7",
+        "#F72585"
       ]
     }
   ],
 
-  "marks": [
-    {
-      "type": "rect",
+"marks": [
+  {
+    "type": "rect",
 
-      "from": {
-        "data": "tree"
-      },
-
-      "encode": {
-        "enter": {
-          "x": { "field": "x0" },
-          "y": { "field": "y0" },
-          "x2": { "field": "x1" },
-          "y2": { "field": "y1" },
-
-          "fill": {
-            "scale": "color",
-            "field": "id"
-          },
-
-          "stroke": {
-            "value": "#0B1020"
-          },
-
-          "strokeWidth": {
-            "value": 2
-          }
-        }
-      }
+    "from": {
+      "data": "tree"
     },
 
-    {
-      "type": "text",
+    "encode": {
+      "enter": {
+        "x": { "field": "x0" },
+        "y": { "field": "y0" },
+        "x2": { "field": "x1" },
+        "y2": { "field": "y1" },
 
-      "from": {
-        "data": "tree"
+        "fill": {
+          "scale": "color",
+          "field": "id"
+        },
+
+        "stroke": {
+          "value": "#111827"
+        },
+
+        "strokeWidth": {
+          "value": 1.5
+        },
+
+        "cornerRadius": {
+          "value": 4
+        }
       },
 
-      "encode": {
-        "enter": {
-          "x": {
-            "signal": "(datum.x0 + datum.x1)/2"
-          },
+      "update": {
+        "stroke": {
+          "value": "#111827"
+        },
 
-          "y": {
-            "signal": "(datum.y0 + datum.y1)/2"
-          },
+        "strokeWidth": {
+          "value": 1.5
+        },
 
-          "text": {
-            "field": "id"
-          },
+        "fillOpacity": {
+          "value": 1
+        }
+      },
 
-          "align": {
-            "value": "center"
-          },
+      "hover": {
+        "stroke": {
+          "value": "white"
+        },
 
-          "baseline": {
-            "value": "middle"
-          },
+        "strokeWidth": {
+          "value": 2.5
+        },
 
-          "fill": {
-            "value": "white"
-          },
-
-          "fontSize": {
-            "value": 14
-          },
-
-          "fontWeight": {
-            "value": "bold"
-          },
-          "font": {
-            "value": "Inter"
-          }
+        "fillOpacity": {
+          "value": 0.9
         }
       }
     }
+  },
+
+{
+  "type": "text",
+
+  "from": {
+    "data": "tree"
+  },
+
+  "encode": {
+    "enter": {
+      "x": {
+        "signal": "(datum.x0 + datum.x1)/2"
+      },
+
+      "y": {
+        "signal": "(datum.y0 + datum.y1)/2"
+      },
+
+      "text": {
+        "signal": "[datum.id, datum.value + ' satellites']"
+      },
+
+      "align": {
+        "value": "center"
+      },
+
+      "baseline": {
+        "value": "middle"
+      },
+
+      "fill": {
+        "value": "white"
+      },
+
+      "font": {
+        "value": "Inter"
+      },
+
+      "fontWeight": {
+        "value": "bold"
+      },
+
+      "fontSize": {
+        "value": 16
+      },
+
+      "lineHeight": {
+        "value": 24
+      }
+    }
+  }
+}
+
   ]
 }
