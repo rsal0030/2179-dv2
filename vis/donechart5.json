@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
   "width": "container",
-  "height": 500,
+  "height": 540,
 
   "background": "#0B1020",
 
@@ -16,6 +16,7 @@
           "All",
           "Research",
           "Commercial",
+          "Defence",
           "Other"
         ],
         "name": "Filter by Purpose: "
@@ -24,15 +25,16 @@
   ],
 
   "title": {
-    "text": "Australia’s Satellite Activity Took Off After 2018",
-    "subtitle": "Australia’s orbital activity surged after 2018, driven by commercial and research missions",
-    "color": "#FFFFFF",
-    "subtitleColor": "#9AA5B1",
+    "text": "Australia’s Presence in Orbit Explodes After 2018",
+    "subtitle": "Commercial launches triggered the fastest expansion in Australia’s orbital history",
+    "anchor": "start",
     "font": "Orbitron",
     "fontSize": 28,
+    "fontWeight": "bold",
+    "color": "#FFFFFF",
     "subtitleFont": "Inter",
     "subtitleFontSize": 14,
-    "anchor": "start",
+    "subtitleColor": "#9AA5B1",
     "offset": 20
   },
 
@@ -41,6 +43,7 @@
   },
 
   "transform": [
+
     {
       "calculate": "toNumber(datum['Launch year'])",
       "as": "launch_year"
@@ -80,6 +83,126 @@
   ],
 
   "layer": [
+
+    {
+      "transform": [
+        {
+          "aggregate": [
+            {
+              "op": "count",
+              "field": "Satellite_clean",
+              "as": "launches"
+            }
+          ],
+          "groupby": ["launch_year"]
+        }
+      ],
+
+      "mark": {
+        "type": "bar",
+        "cornerRadiusTopLeft": 5,
+        "cornerRadiusTopRight": 5
+      },
+
+      "encoding": {
+
+        "x": {
+          "field": "launch_year",
+          "type": "ordinal",
+          "sort": {
+            "field": "launch_year",
+            "order": "ascending"
+          },
+
+          "scale": {
+            "paddingInner": 0.35,
+            "paddingOuter": 0.2
+          },
+
+          "axis": {
+            "title": "Launch Year",
+            "labelAngle": 0,
+            "grid": false,
+            "labelColor": "#EAEAEA",
+            "titleColor": "#EAEAEA",
+            "domainColor": "#2A324A",
+            "tickColor": "#2A324A",
+            "labelFont": "Inter",
+            "titleFont": "Inter"
+          }
+        },
+
+        "y": {
+          "field": "launches",
+          "type": "quantitative",
+
+          "axis": {
+            "title": "Satellites Launched",
+            "gridColor": "#1C2236",
+            "labelColor": "#EAEAEA",
+            "titleColor": "#EAEAEA",
+            "domainColor": "#2A324A",
+            "tickColor": "#2A324A",
+            "labelFont": "Inter",
+            "titleFont": "Inter"
+          }
+        },
+
+        "color": {
+          "condition": {
+            "test": "datum.launch_year >= 2018",
+            "value": "#60A5FA"
+          },
+          "value": "#334155"
+        },
+
+        "opacity": {
+          "condition": {
+            "test": "datum.launch_year >= 2018",
+            "value": 1
+          },
+          "value": 0.35
+        },
+
+        "tooltip": [
+          {
+            "field": "launch_year",
+            "title": "Year"
+          },
+          {
+            "field": "launches",
+            "title": "Launches"
+          }
+        ]
+      }
+    },
+
+    {
+      "mark": {
+        "type": "circle",
+        "size": 650,
+        "opacity": 0.06,
+        "color": "#60A5FA"
+      },
+
+      "encoding": {
+
+        "x": {
+          "field": "launch_year",
+          "type": "ordinal",
+          "sort": {
+            "field": "launch_year",
+            "order": "ascending"
+          }
+        },
+
+        "y": {
+          "field": "rank",
+          "type": "quantitative"
+        }
+      }
+    },
+
     {
       "selection": {
         "hover": {
@@ -100,44 +223,25 @@
       },
 
       "encoding": {
+
         "x": {
           "field": "launch_year",
           "type": "ordinal",
-          "sort": "ascending",
-          "axis": {
-            "title": "Launch Year",
-            "titleColor": "#EAEAEA",
-            "labelColor": "#EAEAEA",
-            "grid": false,
-            "labelAngle": 0,
-            "domainColor": "#2A324A",
-            "tickColor": "#2A324A",
-            "labelFont": "Inter",
-            "titleFont": "Inter",
-            "labelOverlap": "greedy",
-            "labelPadding": 8
+          "sort": {
+            "field": "launch_year",
+            "order": "ascending"
           }
         },
 
         "y": {
           "field": "rank",
-          "type": "quantitative",
-          "axis": {
-            "title": "Number of Satellite Launches",
-            "titleColor": "#EAEAEA",
-            "labelColor": "#EAEAEA",
-            "gridColor": "#1C2236",
-            "domainColor": "#2A324A",
-            "tickColor": "#2A324A",
-            "labelFont": "Inter",
-            "titleFont": "Inter"
-          }
+          "type": "quantitative"
         },
 
         "size": {
           "condition": {
             "selection": "hover",
-            "value": 260
+            "value": 280
           },
           "value": 110
         },
@@ -147,26 +251,34 @@
             "selection": "hover",
             "value": 1
           },
-          "value": 0.55
+
+          "condition": {
+            "test": "datum.launch_year >= 2018",
+            "value": 0.95
+          },
+
+          "value": 0.3
         },
 
         "color": {
           "field": "Purpose",
           "type": "nominal",
+
           "scale": {
             "range": [
-              "#5DA9FF",
-              "#FFB703",
-              "#FB8500",
-              "#90BE6D",
-              "#B5179E",
-              "#43AA8B"
+              "#60A5FA",
+              "#F59E0B",
+              "#F97316",
+              "#10B981"
             ]
           },
+
           "legend": {
             "title": "Mission Purpose",
             "labelColor": "#EAEAEA",
-            "titleColor": "#EAEAEA"
+            "titleColor": "#EAEAEA",
+            "labelFont": "Inter",
+            "titleFont": "Inter"
           }
         },
 
@@ -195,7 +307,7 @@
       "data": {
         "values": [
           {
-            "launch_year": "2018"
+            "launch_year": 2018
           }
         ]
       },
@@ -203,11 +315,13 @@
       "mark": {
         "type": "rule",
         "color": "#FFFFFF",
-        "strokeDash": [4, 4],
-        "opacity": 0.4
+        "strokeDash": [6, 6],
+        "strokeWidth": 2,
+        "opacity": 0.5
       },
 
       "encoding": {
+
         "x": {
           "field": "launch_year",
           "type": "ordinal"
@@ -219,9 +333,9 @@
       "data": {
         "values": [
           {
-            "launch_year": "2018",
-            "rank": 15,
-            "label": "Launch acceleration begins after 2018"
+            "launch_year": 2019,
+            "rank": 12,
+            "label": "More satellites launched after 2018\nthan in all previous decades combined"
           }
         ]
       },
@@ -229,15 +343,17 @@
       "mark": {
         "type": "text",
         "align": "left",
-        "dx": 10,
+        "dx": 15,
         "dy": -10,
         "font": "Inter",
-        "fontSize": 14,
+        "fontSize": 15,
         "fontWeight": "bold",
+        "lineBreak": "\n",
         "color": "#FFFFFF"
       },
 
       "encoding": {
+
         "x": {
           "field": "launch_year",
           "type": "ordinal"
@@ -255,35 +371,54 @@
     },
 
     {
+      "transform": [
+        {
+          "aggregate": [
+            {
+              "op": "count",
+              "field": "Satellite_clean",
+              "as": "launches"
+            }
+          ],
+          "groupby": ["launch_year"]
+        }
+      ],
+
       "mark": {
         "type": "text",
         "dy": -10,
         "font": "Inter",
         "fontSize": 11,
         "fontWeight": "bold",
-        "color": "#9AA5B1"
+        "color": "#CBD5E1"
       },
 
       "encoding": {
+
         "x": {
           "field": "launch_year",
-          "type": "ordinal"
+          "type": "ordinal",
+          "sort": {
+            "field": "launch_year",
+            "order": "ascending"
+          }
         },
 
         "y": {
-          "aggregate": "count",
-          "field": "Satellite_clean"
+          "field": "launches",
+          "type": "quantitative"
         },
 
         "text": {
-          "aggregate": "count",
-          "field": "Satellite_clean"
+          "field": "launches"
         }
       }
     }
+
   ],
 
   "config": {
+
     "view": {
       "stroke": null
     },
