@@ -16,7 +16,6 @@
           "All",
           "Research",
           "Commercial",
-          "Defence",
           "Other"
         ],
         "name": "Filter by Purpose: "
@@ -25,8 +24,9 @@
   ],
 
   "title": {
-    "text": "Australia’s Presence in Orbit Explodes After 2018",
-    "subtitle": "Commercial launches triggered the fastest expansion in Australia’s orbital history",
+    "text": ["After Decades of Silence, Australia Suddenly Reached Orbit",
+      "at Scale"],
+    "subtitle": ["Driven by the rise of commercial space activity and small satellite deployments, the number of satellites launched from Australia has", "surged since 2018."],
     "anchor": "start",
     "font": "Orbitron",
     "fontSize": 28,
@@ -59,7 +59,7 @@
     },
 
     {
-      "calculate": "indexof(lower(datum['Mission purpose']), 'research') >= 0 || indexof(lower(datum['Mission purpose']), 'science') >= 0 ? 'Research' : indexof(lower(datum['Mission purpose']), 'commercial') >= 0 || indexof(lower(datum['Mission purpose']), 'communication') >= 0 ? 'Commercial' : indexof(lower(datum['Mission purpose']), 'defence') >= 0 || indexof(lower(datum['Mission purpose']), 'military') >= 0 ? 'Defence' : 'Other'",
+      "calculate": "indexof(lower(datum['Mission purpose']), 'research') >= 0 || indexof(lower(datum['Mission purpose']), 'science') >= 0 ? 'Research' : indexof(lower(datum['Mission purpose']), 'commercial') >= 0 || indexof(lower(datum['Mission purpose']), 'communication') >= 0 ? 'Commercial' : 'Other'",
       "as": "Purpose"
     },
 
@@ -109,6 +109,7 @@
         "x": {
           "field": "launch_year",
           "type": "ordinal",
+
           "sort": {
             "field": "launch_year",
             "order": "ascending"
@@ -151,17 +152,17 @@
         "color": {
           "condition": {
             "test": "datum.launch_year >= 2018",
-            "value": "#60A5FA"
+            "value": "#5B7FA3"
           },
-          "value": "#334155"
+          "value": "#2A3448"
         },
 
         "opacity": {
           "condition": {
             "test": "datum.launch_year >= 2018",
-            "value": 1
+            "value": 0.7
           },
-          "value": 0.35
+          "value": 0.26
         },
 
         "tooltip": [
@@ -190,6 +191,7 @@
         "x": {
           "field": "launch_year",
           "type": "ordinal",
+
           "sort": {
             "field": "launch_year",
             "order": "ascending"
@@ -227,6 +229,7 @@
         "x": {
           "field": "launch_year",
           "type": "ordinal",
+
           "sort": {
             "field": "launch_year",
             "order": "ascending"
@@ -265,11 +268,16 @@
           "type": "nominal",
 
           "scale": {
+            "domain": [
+              "Research",
+              "Commercial",
+              "Other"
+            ],
+
             "range": [
-              "#60A5FA",
+              "#10B981",
               "#F59E0B",
-              "#F97316",
-              "#10B981"
+              "#60A5FA"
             ]
           },
 
@@ -333,8 +341,8 @@
       "data": {
         "values": [
           {
-            "launch_year": 2019,
-            "rank": 12,
+            "launch_year": 2018,
+            "rank": 11.2,
             "label": "More satellites launched after 2018\nthan in all previous decades combined"
           }
         ]
@@ -343,7 +351,7 @@
       "mark": {
         "type": "text",
         "align": "left",
-        "dx": 15,
+        "dx": -140,
         "dy": -10,
         "font": "Inter",
         "fontSize": 15,
@@ -398,6 +406,7 @@
         "x": {
           "field": "launch_year",
           "type": "ordinal",
+
           "sort": {
             "field": "launch_year",
             "order": "ascending"
