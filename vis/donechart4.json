@@ -2,68 +2,90 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
   "width": "container",
-  "height": 420,
+  "height": 440,
 
-  "background": "#0B1020",
+  "background": "#07111F",
+
+  "padding": {
+    "top": 20,
+    "left": 20,
+    "right": 20,
+    "bottom": 20
+  },
 
   "title": {
-    "text": "Australia's Space Industry Ecosystem Is Expanding",
-    "subtitle": "Number of Australian space organisations over time",
-    "color": "#FFFFFF",
-    "subtitleColor": "#9AA5B1",
+    "text": "Australia’s Space Sector Has Rapidly Expanded",
+    "subtitle": [
+      "Number of Australian space organisations over time"
+    ],
+    "anchor": "start",
     "font": "Orbitron",
     "fontSize": 24,
+    "fontWeight": 700,
+    "color": "#FFFFFF",
     "subtitleFont": "Inter",
-    "subtitleFontSize": 14,
-    "anchor": "start",
-    "offset": 20
+    "subtitleFontSize": 13,
+    "subtitleColor": "#94A3B8",
+    "offset": 18
   },
 
   "data": {
     "url": "https://raw.githubusercontent.com/rsal0030/2179-dv2/main/data/organisations.csv"
   },
 
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "axis": {
+        "title": "Financial Year",
+        "titleFont": "Inter",
+        "titleFontSize": 14,
+        "titleColor": "#E2E8F0",
+        "labelFont": "Inter",
+        "labelFontSize": 12,
+        "labelColor": "#E2E8F0",
+        "labelAngle": 0,
+        "domainColor": "#334155",
+        "tickColor": "#334155",
+        "grid": false
+      }
+    },
+
+    "y": {
+      "field": "organisations",
+      "type": "quantitative",
+      "axis": {
+        "title": "Number of Organisations",
+        "titleFont": "Inter",
+        "titleFontSize": 14,
+        "titleColor": "#E2E8F0",
+        "labelFont": "Inter",
+        "labelFontSize": 12,
+        "labelColor": "#E2E8F0",
+        "domainColor": "#334155",
+        "tickColor": "#334155",
+        "grid": true,
+        "gridColor": "#FFFFFF",
+        "gridOpacity": 0.06
+      }
+    }
+  },
+
   "layer": [
+
     {
       "mark": {
         "type": "rule",
-        "strokeWidth": 3,
-        "stroke": "#5DA9FF"
+        "strokeWidth": 5,
+        "color": "#4CC9F0",
+        "opacity": 0.85,
+        "strokeCap": "round"
       },
+
       "encoding": {
-        "x": {
-          "field": "year",
-          "type": "ordinal",
-          "axis": {
-            "title": "Financial Year",
-            "titleColor": "#EAEAEA",
-            "labelColor": "#EAEAEA",
-            "domainColor": "#2A324A",
-            "tickColor": "#2A324A",
-            "grid": false,
-            "labelFont": "Inter",
-            "titleFont": "Inter",
-            "labelAngle": 0
-          }
-        },
-
-        "y": {
-          "field": "organisations",
-          "type": "quantitative",
-          "axis": {
-            "title": "Number of Organisations",
-            "titleColor": "#EAEAEA",
-            "labelColor": "#EAEAEA",
-            "gridColor": "#2A324A",
-            "domainColor": "#2A324A",
-            "tickColor": "#2A324A",
-            "labelFont": "Inter",
-            "titleFont": "Inter"
-          }
-        },
-
         "y2": {
-          "expr": "scale('y', 0)"
+          "datum": 0
         }
       }
     },
@@ -71,23 +93,22 @@
     {
       "mark": {
         "type": "circle",
+        "size": 900,
+        "color": "#FFD166",
+        "opacity": 0.12
+      }
+    },
+
+    {
+      "mark": {
+        "type": "circle",
         "size": 220,
-        "color": "#FFB703",
+        "color": "#FFD166",
         "stroke": "#FFFFFF",
-        "strokeWidth": 1.5
+        "strokeWidth": 1.8
       },
 
       "encoding": {
-        "x": {
-          "field": "year",
-          "type": "ordinal"
-        },
-
-        "y": {
-          "field": "organisations",
-          "type": "quantitative"
-        },
-
         "tooltip": [
           {
             "field": "year",
@@ -99,12 +120,39 @@
           }
         ]
       }
+    },
+
+    {
+      "mark": {
+        "type": "text",
+        "dy": -18,
+        "font": "Inter",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#FFFFFF"
+      },
+
+      "encoding": {
+        "text": {
+          "field": "organisations"
+        }
+      }
     }
   ],
 
   "config": {
     "view": {
       "stroke": null
+    },
+
+    "style": {
+      "guide-label": {
+        "font": "Inter"
+      },
+
+      "guide-title": {
+        "font": "Inter"
+      }
     }
   }
 }
