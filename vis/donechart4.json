@@ -2,21 +2,22 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
   "width": "container",
-  "height": 440,
+  "height": 400,
 
   "background": "#07111F",
 
   "padding": {
-    "top": 20,
-    "left": 20,
-    "right": 20,
+    "top": 40,
+    "left": 25,
+    "right": 30,
     "bottom": 20
   },
 
   "title": {
-    "text": "Australia’s Space Sector Has Rapidly Expanded",
+    "text": ["Australia’s Space Sector Is Rapidly Expanding, Pushing Past",
+      "Obstacles"],
     "subtitle": [
-      "Number of Australian space organisations over time"
+      "Annual count of Australian space organisations across financial years"
     ],
     "anchor": "start",
     "font": "Orbitron",
@@ -26,28 +27,40 @@
     "subtitleFont": "Inter",
     "subtitleFontSize": 13,
     "subtitleColor": "#94A3B8",
-    "offset": 18
+    "offset": 20
   },
 
   "data": {
     "url": "https://raw.githubusercontent.com/rsal0030/2179-dv2/main/data/organisations.csv"
   },
 
+  "transform": [
+    {
+      "calculate": "datum.year === '2022-23'",
+      "as": "isLatest"
+    }
+  ],
+
   "encoding": {
     "x": {
       "field": "year",
       "type": "ordinal",
+      "sort": null,
+
       "axis": {
         "title": "Financial Year",
+
         "titleFont": "Inter",
         "titleFontSize": 14,
         "titleColor": "#E2E8F0",
+
         "labelFont": "Inter",
         "labelFontSize": 12,
         "labelColor": "#E2E8F0",
         "labelAngle": 0,
-        "domainColor": "#334155",
-        "tickColor": "#334155",
+
+        "domain": false,
+        "ticks": false,
         "grid": false
       }
     },
@@ -55,19 +68,28 @@
     "y": {
       "field": "organisations",
       "type": "quantitative",
+      "scale": {
+        "domainMin": 0,
+        "nice": true
+      },
+
       "axis": {
         "title": "Number of Organisations",
+
         "titleFont": "Inter",
         "titleFontSize": 14,
         "titleColor": "#E2E8F0",
+
         "labelFont": "Inter",
         "labelFontSize": 12,
-        "labelColor": "#E2E8F0",
-        "domainColor": "#334155",
-        "tickColor": "#334155",
+        "labelColor": "#CBD5E1",
+
+        "domain": false,
+        "ticks": false,
+
         "grid": true,
         "gridColor": "#FFFFFF",
-        "gridOpacity": 0.06
+        "gridOpacity": 0.05
       }
     }
   },
@@ -77,14 +99,13 @@
     {
       "mark": {
         "type": "rule",
-        "strokeWidth": 5,
-        "color": "#4CC9F0",
-        "opacity": 0.85,
-        "strokeCap": "round"
+        "color": "#38BDF8",
+        "opacity": 0.18,
+        "strokeWidth": 8
       },
 
       "encoding": {
-        "y2": {
+        "y": {
           "datum": 0
         }
       }
@@ -92,10 +113,41 @@
 
     {
       "mark": {
+        "type": "rule",
+        "strokeCap": "round",
+        "strokeWidth": 5
+      },
+
+      "encoding": {
+
+        "y2": {
+          "datum": 0
+        },
+
+        "color": {
+          "condition": {
+            "test": "datum.isLatest",
+            "value": "#FFD166"
+          },
+          "value": "#38BDF8"
+        },
+
+        "opacity": {
+          "condition": {
+            "test": "datum.isLatest",
+            "value": 1
+          },
+          "value": 0.55
+        }
+      }
+    },
+
+    {
+      "mark": {
         "type": "circle",
-        "size": 900,
+        "size": 950,
         "color": "#FFD166",
-        "opacity": 0.12
+        "opacity": 0.14
       }
     },
 
@@ -125,7 +177,7 @@
     {
       "mark": {
         "type": "text",
-        "dy": -18,
+        "dy": -24,
         "font": "Inter",
         "fontSize": 12,
         "fontWeight": "bold",
@@ -137,6 +189,34 @@
           "field": "organisations"
         }
       }
+    },
+
+    {
+      "transform": [
+        {
+          "filter": "datum.isLatest"
+        }
+      ],
+
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 35,
+        "dy": -35,
+
+        "font": "Inter",
+        "fontSize": 13,
+        "fontWeight": 600,
+
+        "lineBreak": "\n",
+        "color": "#FFD166"
+      },
+
+      "encoding": {
+        "text": {
+          "value": "Australian space organisations\nhave rapidly expanded\nin the last decade"
+        }
+      }
     }
   ],
 
@@ -145,14 +225,9 @@
       "stroke": null
     },
 
-    "style": {
-      "guide-label": {
-        "font": "Inter"
-      },
-
-      "guide-title": {
-        "font": "Inter"
-      }
+    "axis": {
+      "labelFont": "Inter",
+      "titleFont": "Inter"
     }
   }
 }
