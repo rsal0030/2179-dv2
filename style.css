@@ -88,26 +88,6 @@ h1, h2, h3, h4, h5, h6 {
     z-index: -3;
 }
 
-.section-origin::after {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    background-image:
-        radial-gradient(1px 1px at 10% 20%, white, transparent),
-        radial-gradient(1px 1px at 80% 40%, white, transparent),
-        radial-gradient(1px 1px at 40% 80%, white, transparent);
-
-    background-size: 500px 500px;
-
-    opacity: 0.4;
-
-    animation:
-        starsDrift 180s linear infinite;
-
-    z-index: -2;
-}
 
 @keyframes nebulaFloat {
 
@@ -197,45 +177,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-.section-industry::after {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    background:
-        radial-gradient(
-            circle at 20% 30%,
-            rgba(16,185,129,0.12),
-            transparent 20%
-        ),
-
-        radial-gradient(
-            circle at 80% 60%,
-            rgba(96,165,250,0.10),
-            transparent 25%
-        );
-
-    filter: blur(60px);
-
-    animation:
-        industryPulse 10s ease-in-out infinite alternate;
-
-    z-index: -1;
-}
-
-@keyframes industryPulse {
-
-    from {
-        transform: scale(1);
-        opacity: 0.4;
-    }
-
-    to {
-        transform: scale(1.1);
-        opacity: 0.8;
-    }
-}
 
 .section-industry .chart-block {
     border-color:
@@ -311,34 +252,7 @@ h1, h2, h3, h4, h5, h6 {
     z-index: -2;
 }
 
-/* Moving satellite streaks */
 
-.section-orbit .chart-block::before {
-    content: "";
-
-    position: absolute;
-
-    width: 220px;
-    height: 2px;
-
-    top: 20%;
-    left: -20%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,0.8),
-            transparent
-        );
-
-    transform: rotate(-20deg);
-
-    animation:
-        satelliteMove 14s linear infinite;
-
-    opacity: 0.5;
-}
 
 @keyframes orbitRotate {
 
@@ -355,75 +269,6 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-@keyframes satelliteMove {
-
-    from {
-        transform:
-            translateX(0px)
-            rotate(-20deg);
-    }
-
-    to {
-        transform:
-            translateX(1400px)
-            rotate(-20deg);
-    }
-}
-
-.section-orbit .section-header::before {
-    content: "";
-
-    position: absolute;
-
-    width: 14px;
-    height: 14px;
-
-    border-radius: 50%;
-
-    background: white;
-
-    top: -60px;
-    left: 10%;
-
-    box-shadow:
-        0 0 20px rgba(255,255,255,0.8);
-
-    animation:
-        satelliteOrbit 18s linear infinite;
-}
-
-@keyframes satelliteOrbit {
-
-    0% {
-        transform:
-            translateX(0px)
-            translateY(0px);
-    }
-
-    25% {
-        transform:
-            translateX(300px)
-            translateY(40px);
-    }
-
-    50% {
-        transform:
-            translateX(600px)
-            translateY(-20px);
-    }
-
-    75% {
-        transform:
-            translateX(900px)
-            translateY(30px);
-    }
-
-    100% {
-        transform:
-            translateX(1200px)
-            translateY(-10px);
-    }
-}
 
 .section-orbit .chart-block {
     border-color:
@@ -464,7 +309,7 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0.7;
 
     animation:
-        terrainShift 40s linear infinite;
+        terrainShift 90s linear infinite;
 
     z-index: -2;
 }
@@ -617,45 +462,6 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-.section-future .chart-block::after {
-    content: "";
-
-    position: absolute;
-
-    top: -200px;
-    left: -20%;
-
-    width: 200%;
-    height: 400px;
-
-    background:
-        linear-gradient(
-            120deg,
-            transparent,
-            rgba(96,165,250,0.08),
-            transparent
-        );
-
-    transform: rotate(-8deg);
-
-    animation:
-        beamMove 12s linear infinite;
-}
-
-@keyframes beamMove {
-
-    from {
-        transform:
-            translateX(-200px)
-            rotate(-8deg);
-    }
-
-    to {
-        transform:
-            translateX(200px)
-            rotate(-8deg);
-    }
-}
 
 .section-future .chart-block {
     border-color:
@@ -790,14 +596,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section-header {
-    position: sticky;
-    top: 24px;
-    z-index: 100;
+    position: relative;
 
-    margin-bottom: 60px;
+    margin-bottom: 50px;
 
-    pointer-events: none;
-
+    text-align: center;
 }
 
 .section-tag {
@@ -815,7 +618,7 @@ h1, h2, h3, h4, h5, h6 {
 .section-header h2 {
     margin: 0;
 
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(2rem, 4vw, 3.2rem);
 
     line-height: 0.95;
 
@@ -983,15 +786,120 @@ footer::before {
             transparent 70%
         );
 
-    filter: blur(80px);
+    filter: blur(50px);
+    pointer-events: none;
 }
 
 footer {
+
+    position: relative;
+    z-index: 20;
+
     text-align: center;
     padding: 60px 0;
     color: #9ca3af;
     font-size: 0.9rem;
     background: #0b0f19;
+}
+
+footer a {
+    position: relative;
+    z-index: 25;
+    color: #93c5fd;
+    text-decoration: none;
+
+    transition:
+        color 0.3s ease,
+        text-shadow 0.3s ease;
+}
+
+footer a:hover {
+    color: white;
+
+    text-shadow:
+        0 0 10px rgba(147,197,253,0.8);
+}
+
+
+/* =========================
+   BIG STAT CALLOUT
+========================= */
+
+.big-stat {
+    position: relative;
+
+    margin: 70px auto;
+    padding: 50px 40px;
+
+    max-width: 850px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(59,130,246,0.12),
+            rgba(15,23,42,0.88)
+        );
+
+    border:
+        1px solid rgba(96,165,250,0.18);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 0 40px rgba(59,130,246,0.10);
+}
+
+/* subtle orbital ring */
+.big-stat::before {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.05);
+
+    top: -250px;
+    right: -180px;
+}
+
+/* glowing number */
+.big-stat span {
+    display: block;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: clamp(3rem, 9vw, 6rem);
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    color: #60A5FA;
+
+    text-shadow:
+        0 0 25px rgba(96,165,250,0.45);
+
+    margin-bottom: 20px;
+}
+
+/* supporting text */
+.big-stat p {
+    margin: 0 auto;
+
+    max-width: 620px;
+
+    font-size: 1.1rem;
+
+    line-height: 1.8;
+
+    color: #d1d5db;
 }
 
 /* =========================
