@@ -1,0 +1,189 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": "container",
+  "height": 500,
+  "background": "#0B1020",
+
+  "title": {
+    "text": "Orbit Type Over Time in Australian Satellite Launches",
+    "subtitle": "Low Earth Orbit has become Australia's default destination — a structural shift toward cheaper, more agile satellite systems",
+    "anchor": "start",
+    "color": "#FFFFFF",
+    "subtitleColor": "#9AA5B1",
+    "font": "Orbitron",
+    "fontSize": 24,
+    "subtitleFont": "Inter",
+    "subtitleFontSize": 14
+  },
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/rsal0030/2179-dv2/main/data/aosd.csv"
+  },
+
+  "transform": [
+
+    {
+      "calculate": "toNumber(datum['Launch year'])",
+      "as": "launch_year"
+    },
+
+    {
+      "calculate": "lower(datum['OrbitType'])",
+      "as": "orbit_lower"
+    },
+
+    {
+      "calculate": "indexof(datum.orbit_lower, 'leo') >= 0 ? 'LEO' : indexof(datum.orbit_lower, 'geo') >= 0 ? 'GEO' : indexof(datum.orbit_lower, 'sso') >= 0 || indexof(datum.orbit_lower, 'sun') >= 0 ? 'SSO' : indexof(datum.orbit_lower, 'meo') >= 0 ? 'MEO' : 'Other'",
+      "as": "Orbit_clean"
+    },
+
+    {
+      "filter": "isFinite(datum.launch_year)"
+    },
+
+    {
+      "aggregate": [
+        { "op": "count", "as": "count" }
+      ],
+      "groupby": ["launch_year", "Orbit_clean"]
+    },
+
+    {
+      "sort": [{ "field": "launch_year", "order": "ascending" }],
+      "window": [
+        {
+          "op": "sum",
+          "field": "count",
+          "as": "cumulative"
+        }
+      ],
+      "groupby": ["Orbit_clean"],
+      "frame": [null, 0]
+    }
+  ],
+
+  "mark": {
+    "type": "area",
+    "interpolate": "monotone"
+  },
+
+  "encoding": {
+
+    "x": {
+      "field": "launch_year",
+      "type": "temporal",
+      "title": "Launch Year",
+      "axis": {
+        "labelColor": "#EAEAEA",
+        "titleColor": "#EAEAEA",
+        "grid": false,
+        "labelFont": "Inter",
+        "titleFont": "Inter"
+      }
+    },
+
+    "y": {
+      "field": "cumulative",
+      "type": "quantitative",
+      "stack": "zero",
+      "title": "Cumulative Satellite Count",
+      "axis": {
+        "gridColor": "#1C2236",
+        "labelColor": "#EAEAEA",
+        "titleColor": "#EAEAEA",
+        "labelFont": "Inter",
+        "titleFont": "Inter"
+      }
+    },
+
+    "color": {
+      "field": "Orbit_clean",
+      "type": "nominal",
+      "scale": {
+        "domain": ["LEO", "GEO", "SSO", "MEO", "Other"],
+        "range": ["#5B7FA3", "#7A7A7A", "#9AA5B1", "#B0B0B0", "#4A5568"]
+      },
+      "legend": {
+        "title": "Orbit Type",
+        "labelColor": "#EAEAEA",
+        "titleColor": "#EAEAEA",
+        "labelFont": "Inter",
+        "titleFont": "Inter"
+      }
+    },
+
+    "tooltip": [
+      { "field": "launch_year", "title": "Year" },
+      { "field": "Orbit_clean", "title": "Orbit Type" },
+      { "field": "count", "title": "Annual Count" },
+      { "field": "cumulative", "title": "Cumulative Count" }
+    ]
+  },
+
+  "layer": [
+
+    {
+      "mark": {
+        "type": "area",
+        "interpolate": "monotone"
+      }
+    },
+
+    {
+      "data": {
+        "values": [{ "launch_year": 2018 }]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#FFFFFF",
+        "strokeDash": [6, 6],
+        "strokeWidth": 2,
+        "opacity": 0.5
+      },
+      "encoding": {
+        "x": {
+          "field": "launch_year",
+          "type": "temporal"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "launch_year": 2018,
+            "label": "ASA established"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "dx": 10,
+        "dy": -10,
+        "color": "#FFFFFF",
+        "font": "Inter",
+        "fontWeight": "bold",
+        "fontSize": 13
+      },
+      "encoding": {
+        "x": { "field": "launch_year", "type": "temporal" },
+        "y": { "value": 10 },
+        "text": { "field": "label" }
+      }
+    }
+
+  ],
+
+  "config": {
+    "view": { "stroke": null },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 14
+    },
+    "legend": {
+      "padding": 10
+    }
+  }
+}

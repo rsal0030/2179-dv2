@@ -1,0 +1,193 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": "container",
+  "height": 500,
+  "background": "#0B1020",
+
+  "params": [
+    {
+      "name": "PurposeFilter",
+      "bind": {
+        "input": "select",
+        "options": [null, "Research", "Commercial", "Other"],
+        "labels": ["All", "Research", "Commercial", "Other"],
+        "name": "Filter by Purpose: "
+      }
+    }
+  ],
+
+  "title": {
+    "text": "Australian Satellites Have Become Dramatically Lighter Over Time",
+    "subtitle": [
+      "Australian satellites have become dramatically lighter over time, lowering the barrier to entry for universities and startups. This highlights",
+      "the Mass (kg) of each Australian satellite at time of launch, 1967–2023"
+    ],
+    "anchor": "start",
+    "color": "#FFFFFF",
+    "subtitleColor": "#9AA5B1",
+    "font": "Orbitron",
+    "fontSize": 28,
+    "fontWeight": "bold",
+    "subtitleFont": "Inter",
+    "subtitleFontSize": 14
+  },
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/rsal0030/2179-dv2/main/data/aosd.csv"
+  },
+
+  "transform": [
+
+    {
+      "calculate": "toNumber(datum['Launch year'])",
+      "as": "launch_year"
+    },
+    {
+      "calculate": "toNumber(datum['Launch Mass(kg)'])",
+      "as": "mass_kg"
+    },
+
+    {
+      "calculate": "indexof(lower(datum['Mission purpose']), 'research') >= 0 || indexof(lower(datum['Mission purpose']), 'science') >= 0 ? 'Research' : indexof(lower(datum['Mission purpose']), 'commercial') >= 0 || indexof(lower(datum['Mission purpose']), 'communication') >= 0 ? 'Commercial' : 'Other'",
+      "as": "Purpose"
+    },
+
+    {
+      "filter": "isFinite(datum.launch_year) && isFinite(datum.mass_kg) && datum.mass_kg > 0"
+    },
+
+    {
+      "filter": "PurposeFilter == null || datum.Purpose == PurposeFilter"
+    }
+  ],
+
+  "layer": [
+
+    {
+      "mark": {
+        "type": "circle",
+        "stroke": "#FFFFFF",
+        "strokeWidth": 1,
+        "strokeOpacity": 0.45
+      },
+      
+      "encoding": {
+        "x": {
+          "field": "launch_year",
+          "type": "ordinal",
+          "title": "Launch Year",
+          "axis": {
+            "labelAngle": 0,
+            "grid": false,
+            "labelColor": "#EAEAEA",
+            "titleColor": "#EAEAEA",
+            "domainColor": "#2A324A",
+            "tickColor": "#2A324A",
+            "labelFont": "Inter",
+            "titleFont": "Inter"
+          }
+        },
+        "y": {
+          "field": "mass_kg",
+          "type": "quantitative",
+          "scale": { "type": "log" },
+          "axis": {
+            "values": [1, 10, 100, 1000, 10000],
+            "gridColor": "#1C2236",
+            "labelColor": "#EAEAEA",
+            "titleColor": "#EAEAEA",
+            "domainColor": "#2A324A",
+            "tickColor": "#2A324A",
+            "labelFont": "Inter",
+            "titleFont": "Inter"
+          },
+          "title": "Satellite Mass (kg, log scale)"
+        },
+        "size": {
+          "field": "mass_kg",
+          "type": "quantitative",
+          "scale": { "range": [50, 3500] },
+          "legend": {
+            "title": "Mass (kg)",
+            "symbolFillColor": "#60A5FA",
+            "symbolStrokeColor": "#FFFFFF",
+            "labelColor": "#EAEAEA",
+            "titleColor": "#EAEAEA"
+          }
+        },
+        "opacity": {
+          "condition": {
+            "test": "datum.launch_year >= 2018",
+            "value": 0.92
+          },
+          "value": 0.32
+        },
+        "color": {
+          "field": "Purpose",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Research", "Commercial", "Other"],
+            "range": ["#10B981", "#F59E0B", "#60A5FA"]
+          }
+        },
+        "tooltip": [
+          { "field": "Satellite", "title": "Satellite" },
+          { "field": "launch_year", "title": "Year" },
+          { "field": "mass_kg", "title": "Mass (kg)" },
+          { "field": "Purpose", "title": "Purpose" }
+        ]
+      }
+    },
+
+    {
+      "data": {
+        "values": [{ "launch_year": 2018 }]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#FFFFFF",
+        "strokeDash": [6, 6],
+        "strokeWidth": 2,
+        "opacity": 0.5
+      },
+      "encoding": {
+        "x": { "field": "launch_year", "type": "ordinal" }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "launch_year": 2018,
+            "mass_kg": 5000,
+            "label": "Shift toward small satellites\nand commercial deployment"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": -200,
+        "dy": 110,
+        "font": "Inter",
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "color": "#FFFFFF"
+      },
+      "encoding": {
+        "x": { "field": "launch_year", "type": "ordinal" },
+        "y": { "field": "mass_kg", "type": "quantitative" },
+        "text": { "field": "label" }
+      }
+    }
+
+  ],
+
+  "config": {
+    "view": { "stroke": null },
+    "axis": { "labelFontSize": 12, "titleFontSize": 14 },
+    "legend": { "padding": 10 }
+  }
+}

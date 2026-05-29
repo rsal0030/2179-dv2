@@ -17,13 +17,17 @@
 
 <body>
 
+    <div id="progress-bar"></div>
+
     <nav class="sidebar">
-    <a href="#section1">1</a>
-    <a href="#section2">2</a>
-    <a href="#section3">3</a>
-    <a href="#section4">4</a>
+    <a href="#section1" title="A Nation Wakes Up to Space">01</a>
+    <a href="#section2" title="From Zero to Launch">02</a>
+    <a href="#section3" title="Eyes in the Sky">03</a>
+    <a href="#section4" title="Australia's Secret Superpower">04</a>
+    <a href="#section5" title="Shooting for the Moon and Beyond">05</a>
     </nav>
 
+    <main>
 <!-- =========================
     HERO
 ========================= -->
@@ -56,7 +60,10 @@
 
     <div class="container">
 
-        <h2>A Nation Wakes Up to Space</h2>
+        <div class="section-header">
+            <div class="section-tag">SECTION 01</div>
+            <h2>A Nation Wakes Up to Space</h2>
+        </div>
 
         <p class="section-text">
             Australia was a space pioneer long before it had a space agency. Its vast, clear skies
@@ -70,27 +77,29 @@
             Australia wasn't alone in coming late to space, but its return in 2018 marked a sharp turning point.
         </p>
 
-        <div class="chart-block">
+        <!-- Timeline Chart -->
+        <figure class="chart-block">
             <div id="donechart1" class="chart"></div>
-            <p class="caption">
+            <figcaption class="caption">
                 Every marker represents a moment Australia moved closer to becoming a serious space
-                nation. Notice how the pace acceleratesm what took a decade to start now takes a
+                nation. Notice how the pace accelerates, what took a decade to start now takes a
                 year to build on.
-            </p>
-        </div>
+            </figcaption>
+        </figure>
 
         <p class="transition">
-             Australia wasn't alone in coming late to space, but compared to the rest of the world,
+            Australia wasn't alone in coming late to space, but compared to the rest of the world,
             its arrival in 2018 was remarkably recent, and its ambitions since then have been anything
             but modest.
         </p>
 
-        <div class="chart-block">
+        <!-- Chloropleth Map -->
+        <figure class="chart-block">
             <div id="donechart2" class="chart"></div>
-            <p class="caption">
+            <figcaption class="caption">
                 Countries are grouped by the founding period of their national space agencies. Australia, highlighted separately, is a recent entrant (2018) compared with long-established agencies in the United States, Russia, India, and China.
-            </p>
-        </div>
+            </figcaption>
+        </figure>
 
         <p class="transition">
             The agency was just the beginning. What followed was the deliberate construction of an
@@ -110,7 +119,10 @@
 
     <div class="container">
 
-        <h2>From Zero to Launch</h2>
+        <div class="section-header">
+            <div class="section-tag">SECTION 02</div>
+            <h2>From Zero to Launch</h2>
+        </div>
 
         <p class="section-text">
             When the Australian Space Agency opened its doors in 2018, the domestic space sector
@@ -119,28 +131,30 @@
             serious commercial investment from around the world.
         </p>
 
-        <div class="chart-block">
+        <!-- Dual Y-Axis Line Chart -->
+        <figure class="chart-block">
             <div id="donechart3" class="chart"></div>
-            <p class="caption">
+            <figcaption class="caption">
                 Revenue and employment have both grown strongly since 2018, but not always in
                 lockstep. Employment has grown more consistently, reflecting a shift toward
                 knowledge-intensive, high-skill jobs rather than pure manufacturing output.
-            </p>
-        </div>
+            </figcaption>
+        </figure>
 
         <p class="transition">
             The headline numbers tell a growth story, but the real texture of that growth is
             visible in the number of organisations participating in the sector
         </p>
 
-        <div class="chart-block">
+        <!-- Lollipop Chart -->
+        <figure class="chart-block">
             <div id="donechart4" class="chart"></div>
-            <p class="caption">
+            <figcaption class="caption">
                 The dip in FY21 reflects the disruption of COVID-19, which hit smaller space
                 businesses particularly hard. The rebound to 814 organisations by FY23 was the highest
                 on record and suggests the sector emerged from the pandemic stronger than it entered.
-            </p>
-        </div>
+            </figcaption>
+        </figure>
 
         <p class="transition">
             The industry isn't just growing in headcount and revenue. It's putting hardware into
@@ -161,7 +175,10 @@
 
     <div class="container">
 
-        <h2>Eyes in the Sky - Australia's Satellite Story</h2>
+        <div class="section-header">
+            <div class="section-tag">SECTION 03</div>
+            <h2>Eyes in the Sky - Australia's Satellite Story</h2>
+        </div>
 
         <p class="section-text">
             For most of its history, Australia depended entirely on satellites built and owned by
@@ -171,61 +188,64 @@
             changing rapidly.
         </p>
 
-        <div class="chart-block">
+        <!-- Combination of bar and dot plot -->
+        <figure class="chart-block">
             <div id="donechart5" class="chart"></div>
-            <p class="caption">
+            <figcaption class="caption">
                 Each dot represents one Australian-owned satellite. The acceleration after 2018 is
                 unmistakable. Colour indicates purpose: research, commercial, or other, revealing how the motivations behind Australian space activity are diversifying
                 alongside the volume.
-            </p>
-        </div>
+            </figcaption>
+        </figure>
 
         <p class="transition">
             It's not just the number of satellites that has changed. The satellites themselves are
             fundamentally different from what came before.
         </p>
 
-        <!-- treemap  -->
-        <div class="chart-block"> 
+        <!-- Bubble scatterplot -->
+        <figure class="chart-block">
+            <div id="donecharta" class="chart"></div>
+            <figcaption class="caption">
+                Australian satellites once weighed hundreds of kilograms, expensive to build,
+                expensive to launch, and accessible only to governments. Today, many weigh less
+                than a toaster. The miniaturisation of satellite technology has democratised
+                access to space, letting universities and startups do what once required a
+                national program.
+            </figcaption>
+        </figure>
+
+        <p class="transition">
+            The shift in what satellites weigh reflects a deeper change in what they are built for.
+        </p>
+
+        <!-- Treemap  -->
+        <figure class="chart-block">
             <div id="donechart6" class="chart"></div>
-            <p class="caption">
+            <figcaption class="caption">
                 Each block represents a category of Australian satellite missions, with size reflecting the relative share of each purpose. Communications and Earth Observation make up the largest portions, while Technology Demonstration, Research, and Navigation account for smaller but still significant activity. Colour distinguishes mission purpose, highlighting how Australian space activity spans operational services, scientific work, and emerging experimental technologies within a single growing ecosystem.
-            </p>
-            
-        </div>
+            </figcaption>
+        </figure>
 
         <p class="transition">
-            These satellites rely on a global network of launch providers.
+            Where a satellite goes shapes everything it can do. The choice of orbit determines
+            cost, lifespan, and capability, and that choice has shifted dramatically.
         </p>
 
-        <div class="chart-block">
+        <!-- Combination of scatterplot and summary statistics similar to boxplot -->
+        <figure class="chart-block">
             <div id="donechart7" class="chart"></div>
-            <p class="caption">
-                This visualization compares satellite mass distributions across Low Earth Orbit (LEO) and Geostationary Orbit (GEO) to examine how orbital regime influences spacecraft design. A scatter plot preserves satellite-level detail, while a logarithmic y-axis accommodates the highly skewed mass distribution across several orders of magnitude. Orbit type is encoded on the x-axis to enable direct comparison, revealing that GEO satellites are typically heavier and more tightly clustered, reflecting long-duration, high-power communication missions, whereas LEO satellites are generally lighter and more variable, consistent with small-satellite and CubeSat deployments. Median markers and interquartile range bands summarise central tendency and spread for each orbit type, making distributional differences immediately visible. Mission purpose is encoded using colour to add contextual meaning to observed patterns, with slight horizontal jitter reducing overplotting while preserving mass accuracy, resulting in a clear, interpretable comparison of satellite mass across orbital regimes.
-            </p>
-        </div>
+            <figcaption class="caption">
+                Spacecraft design is deeply bound to orbital destiny. This visualization maps the mass of satellites in Low Earth Orbit (LEO) against those in Geostationary Orbit (GEO). In the distant GEO belt, satellites are heavy, high-power titans built for decades of communication. Down in LEO, the landscape is entirely different—dominated by a lightweight, highly diverse fleet of small-sats and CubeSats. By charting their weights side-by-side and color-coding by mission purpose, the data clearly shows how getting closer to Earth has fundamentally changed the scale of what we launch.
+            </figcaption>
+        </figure>
 
         <p class="transition">
-            That ground infrastructure isn't just useful for Australian missions. NASA, ESA, and
-            defence agencies from multiple countries rely on Australian soil to track, communicate
-            with, and control satellites and spacecraft across the solar system.
+            These satellites don't operate in isolation. Behind every object in orbit is a network
+            of ground infrastructure, and Australia's geography gives it a natural advantage that
+            most countries simply cannot replicate.
         </p>
 
-        <div class="chart-block">
-            <div id="donechart8" class="chart"></div>
-            <p class="caption">
-                Explore Australia's space infrastructure by toggling between facility types. The
-                Canberra Deep Space Communication Complex at Tidbinbilla is one of only three
-                NASA deep space tracking stations on Earth, without it, missions to Mars, Jupiter,
-                and beyond would lose contact for hours every day.
-            </p>
-        </div>
-
-        <p class="transition">
-            This infrastructure isn't just supporting today's missions. It is being built and
-            expanded with the next decade firmly in mind, because Australia's most ambitious
-            space chapters are still unwritten.
-        </p>
 
     </div>
 
@@ -240,7 +260,10 @@
 
     <div class="container">
 
-        <h2>Australia's Secret Superpower - Location</h2>
+        <div class="section-header">
+            <div class="section-tag">SECTION 04</div>
+            <h2>Australia's Secret Superpower - Location</h2>
+        </div>
 
         <p class="section-text">
             Ask a space engineer why Australia matters and they'll often start with a map. The
@@ -250,17 +273,83 @@
             and Australia's location is increasingly worth billions.
         </p>
 
-        <div class="chart-block">
-            <div id="donechart9" class="chart"></div>
-            <p class="caption">
-                Australia’s space roadmap shows a clear clustering of activity across four strands: missions, commercial growth, policy development, and national targets, spread over a timeline of planned milestones. Early years are dominated by foundational policy and capability-building, while later years shift toward higher-intensity mission activity and commercial expansion, signalling a maturing space sector. Targets sit apart as strategic milestones, anchoring the broader system of projects and programs rather than representing standalone events.
-            </p>
-        </div>
+        <!-- Dot Map -->
+        <figure class="chart-block">
+            <div id="donechart8" class="chart"></div>
+            <figcaption class="caption">
+                Explore Australia's space infrastructure by toggling between facility types. The
+                Canberra Deep Space Communication Complex at Tidbinbilla is one of only three
+                NASA deep space tracking stations on Earth, without it, missions to Mars, Jupiter,
+                and beyond would lose contact for hours every day.
+            </figcaption>
+        </figure>
 
+        <p class="transition">
+            This infrastructure isn't just supporting today's missions. It is being built and
+            expanded with the next decade firmly in mind, because Australia's most ambitious
+            space chapters are still unwritten.
+        </p>
+    
     </div>
 
 </section>
 
+<!-- =========================
+    SECTION 5 - Shooting for the Moon and Beyond
+========================= -->
+
+<section class="section" id="section5">
+
+    <div class="container">
+
+        <div class="section-header">
+            <div class="section-tag">SECTION 05</div>
+            <h2>Shooting for the Moon and Beyond</h2>
+        </div>
+
+        <p class="section-text">
+            Australia's Civil Space Strategy set bold targets for 2030: triple the sector's revenue
+            to $12 billion, create 20,000 new jobs, and establish Australia as a recognised
+            destination for orbital launch. When those targets were announced in 2019, they seemed
+            aspirational. In 2025, with a lunar rover under construction, an Australian astronaut
+            assigned to a mission, and commercial rockets launching from Australian soil, they are
+            starting to look like a floor rather than a ceiling.
+        </p>
+
+        <!-- Roadmap -->
+        <figure class="chart-block">
+            <div id="donechart9" class="chart"></div>
+            <figcaption class="caption">
+                Australia's space calendar is filling up fast. The targets at the end of the
+                timeline — $12 billion in revenue and 20,000 jobs by 2030 — are shown as goals
+                rather than confirmed events. Everything else is real, funded, and in motion.
+            </figcaption>
+        </figure>
+
+         <p class="transition">
+            Behind these missions is an ecosystem of organisations, government agencies,
+            universities, startups, and multinationals, all operating across different parts
+            of the space value chain.
+        </p>
+
+        <!-- Waffle chart  -->
+        <figure class="chart-block waffle-block">
+            <div id="donechartb" class="chart"></div>
+            <figcaption class="caption">
+                Universities, research institutions, and commercial operators now account for a
+                growing share of Australian-owned satellites, a sign of a maturing industry
+                where access to space is no longer the exclusive domain of the state.
+            </figcaption>
+        </figure>
+
+        <p class="closing-text">
+            Australia entered the space age late. But in the seven years since the Australian Space Agency opened its doors at Lot Fourteen in Adelaide, the country has launched satellites, built rockets, signed agreements with NASA and ESA, and committed to putting a rover on the Moon. The next chapter in Australia's space journey is orbital launches from Australian soil, an Australian on the ISS, a growing commercial sector, is already underway. The giant leap has begun.
+        </p>
+    </div>
+
+</section>
+
+</main>
 
 <!-- =========================
     FOOTER
@@ -270,20 +359,26 @@
 
     <div class="container">
 
-        <p><strong>The Rise of Australia's Space Nation — DV2 Project</strong></p>
+        <p><strong>The Rise of Australia's Space Nation - FIT2179 Data Visualisation 2</strong></p>
 
         <p>
-            Data sources: UNSW Canberra Satellite Database, Australian Space Agency,
-            Austrade Space Reports.
+            Data sources: 
+            <a href="https://www.unsw.edu.au/canberra/our-research/research-centres-institutes/unsw-canberra-space/our-research/australian-owned-satellite-database" target="_blank">UNSW Canberra Australian-Owned Satellite Database (1967–2023)</a>;
+            <a href="https://www.space.gov.au/key-data" target="_blank">Australian Space Agency Economic Snapshots</a>;
+            <a href="https://international.austrade.gov.au/en/do-business-with-australia/sectors/space" target="_blank">Austrade International Space Sector Overview</a>;
+            Space Industry Association of Australia Fact Sheet, July 2025.
         </p>
 
         <p>
-            Created for FIT2179 Data Visualisation — Monash University
+            Created for FIT2179 Data Visualisation 2 - Monash University
         </p>
 
         <p>
-            Reeon Saldanha
-            36196932
+            Reeon Saldanha - 36196932 - May 2026
+        </p>
+
+        <p> 
+            Generative AI acknowledged for coding and writing assistance
         </p>
 
     </div>
@@ -310,6 +405,7 @@ const observer = new IntersectionObserver(entries => {
 elements.forEach(el => observer.observe(el));
 </script>
 
+<!-- Sidebar Nav -->
 <script>
 const sections = document.querySelectorAll(".section");
 const navLinks = document.querySelectorAll(".sidebar a");
@@ -321,7 +417,8 @@ window.addEventListener("scroll", () => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
 
-        if (pageYOffset >= sectionTop - sectionHeight / 3) {
+
+        if (window.scrollY >= sectionTop - window.innerHeight * 0.35) {
             current = section.getAttribute("id");
         }
     });
@@ -333,6 +430,21 @@ window.addEventListener("scroll", () => {
         }
     });
 });
+</script>
+
+<!-- Progress Bar -->
+<script>
+window.addEventListener("scroll", () => {
+    const scrollTop = window.scrollY;
+    const docHeight =
+        document.body.scrollHeight - window.innerHeight;
+
+    const progress = (scrollTop / docHeight) * 100;
+
+    document.getElementById("progress-bar").style.width =
+        progress + "%";
+});
+
 </script>
 
 </body>

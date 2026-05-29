@@ -1,0 +1,148 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 340,
+  "height": 300,
+  "background": "#0B1020",
+
+  "title": {
+    "text": ["Australia's satellite fleet is no longer", "a government monopoly"],
+    "subtitle": [
+      "Australian-owned satellites by operator type: government, university, and", " commercial"
+    ],
+    "anchor": "start",
+    "color": "#FFFFFF",
+    "subtitleColor": "#9AA5B1",
+    "font": "Orbitron",
+    "fontSize": 24,
+    "fontWeight": "bold",
+    "subtitleFont": "Inter",
+    "subtitleFontSize": 13
+  },
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/rsal0030/2179-dv2/main/data/aosd.csv"
+  },
+
+  "transform": [
+
+    {
+      "calculate":
+        "indexof(lower(datum.Operator),'university')>=0 || indexof(lower(datum.Operator),'unsw')>=0 || indexof(lower(datum.Operator),'sydney')>=0 || indexof(lower(datum.Operator),'curtin')>=0 || indexof(lower(datum.Operator),'melbourne')>=0 || indexof(lower(datum.Operator),'adelaide')>=0 || indexof(lower(datum.Operator),'space program')>=0 ? 'University' : indexof(lower(datum.Operator),'defence')>=0 || indexof(lower(datum.Operator),'dstg')>=0 || indexof(lower(datum.Operator),'raaf')>=0 || indexof(lower(datum.Operator),'wre')>=0 ? 'Government' : 'Commercial'",
+      "as": "operator_type"
+    },
+
+    {
+      "window": [
+        {
+          "op": "row_number",
+          "as": "id"
+        }
+      ],
+      "sort": [
+        {
+          "field": "sort_order",
+          "order": "ascending"
+        }
+      ]
+    },
+
+    {
+      "calculate": "(datum.id - 1) % 8",
+      "as": "x"
+    },
+
+    {
+      "calculate": "floor((datum.id - 1) / 8)",
+      "as": "y"
+    },
+    
+    {
+    "calculate":
+        "datum.operator_type == 'Government' ? 0 : datum.operator_type == 'University' ? 1 : 2",
+    "as": "sort_order"
+    }
+  ],
+
+  "mark": {
+    "type": "square",
+    "size": 1500,
+    "stroke": "#FFFFFF",
+    "strokeWidth": 1.2,
+    "cornerRadius": 3
+  },
+
+  "encoding": {
+
+    "x": {
+      "field": "x",
+      "type": "ordinal",
+      "axis": null
+    },
+
+    "y": {
+      "field": "y",
+      "type": "ordinal",
+      "axis": null
+    },
+
+    "color": {
+      "field": "operator_type",
+      "type": "nominal",
+
+      "scale": {
+        "domain": [
+          "Government",
+          "University",
+          "Commercial"
+        ],
+        "range": [
+          "#60A5FA",
+          "#10B981",
+          "#F59E0B"
+        ]
+      },
+
+      "legend": {
+        "title": "Operator Type",
+        "orient": "right",
+        "labelColor": "#EAEAEA",
+        "titleColor": "#FFFFFF",
+        "labelFont": "Inter",
+        "titleFont": "Inter",
+        "symbolStrokeColor": "#FFFFFF",
+        "symbolSize": 220
+      }
+    },
+
+    "tooltip": [
+      {
+        "field": "Satellite",
+        "title": "Satellite"
+      },
+      {
+        "field": "Operator",
+        "title": "Operator"
+      },
+      {
+        "field": "operator_type",
+        "title": "Category"
+      },
+      {
+        "field": "Launch year",
+        "title": "Launch Year"
+      }
+    ]
+  },
+
+  "config": {
+    "view": {
+      "stroke": null
+    },
+
+    "axis": {
+      "labelFont": "Inter",
+      "titleFont": "Inter"
+    }
+  }
+}

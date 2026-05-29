@@ -77,6 +77,16 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 20px;
 }
 
+.section-tag {
+    color: #60A5FA;
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+
 /* =========================
    TRANSITIONS (VERY IMPORTANT)
 ========================= */
@@ -92,6 +102,43 @@ h1, h2, h3, h4, h5, h6 {
 /* =========================
    CHART BLOCKS
 ========================= */
+
+
+
+
+/* Waffle chart layout */
+.waffle-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Prevent Vega from stretching */
+#donechartb.chart {
+    width: fit-content;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+/* Caption beside chart */
+.waffle-block .caption {
+    max-width: 320px;
+    margin: 0;
+
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+
+#donechartb {
+    margin: 0 auto;
+}
+
 
 .chart-block {
     margin: 40px 0;
@@ -203,4 +250,27 @@ footer {
 .annotation.visible {
     opacity: 1;
     transform: translateY(0);
+    
+}
+
+/* =========================
+   Progress Bar
+========================= */
+
+#progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 0%;
+    height: 4px;
+
+    background: linear-gradient(
+        90deg,
+        #60A5FA,
+        #10B981,
+        #F59E0B
+    );
+
+    z-index: 9999;
 }
